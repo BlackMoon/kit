@@ -1,0 +1,14 @@
+D:\dev\kit\WebClient\Kit.Dal\bin\Debug\Kit.Dal.dll
+D:\dev\kit\WebClient\Kit.Dal\bin\Debug\Kit.Dal.pdb
+D:\dev\kit\WebClient\Kit.Dal\obj\Debug\Kit.Dal.csprojResolveAssemblyReference.cache
+D:\dev\kit\WebClient\Kit.Dal\obj\Debug\Kit.Dal.dll
+D:\dev\kit\WebClient\Kit.Dal\obj\Debug\Kit.Dal.pdb
+D:\dev\kit\WebClient\Kit.Dal\bin\Debug\Oracle.DataAccess.dll
+D:\dev\kit\Kit.Dal\obj\Debug\Kit.Dal.csprojResolveAssemblyReference.cache
+D:\dev\kit\Kit.Dal\obj\Debug\Kit.Dal.dll
+D:\dev\kit\Kit.Dal\obj\Debug\Kit.Dal.pdb
+D:\dev\kit\Kit.Dal\bin\Debug\Kit.Dal.dll
+D:\dev\kit\Kit.Dal\bin\Debug\Kit.Dal.pdb
+D:\dev\kit\Kit.Dal\bin\Debug\Oracle.DataAccess.dll
+D:\dev\kit\Kit.Dal\bin\Debug\Kit.Kernel.dll
+D:\dev\kit\Kit.Dal\bin\Debug\Kit.Kernel.pdb

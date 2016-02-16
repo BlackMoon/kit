@@ -1,0 +1,9 @@
+D:\dev\kit\WebClient\Kit.Kernel\bin\Debug\Kit.Kernel.dll
+D:\dev\kit\WebClient\Kit.Kernel\bin\Debug\Kit.Kernel.pdb
+D:\dev\kit\WebClient\Kit.Kernel\obj\Debug\Kit.Kernel.csprojResolveAssemblyReference.cache
+D:\dev\kit\WebClient\Kit.Kernel\obj\Debug\Kit.Kernel.dll
+D:\dev\kit\WebClient\Kit.Kernel\obj\Debug\Kit.Kernel.pdb
+D:\dev\kit\Kit.Kernel\bin\Debug\Kit.Kernel.dll
+D:\dev\kit\Kit.Kernel\bin\Debug\Kit.Kernel.pdb
+D:\dev\kit\Kit.Kernel\obj\Debug\Kit.Kernel.dll
+D:\dev\kit\Kit.Kernel\obj\Debug\Kit.Kernel.pdb
