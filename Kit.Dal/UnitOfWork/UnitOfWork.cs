@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.Linq;
 using Kit.Kernel.UnitOfWork;
@@ -7,6 +8,8 @@ namespace Kit.Dal.UnitOfWork
 {
     public class UnitOfWork<T> : IUnitOfWork, IDisposable where T : DataContext
     {
+        private Dictionary<Type, object> _repositories = new Dictionary<Type, object>();
+
         public T Context { get; private set; }
 
         public UnitOfWork(IDbConnection conn)
