@@ -7,3 +7,8 @@ D:\dev\kit\Kit.Kernel\bin\Debug\Kit.Kernel.dll
 D:\dev\kit\Kit.Kernel\bin\Debug\Kit.Kernel.pdb
 D:\dev\kit\Kit.Kernel\obj\Debug\Kit.Kernel.dll
 D:\dev\kit\Kit.Kernel\obj\Debug\Kit.Kernel.pdb
+D:\dev\mvc2\kit\Kit.Kernel\bin\Debug\Kit.Kernel.dll
+D:\dev\mvc2\kit\Kit.Kernel\bin\Debug\Kit.Kernel.pdb
+D:\dev\mvc2\kit\Kit.Kernel\obj\Debug\Kit.Kernel.csprojResolveAssemblyReference.cache
+D:\dev\mvc2\kit\Kit.Kernel\obj\Debug\Kit.Kernel.dll
+D:\dev\mvc2\kit\Kit.Kernel\obj\Debug\Kit.Kernel.pdb
