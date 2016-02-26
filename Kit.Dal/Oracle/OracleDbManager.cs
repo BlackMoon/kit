@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Data;
 using Oracle.DataAccess.Client;
-using PostSharp.Aspects;
 
 namespace Kit.Dal.Oracle
 {
@@ -23,13 +22,10 @@ namespace Kit.Dal.Oracle
         
         public void Open()
         {
-            System.Diagnostics.Debug.WriteLine("12");
-        //    throw new ApplicationException("231");
-            /*
             DbConnection = new OracleConnection(ConnectionString);
 
             if (DbConnection.State != ConnectionState.Open)
-                DbConnection.Open();*/
+                DbConnection.Open();
         }
 
         public void BeginTransaction()
@@ -79,7 +75,7 @@ namespace Kit.Dal.Oracle
 
         public void Close()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public void Dispose()
