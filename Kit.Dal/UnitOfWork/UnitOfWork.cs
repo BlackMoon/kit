@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.Linq;
+using System.Data.Entity;
 using Kit.Dal.Repository;
 using Kit.Kernel.UnitOfWork;
 
@@ -11,13 +11,13 @@ namespace Kit.Dal.UnitOfWork
     /// Unit of Work паттерн
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class UnitOfWork<T> : IUnitOfWork, IDisposable where T : DataContext, new()
+    public class UnitOfWork<T> : IUnitOfWork, IDisposable where T : DbContext, new()
     {
         private bool _disposed;
 
         private readonly Dictionary<Type, object> _repositories = new Dictionary<Type, object>();
 
-        public T Context { get; }
+        private T Context { get; }
 
         public UnitOfWork(IDbConnection conn)
         {
@@ -25,11 +25,11 @@ namespace Kit.Dal.UnitOfWork
         }
 
 
-        /*public IRepository<TEntity> Repository<TEntity>() where TEntity : class
+        public IDbRepository<TKey, TEntity> Repository<TKey, TEntity>() where TKey : struct where TEntity : class
         {
-            IRepository<TEntity> repo;
+            IDbRepository<TKey, TEntity> repo = null;
 
-            Type type = typeof(TEntity);
+            /*Type type = typeof(TEntity);
 
             if (_repositories.ContainsKey(type))
                 repo = (IRepository<TEntity>)_repositories[type];
@@ -41,9 +41,9 @@ namespace Kit.Dal.UnitOfWork
 
                 _repositories.Add(type, repo);
             }
-
+            */
             return repo;
-        }*/
+        }
 
         public void BeginTransaction()
         {
@@ -53,7 +53,7 @@ namespace Kit.Dal.UnitOfWork
 
         public void Commit()
         {
-            throw new System.NotImplementedException();
+            Context.SaveChanges();
         }
 
         public void Rollback()

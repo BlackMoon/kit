@@ -1,9 +1,7 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Data;
-using System.Data.Common;
-using System.Data.Linq.Mapping;
 using Oracle.DataAccess.Client;
+using PostSharp.Aspects;
 
 namespace Kit.Dal.Oracle
 {
@@ -22,12 +20,16 @@ namespace Kit.Dal.Oracle
             ConnectionString = connectionString;
         }
 
+        
         public void Open()
         {
+            System.Diagnostics.Debug.WriteLine("12");
+        //    throw new ApplicationException("231");
+            /*
             DbConnection = new OracleConnection(ConnectionString);
-            
+
             if (DbConnection.State != ConnectionState.Open)
-                DbConnection.Open();
+                DbConnection.Open();*/
         }
 
         public void BeginTransaction()

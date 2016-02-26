@@ -1,12 +1,11 @@
 ﻿using System;
-using Kit.Kernel.Interception;
 
 namespace Kit.Kernel.UnitOfWork
 {
-    [AttributeUsage(AttributeTargets.Method)]
-    public class UnitOfWorkAttribute : InterceptionAttribute
+    //[AttributeUsage(AttributeTargets.Method)]
+    public class UnitOfWorkAttribute
     {
-        public override void Intercept(Action action)
+        public void Intercept(Action action)
         {
             /*IUnitOfWork _uow = UoWUtils.UoWFactory();
             if (_uow.IsInTransaction())//Если транзакция уже запущена или не требуется, просто вызываем метод
