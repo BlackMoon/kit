@@ -1,11 +1,23 @@
 ﻿using System;
+using PostSharp.Aspects;
 
 namespace Kit.Kernel.UnitOfWork
 {
-    //[AttributeUsage(AttributeTargets.Method)]
-    public class UnitOfWorkAttribute
+    [AttributeUsage(AttributeTargets.Method)]
+    [Serializable]
+    public class UnitOfWorkAttribute : OnMethodBoundaryAspect
     {
-        public void Intercept(Action action)
+        public override void OnEntry(MethodExecutionArgs args)
+        {
+            
+        }
+
+        public override void OnExit(MethodExecutionArgs args)
+        {
+            
+        }
+
+        /*public void Intercept(Action action)
         {
             /*IUnitOfWork _uow = UoWUtils.UoWFactory();
             if (_uow.IsInTransaction())//Если транзакция уже запущена или не требуется, просто вызываем метод
@@ -24,7 +36,7 @@ namespace Kit.Kernel.UnitOfWork
             {
                 _uow.Rollback();
                 throw;
-            }*/
-        }
+            }
+        }*/
     }
 }

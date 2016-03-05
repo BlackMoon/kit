@@ -17,13 +17,12 @@ namespace Kit.Dal.Oracle
         public OracleDbManager(string connectionString)
         {
             ConnectionString = connectionString;
-        }
 
+            DbConnection = new OracleConnection(ConnectionString);
+        }
         
         public void Open()
         {
-            DbConnection = new OracleConnection(ConnectionString);
-
             if (DbConnection.State != ConnectionState.Open)
                 DbConnection.Open();
         }
