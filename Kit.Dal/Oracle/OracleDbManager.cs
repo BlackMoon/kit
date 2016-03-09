@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Data;
+using System.Threading;
+using System.Threading.Tasks;
+using Kit.Dal.DbManager;
 using Oracle.DataAccess.Client;
 
 namespace Kit.Dal.Oracle
@@ -7,24 +10,46 @@ namespace Kit.Dal.Oracle
     [ProviderName("Oracle.DataAccess.Client")]
     public class OracleDbManager : IDbManager
     {
+        private IDbConnection _dbConnection;
+
+        public IDbConnection DbConnection
+        {
+            get
+            {
+                return _dbConnection = _dbConnection ?? new OracleConnection();
+            }
+        }
+
         public string ConnectionString { get; set; }
-        public IDbConnection DbConnection { get; private set; }
+
         public IDbTransaction Transaction { get; private set; }
         public IDataReader DataReader { get; }
+
         public IDbCommand DbCommand { get; private set; }
         public IDbDataParameter[] DataParameters { get; }
 
         public OracleDbManager(string connectionString)
         {
             ConnectionString = connectionString;
-
-            DbConnection = new OracleConnection(ConnectionString);
         }
         
         public void Open()
         {
             if (DbConnection.State != ConnectionState.Open)
+            {
+                DbConnection.ConnectionString = ConnectionString;
                 DbConnection.Open();
+            }
+        }
+
+        public Task OpenAsync()
+        {
+            if (DbConnection.State != ConnectionState.Open)
+            {
+                DbConnection.ConnectionString = ConnectionString;
+                return (DbConnection as OracleConnection)?.OpenAsync();
+            }
+            return Task.FromResult(0);
         }
 
         public void BeginTransaction()
@@ -84,7 +109,7 @@ namespace Kit.Dal.Oracle
             Close();
             DbCommand = null;
             Transaction = null;
-            DbConnection = null;
+            _dbConnection = null;
         }
     }
 }

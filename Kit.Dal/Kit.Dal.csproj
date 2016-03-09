@@ -25,7 +25,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;ASYNC</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -62,8 +62,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DbManagerFactory.cs" />
-    <Compile Include="IDbManager.cs" />
+    <Compile Include="DbManager\DbManagerFactory.cs" />
+    <Compile Include="DbManager\IDbManager.cs" />
+    <Compile Include="DbManager\IDbManagerAsync.cs" />
     <Compile Include="Oracle\Udt\TVariantNamedList\TVariantNamedList.cs" />
     <Compile Include="Oracle\Udt\TVariantNamedList\TVariantNamedListArrayFactory.cs" />
     <Compile Include="Oracle\Udt\TVariantNamedList\TVariantNamedListFactory.cs" />
@@ -90,6 +91,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
