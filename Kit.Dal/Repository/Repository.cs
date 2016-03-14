@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace Kit.Dal.Repository
 {
@@ -28,9 +29,14 @@ namespace Kit.Dal.Repository
             _ctx.Set<TEntity>().Remove(entity);
         }
 
-        public TEntity Find(Predicate<TEntity> predicate)
+        public TEntity Find(Expression<Func<TEntity, bool>> predicate)
         {
-            return _ctx.Set<TEntity>().Find(predicate);
+            return _ctx.Set<TEntity>().FirstOrDefault(predicate);
+        }
+
+        public virtual TEntity FindByKey<TKey>(TKey key) where TKey : struct
+        {
+            throw new NotImplementedException();
         }
 
         public void Update(TEntity entity)

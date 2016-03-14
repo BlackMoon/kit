@@ -1,40 +1,19 @@
 ﻿using System;
 using System.Data.Entity;
-using System.Linq;
+using System.Linq.Expressions;
+using Mappings;
 
 namespace Kit.Dal.Repository
 {
-    public class SysMenuItemRepository : IDbRepository<SysMenuItem>
+    public class SysMenuItemRepository : Repository<SysMenuItem>
     {
-        public SysMenuItem Find(Predicate<SysMenuItem> predicate)
-        {
-            throw new NotImplementedException();
-        }
-
-        public SysMenuItemRepository(DbContext ctx)
+        public SysMenuItemRepository(DbContext ctx) : base(ctx)
         {
             
-
         }
-
-        public void Add(SysMenuItem entity)
+        public SysMenuItem FindByKey(long key)
         {
-            throw new NotImplementedException();
-        }
-
-        public void Delete(SysMenuItem entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(SysMenuItem entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IQueryable<SysMenuItem> GetAll()
-        {
-            throw new NotImplementedException();
+            return Find(s => s.No == key);
         }
     }
 }

@@ -13,6 +13,8 @@ namespace Kit.Dal.Oracle
     [ProviderName("Oracle.DataAccess.Client")]
     public class OracleDbManager : IDbManager
     {
+        private bool _wasClosed;
+
         /// <summary>
         /// DbConnection
         /// </summary>
@@ -25,8 +27,19 @@ namespace Kit.Dal.Oracle
         /// </summary>
         private OracleContext _dbContext;
 
-        public DbContext DbContext => _dbContext = _dbContext ?? new OracleContext(ConnectionString);
+        public DbContext DbContext
+        {
+            get
+            {
+                if (_dbContext == null)
+                {
+                    ExecuteNonQuery(CommandType.StoredProcedure, "SYS$INSTANCE.INIT");
+                    _dbContext = new OracleContext(DbConnection, false);
+                }
 
+                return _dbContext;
+            }
+        }
 
         /// <summary>
         /// DbTransaction
@@ -64,7 +77,8 @@ namespace Kit.Dal.Oracle
         /// </summary>
         public void Open()
         {
-            if (DbConnection.State != ConnectionState.Open)
+            _wasClosed = (DbConnection.State == ConnectionState.Closed);
+            if (_wasClosed)
             {
                 DbConnection.ConnectionString = ConnectionString;
                 DbConnection.Open();
@@ -111,12 +125,17 @@ namespace Kit.Dal.Oracle
 
         public int ExecuteNonQuery(CommandType commandType, string commandText)
         {
-            // ReSharper disable once UseObjectOrCollectionInitializer
-            DbCommand = new OracleCommand(commandText);
-            DbCommand.Connection = DbConnection;
+            Open();
+
+            DbCommand = new OracleCommand();
+            PrepareCommand(DbCommand, DbConnection, Transaction, commandType, commandText, null);
             
             int returnValue = DbCommand.ExecuteNonQuery();
             DbCommand.Parameters.Clear();
+
+            if (_wasClosed)
+                DbConnection.Close();
+
             return returnValue;
         }
 
@@ -132,6 +151,18 @@ namespace Kit.Dal.Oracle
         {
             if (DbConnection.State != ConnectionState.Closed)
                 DbConnection.Close();
+        }
+
+        private void PrepareCommand(IDbCommand command, IDbConnection connection, IDbTransaction transaction, CommandType commandType, string commandText, IDbDataParameter[] commandParameters)
+        {
+            command.Connection = connection;
+            command.CommandText = commandText;
+            command.CommandType = commandType;
+
+            if (transaction != null)
+            {
+                command.Transaction = transaction;
+            }            
         }
 
         public void Dispose()

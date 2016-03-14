@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Common;
 using System.Data.Entity;
 using Kit.Dal.Repository;
 
@@ -18,6 +20,8 @@ namespace Kit.Dal.UnitOfWork
 
         private DbContext Context { get; }
 
+        private DbTransaction Transaction { get; set; }
+
         public UnitOfWork(DbContext context)
         {
             Context = context;
@@ -25,40 +29,50 @@ namespace Kit.Dal.UnitOfWork
 
         public IDbRepository<TEntity> GetRepository<TEntity>() where TEntity : class
         {
-            IDbRepository<TEntity> repo;
+            object repo;
 
             Type type = typeof(TEntity);
 
             if (_repositories.ContainsKey(type))
-                repo = (IDbRepository<TEntity>)_repositories[type];
+                repo = _repositories[type];
             
             else
             {
                 Type repositoryType = Type.GetType($"{Namespace}.{type.Name}Repository");
                 repo = (repositoryType != null) ? 
-                    (IDbRepository<TEntity>)Activator.CreateInstance(repositoryType, Context) : 
+                    Activator.CreateInstance(repositoryType, Context) : 
                     new Repository<TEntity>(Context);
 
                 _repositories.Add(type, repo);
             }
             
-            return repo;
+            return (IDbRepository<TEntity>)repo;
         }
 
         public void BeginTransaction()
         {
-            
-            throw new System.NotImplementedException();
+            Transaction = Context.Database.BeginTransaction().UnderlyingTransaction;
         }
 
         public void Commit()
         {
-            Context.SaveChanges();
+            try
+            {
+                Context.Database.UseTransaction(Transaction);
+                Context.SaveChanges();
+                Transaction?.Commit();
+            }
+            catch (Exception)
+            {
+                Rollback();
+                throw;
+            }
+            
         }
 
         public void Rollback()
         {
-            throw new System.NotImplementedException();
+            Transaction?.Rollback();
         }
 
         protected virtual void Dispose(bool disposing)
@@ -66,7 +80,10 @@ namespace Kit.Dal.UnitOfWork
             if (!_disposed)
             {
                 if (disposing)
+                {
                     Context.Dispose();
+                    Transaction?.Dispose();
+                }
             }
 
             _disposed = true;
