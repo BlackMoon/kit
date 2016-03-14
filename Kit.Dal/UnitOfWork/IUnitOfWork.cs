@@ -1,4 +1,6 @@
-﻿namespace Kit.Kernel.UnitOfWork
+﻿using Kit.Dal.Repository;
+
+namespace Kit.Dal.UnitOfWork
 {
     public interface IUnitOfWork
     {
@@ -16,5 +18,7 @@
         /// Rollbacks transaction and closes database connection.
         /// </summary>
         void Rollback();
+
+        IDbRepository<TEntity> GetRepository<TEntity>() where TEntity : class;
     }
 }

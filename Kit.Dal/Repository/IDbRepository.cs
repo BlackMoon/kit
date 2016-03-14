@@ -2,9 +2,7 @@
 
 namespace Kit.Dal.Repository
 {
-    public interface IDbRepository<in TKey, TEntity> : IRepository<TKey, TEntity>
-        where TKey : struct
-        where TEntity : class
+    public interface IDbRepository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         IQueryable<TEntity> GetAll();
     }

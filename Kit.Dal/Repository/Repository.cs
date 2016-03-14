@@ -1,11 +1,10 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Linq;
 
 namespace Kit.Dal.Repository
 {
-    public class Repository<TKey, TEntity> : IDbRepository<TKey, TEntity>
-        where TKey : struct
-        where TEntity : class
+    public class Repository<TEntity> : IDbRepository<TEntity> where TEntity : class
     {
         private readonly DbContext _ctx;
 
@@ -29,9 +28,9 @@ namespace Kit.Dal.Repository
             _ctx.Set<TEntity>().Remove(entity);
         }
 
-        public TEntity Find(TKey key)
+        public TEntity Find(Predicate<TEntity> predicate)
         {
-            return _ctx.Set<TEntity>().Find(key);
+            return _ctx.Set<TEntity>().Find(predicate);
         }
 
         public void Update(TEntity entity)

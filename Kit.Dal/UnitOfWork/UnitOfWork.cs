@@ -1,47 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
 using Kit.Dal.Repository;
-using Kit.Kernel.UnitOfWork;
 
 namespace Kit.Dal.UnitOfWork
 {
     /// <summary>
     /// Unit of Work паттерн
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    public class UnitOfWork<T> : IUnitOfWork, IDisposable where T : DbContext, new()
+    public class UnitOfWork: IUnitOfWork, IDisposable
     {
+        private const string Namespace = "Kit.Dal.Repository";
+
         private bool _disposed;
 
         private readonly Dictionary<Type, object> _repositories = new Dictionary<Type, object>();
 
-        private T Context { get; }
+        private DbContext Context { get; }
 
-        public UnitOfWork(IDbConnection conn)
+        public UnitOfWork(DbContext context)
         {
-            Context = new T();
+            Context = context;
         }
 
-
-        public IDbRepository<TKey, TEntity> Repository<TKey, TEntity>() where TKey : struct where TEntity : class
+        public IDbRepository<TEntity> GetRepository<TEntity>() where TEntity : class
         {
-            IDbRepository<TKey, TEntity> repo = null;
+            IDbRepository<TEntity> repo;
 
-            /*Type type = typeof(TEntity);
+            Type type = typeof(TEntity);
 
             if (_repositories.ContainsKey(type))
-                repo = (IRepository<TEntity>)_repositories[type];
-
+                repo = (IDbRepository<TEntity>)_repositories[type];
+            
             else
             {
-                Type repositoryType = typeof(Repository<>);
-                repo = (IRepository<TEntity>)Activator.CreateInstance(repositoryType.MakeGenericType(typeof(TEntity)), Context);
+                Type repositoryType = Type.GetType($"{Namespace}.{type.Name}Repository");
+                repo = (repositoryType != null) ? 
+                    (IDbRepository<TEntity>)Activator.CreateInstance(repositoryType, Context) : 
+                    new Repository<TEntity>(Context);
 
                 _repositories.Add(type, repo);
             }
-            */
+            
             return repo;
         }
 
