@@ -58,8 +58,6 @@
     <Compile Include="DynamicXml\DynamicXAttribute.cs" />
     <Compile Include="DynamicXml\DynamicXElement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UnitOfWork\IUnitOfWork.cs" />
-    <Compile Include="UnitOfWork\UnitOfWorkAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 
 namespace Kit.Dal
 {
@@ -13,7 +12,7 @@ namespace Kit.Dal
         {
             ProviderName = provideName;
         }
-
+        
         public virtual string ProviderName { get; }
     }
 }
