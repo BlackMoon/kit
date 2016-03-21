@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
 using System.Web;
@@ -16,11 +17,16 @@ namespace Kit.Dal.DbManager
         /// <summary>
         /// Словарь соответвий [наименование провайдера - тип DbManager'a] 
         /// </summary>
-        private static readonly IDictionary<string, Type> Managers = new Dictionary<string, Type>();
+        private static IReadOnlyDictionary<string, Type> _managers;
 
         public static Type GetDbManagerType(string providerName)
-        {   
-            return Managers.ContainsKey(providerName) ? Managers[providerName] : Managers.Values.FirstOrDefault();
+        {
+            Type t = null;
+
+            if (_managers != null)
+                t = _managers.ContainsKey(providerName) ? _managers[providerName] : _managers.Values.FirstOrDefault();
+
+            return t;
         }
 
         public static void Start()
@@ -29,13 +35,15 @@ namespace Kit.Dal.DbManager
 
             Assembly assembly = Assembly.GetExecutingAssembly();
 
+            IDictionary <string, Type> managers = new Dictionary<string, Type>();
             foreach (Type t in assembly.GetTypes().Where(pre))
             {
                 // Наименование --> из аттрибута
                 ProviderNameAttribute attr = (ProviderNameAttribute) t.GetCustomAttribute(typeof (ProviderNameAttribute));
                 if (attr != null)
-                    Managers[attr.ProviderName] = t;
+                    managers[attr.ProviderName] = t;
             }
+            _managers = new ReadOnlyDictionary<string, Type>(managers);
         }
     }
 }
