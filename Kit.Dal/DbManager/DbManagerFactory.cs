@@ -34,7 +34,6 @@ namespace Kit.Dal.DbManager
             Func<Type, bool> pre = t => t.GetInterfaces().Contains(typeof(IDbManager));
 
             Assembly assembly = Assembly.GetExecutingAssembly();
-
             IDictionary <string, Type> managers = new Dictionary<string, Type>();
             foreach (Type t in assembly.GetTypes().Where(pre))
             {

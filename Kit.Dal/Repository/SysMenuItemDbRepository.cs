@@ -5,9 +5,9 @@ using Mappings;
 
 namespace Kit.Dal.Repository
 {
-    public class SysMenuItemRepository : Repository<SysMenuItem>
+    public class SysMenuItemDbRepository : DbRepository<SysMenuItem>
     {
-        public SysMenuItemRepository(DbContext ctx) : base(ctx)
+        public SysMenuItemDbRepository(DbContext ctx) : base(ctx)
         {
             
         }

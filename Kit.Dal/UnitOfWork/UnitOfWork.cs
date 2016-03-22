@@ -12,7 +12,7 @@ namespace Kit.Dal.UnitOfWork
     /// </summary>
     public class UnitOfWork: IUnitOfWork, IDisposable
     {
-        private const string Namespace = "Kit.Dal.Repository";
+        private const string Namespace = "Kit.Dal.DbRepository";
 
         private bool _disposed;
 
@@ -41,7 +41,7 @@ namespace Kit.Dal.UnitOfWork
                 Type repositoryType = Type.GetType($"{Namespace}.{type.Name}Repository");
                 repo = (repositoryType != null) ? 
                     Activator.CreateInstance(repositoryType, Context) : 
-                    new Repository<TEntity>(Context);
+                    new DbRepository<TEntity>(Context);
 
                 _repositories.Add(type, repo);
             }
