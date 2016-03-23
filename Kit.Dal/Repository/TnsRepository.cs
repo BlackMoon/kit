@@ -54,26 +54,6 @@ namespace Kit.Dal.Repository
             _providerInvariantName = providerInvariantName;
         }
 
-        public string Find(Expression<Func<string, bool>> predicate)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Add(string entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Delete(string entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(string entity)
-        {
-            throw new NotImplementedException();
-        }
-
         public IEnumerable<string> GetAll()
         {
             return Entities;

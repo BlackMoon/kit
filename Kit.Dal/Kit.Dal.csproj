@@ -73,11 +73,11 @@
     <Reference Include="System.Xml" />
     <Reference Include="Oracle.DataAccess, Version=4.121.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86" Condition="'$(Platform)'=='x86'">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>x86\Oracle.DataAccess.dll</HintPath>
+      <HintPath>..\..\odac12\x86\Oracle.DataAccess.dll</HintPath>
     </Reference>
     <Reference Include="Oracle.DataAccess, Version=4.121.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342" Condition="'$(Platform)'!='x86'">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>x64\Oracle.DataAccess.dll</HintPath>
+      <HintPath>..\..\odac12\x64\Oracle.DataAccess.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -117,7 +117,7 @@
   <Choose>
     <When Condition="'$(Platform)'=='x86'">
       <ItemGroup>
-        <EmbeddedResource Include="x86\OraOps12.dll">
+        <EmbeddedResource Include="..\..\odac12\x86\OraOps12.dll">
           <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
           <Link>OraOps12.dll</Link>
         </EmbeddedResource>
@@ -125,7 +125,7 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <EmbeddedResource Include="x64\OraOps12.dll">
+        <EmbeddedResource Include="..\..\odac12\x64\OraOps12.dll">
           <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
           <Link>OraOps12.dll</Link>
         </EmbeddedResource>

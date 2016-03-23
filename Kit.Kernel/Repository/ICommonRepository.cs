@@ -2,7 +2,7 @@
 
 namespace Kit.Kernel.Repository
 {
-    public interface ICommonRepository<TEntity> : IRepository<TEntity> where TEntity : class
+    public interface ICommonRepository<out TEntity> where TEntity : class
     {
         IEnumerable<TEntity> GetAll();
     }
