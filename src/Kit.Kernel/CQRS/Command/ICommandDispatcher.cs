@@ -1,4 +1,7 @@
-﻿namespace Kit.Kernel.CQRS.Command
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+
+namespace Kit.Kernel.CQRS.Command
 {
     /// <summary>
     /// Passed around to all allow dispatching a command and to be mocked by unit tests
@@ -11,5 +14,9 @@
         /// <typeparam name="TParameter">Command Type</typeparam>
         /// <param name="command">The command to be passed to the handler</param>
         void Dispatch<TParameter>(TParameter command) where TParameter : ICommand;
+
+        TResult Dispatch<TParameter, TResult>(TParameter command) where TParameter : ICommand where TResult : ICommandResult;
+
+        IEnumerable<ValidationResult> Validate<TCommand>(TCommand command) where TCommand : ICommand;
     }
 }

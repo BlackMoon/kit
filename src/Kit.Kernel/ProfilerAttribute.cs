@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Diagnostics;
-using PostSharp.Aspects;
+//using PostSharp.Aspects;
 
 namespace Kit.Kernel
 {
     /// <summary>
     /// Аттрибут. Выводит время выполнения метода(ов)
     /// </summary>
-    [Serializable]
-    public class ProfilerAttribute : OnMethodBoundaryAspect
+    //[Serializable]
+    /*public class ProfilerAttribute : OnMethodBoundaryAspect
     {
         public override void OnEntry(MethodExecutionArgs args)
         {
@@ -22,7 +22,7 @@ namespace Kit.Kernel
 
             string output = $"{args.Instance}.{args.Method.Name} executed in {sw.Elapsed} seconds";
 
-            Debug.WriteLine(output);
+            Console.WriteLine(output);
         }
-    }
+    }*/
 }

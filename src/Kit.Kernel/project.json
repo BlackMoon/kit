@@ -1,15 +1,21 @@
 {
-  "version": "1.0.0-*",
-  "description": "Kit.Kernel Class Library",
-  "authors": [ "romanovrv" ],
-  "tags": [ "" ],
-  "projectUrl": "",
-  "licenseUrl": "",
+    "version": "1.0.0-*",
+    "description": "Kit.Kernel Class Library",
+    "authors": [ "romanovrv" ],
+    "tags": [ "" ],
+    "projectUrl": "",
+    "licenseUrl": "",   
+    
+
     "frameworks": {
-        "net451": { }        
+        "dnx451": {
+            "frameworkAssemblies": { "System.ComponentModel.DataAnnotations": "4.0.0.0" } 
+        }
     },
+
     "dependencies": {
-        "PostSharp": "4.2.22",
-        "System.Xml.XDocument": "4.0.11-beta-23516"
+        "Microsoft.AspNet.Identity.Owin": "2.2.1", 
+        "ServiceProviderExtensions": "1.0.0"
     }
+
 }

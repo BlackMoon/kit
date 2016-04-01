@@ -8,10 +8,10 @@
     public interface IQueryHandler<in TParameter, out TResult> where TResult : IQueryResult where TParameter : IQuery
     {
         /// <summary>
-        /// Retrieve a query result from a query
+        /// Execute a query result from a query
         /// </summary>
         /// <param name="query">Query</param>
-        /// <returns>Retrieve Query Result</returns>
-        TResult Retrieve(TParameter query);
+        /// <returns>Execute Query Result</returns>
+        TResult Execute(TParameter query);
     }
 }

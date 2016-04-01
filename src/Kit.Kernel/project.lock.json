@@ -2,156 +2,456 @@
   "locked": false,
   "version": 2,
   "targets": {
-    ".NETFramework,Version=v4.5.1": {
-      "PostSharp/4.2.22": {
+    "DNX,Version=v4.5.1": {
+      "Microsoft.AspNet.Identity.Core/2.2.1": {
         "type": "package",
         "compile": {
-          "lib/net35-client/PostSharp.dll": {}
+          "lib/net45/Microsoft.AspNet.Identity.Core.dll": {}
         },
         "runtime": {
-          "lib/net35-client/PostSharp.dll": {}
+          "lib/net45/Microsoft.AspNet.Identity.Core.dll": {}
         }
       },
-      "System.Xml.XDocument/4.0.11-beta-23516": {
+      "Microsoft.AspNet.Identity.Owin/2.2.1": {
         "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.Identity.Core": "2.2.1",
+          "Microsoft.Owin.Security": "2.1.0",
+          "Microsoft.Owin.Security.Cookies": "2.1.0",
+          "Microsoft.Owin.Security.OAuth": "2.1.0"
+        },
         "compile": {
-          "ref/net45/_._": {}
+          "lib/net45/Microsoft.AspNet.Identity.Owin.dll": {}
         },
         "runtime": {
-          "lib/net45/_._": {}
+          "lib/net45/Microsoft.AspNet.Identity.Owin.dll": {}
+        }
+      },
+      "Microsoft.Owin/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Owin": "1.0.0"
+        },
+        "compile": {
+          "lib/net45/Microsoft.Owin.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Microsoft.Owin.dll": {}
+        }
+      },
+      "Microsoft.Owin.Security/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Owin": "2.1.0",
+          "Owin": "1.0.0"
+        },
+        "compile": {
+          "lib/net45/Microsoft.Owin.Security.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Microsoft.Owin.Security.dll": {}
+        }
+      },
+      "Microsoft.Owin.Security.Cookies/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Owin": "2.1.0",
+          "Microsoft.Owin.Security": "2.1.0",
+          "Owin": "1.0.0"
+        },
+        "compile": {
+          "lib/net45/Microsoft.Owin.Security.Cookies.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Microsoft.Owin.Security.Cookies.dll": {}
+        }
+      },
+      "Microsoft.Owin.Security.OAuth/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Owin": "2.1.0",
+          "Microsoft.Owin.Security": "2.1.0",
+          "Newtonsoft.Json": "4.5.11",
+          "Owin": "1.0.0"
+        },
+        "compile": {
+          "lib/net45/Microsoft.Owin.Security.OAuth.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Microsoft.Owin.Security.OAuth.dll": {}
+        }
+      },
+      "Newtonsoft.Json/4.5.11": {
+        "type": "package",
+        "compile": {
+          "lib/net40/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Newtonsoft.Json.dll": {}
+        }
+      },
+      "Owin/1.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net40/Owin.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Owin.dll": {}
+        }
+      },
+      "ServiceProviderExtensions/1.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net40/ServiceProviderExtensions.dll": {}
+        },
+        "runtime": {
+          "lib/net40/ServiceProviderExtensions.dll": {}
         }
       }
     },
-    ".NETFramework,Version=v4.5.1/win7-x86": {
-      "PostSharp/4.2.22": {
+    "DNX,Version=v4.5.1/win7-x86": {
+      "Microsoft.AspNet.Identity.Core/2.2.1": {
         "type": "package",
         "compile": {
-          "lib/net35-client/PostSharp.dll": {}
+          "lib/net45/Microsoft.AspNet.Identity.Core.dll": {}
         },
         "runtime": {
-          "lib/net35-client/PostSharp.dll": {}
+          "lib/net45/Microsoft.AspNet.Identity.Core.dll": {}
         }
       },
-      "System.Xml.XDocument/4.0.11-beta-23516": {
+      "Microsoft.AspNet.Identity.Owin/2.2.1": {
         "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.Identity.Core": "2.2.1",
+          "Microsoft.Owin.Security": "2.1.0",
+          "Microsoft.Owin.Security.Cookies": "2.1.0",
+          "Microsoft.Owin.Security.OAuth": "2.1.0"
+        },
         "compile": {
-          "ref/net45/_._": {}
+          "lib/net45/Microsoft.AspNet.Identity.Owin.dll": {}
         },
         "runtime": {
-          "lib/net45/_._": {}
+          "lib/net45/Microsoft.AspNet.Identity.Owin.dll": {}
+        }
+      },
+      "Microsoft.Owin/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Owin": "1.0.0"
+        },
+        "compile": {
+          "lib/net45/Microsoft.Owin.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Microsoft.Owin.dll": {}
+        }
+      },
+      "Microsoft.Owin.Security/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Owin": "2.1.0",
+          "Owin": "1.0.0"
+        },
+        "compile": {
+          "lib/net45/Microsoft.Owin.Security.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Microsoft.Owin.Security.dll": {}
+        }
+      },
+      "Microsoft.Owin.Security.Cookies/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Owin": "2.1.0",
+          "Microsoft.Owin.Security": "2.1.0",
+          "Owin": "1.0.0"
+        },
+        "compile": {
+          "lib/net45/Microsoft.Owin.Security.Cookies.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Microsoft.Owin.Security.Cookies.dll": {}
+        }
+      },
+      "Microsoft.Owin.Security.OAuth/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Owin": "2.1.0",
+          "Microsoft.Owin.Security": "2.1.0",
+          "Newtonsoft.Json": "4.5.11",
+          "Owin": "1.0.0"
+        },
+        "compile": {
+          "lib/net45/Microsoft.Owin.Security.OAuth.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Microsoft.Owin.Security.OAuth.dll": {}
+        }
+      },
+      "Newtonsoft.Json/4.5.11": {
+        "type": "package",
+        "compile": {
+          "lib/net40/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Newtonsoft.Json.dll": {}
+        }
+      },
+      "Owin/1.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net40/Owin.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Owin.dll": {}
+        }
+      },
+      "ServiceProviderExtensions/1.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net40/ServiceProviderExtensions.dll": {}
+        },
+        "runtime": {
+          "lib/net40/ServiceProviderExtensions.dll": {}
         }
       }
     },
-    ".NETFramework,Version=v4.5.1/win7-x64": {
-      "PostSharp/4.2.22": {
+    "DNX,Version=v4.5.1/win7-x64": {
+      "Microsoft.AspNet.Identity.Core/2.2.1": {
         "type": "package",
         "compile": {
-          "lib/net35-client/PostSharp.dll": {}
+          "lib/net45/Microsoft.AspNet.Identity.Core.dll": {}
         },
         "runtime": {
-          "lib/net35-client/PostSharp.dll": {}
+          "lib/net45/Microsoft.AspNet.Identity.Core.dll": {}
         }
       },
-      "System.Xml.XDocument/4.0.11-beta-23516": {
+      "Microsoft.AspNet.Identity.Owin/2.2.1": {
         "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.Identity.Core": "2.2.1",
+          "Microsoft.Owin.Security": "2.1.0",
+          "Microsoft.Owin.Security.Cookies": "2.1.0",
+          "Microsoft.Owin.Security.OAuth": "2.1.0"
+        },
         "compile": {
-          "ref/net45/_._": {}
+          "lib/net45/Microsoft.AspNet.Identity.Owin.dll": {}
         },
         "runtime": {
-          "lib/net45/_._": {}
+          "lib/net45/Microsoft.AspNet.Identity.Owin.dll": {}
+        }
+      },
+      "Microsoft.Owin/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Owin": "1.0.0"
+        },
+        "compile": {
+          "lib/net45/Microsoft.Owin.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Microsoft.Owin.dll": {}
+        }
+      },
+      "Microsoft.Owin.Security/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Owin": "2.1.0",
+          "Owin": "1.0.0"
+        },
+        "compile": {
+          "lib/net45/Microsoft.Owin.Security.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Microsoft.Owin.Security.dll": {}
+        }
+      },
+      "Microsoft.Owin.Security.Cookies/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Owin": "2.1.0",
+          "Microsoft.Owin.Security": "2.1.0",
+          "Owin": "1.0.0"
+        },
+        "compile": {
+          "lib/net45/Microsoft.Owin.Security.Cookies.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Microsoft.Owin.Security.Cookies.dll": {}
+        }
+      },
+      "Microsoft.Owin.Security.OAuth/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Owin": "2.1.0",
+          "Microsoft.Owin.Security": "2.1.0",
+          "Newtonsoft.Json": "4.5.11",
+          "Owin": "1.0.0"
+        },
+        "compile": {
+          "lib/net45/Microsoft.Owin.Security.OAuth.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Microsoft.Owin.Security.OAuth.dll": {}
+        }
+      },
+      "Newtonsoft.Json/4.5.11": {
+        "type": "package",
+        "compile": {
+          "lib/net40/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Newtonsoft.Json.dll": {}
+        }
+      },
+      "Owin/1.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net40/Owin.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Owin.dll": {}
+        }
+      },
+      "ServiceProviderExtensions/1.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net40/ServiceProviderExtensions.dll": {}
+        },
+        "runtime": {
+          "lib/net40/ServiceProviderExtensions.dll": {}
         }
       }
     }
   },
   "libraries": {
-    "PostSharp/4.2.22": {
-      "type": "package",
-      "sha512": "+Gt/nENJBFKSr8l9Z+zr0P1FpDvI3kUtRDz3CXiRHppbyTCwVPa3XZivKPdfikNANf8/wXB62F9rYKo/3WDI/Q==",
-      "files": [
-        "lib/net35-client/PostSharp.dll",
-        "lib/net35-client/PostSharp.xml",
-        "lib/portable-net4+sl5+netcore45+wpa81+wp8/PostSharp.dll",
-        "lib/portable-net4+sl5+netcore45+wpa81+wp8/PostSharp.xml",
-        "PostSharp.4.2.22.nupkg",
-        "PostSharp.4.2.22.nupkg.sha512",
-        "PostSharp.nuspec",
-        "tools/install.ps1",
-        "tools/PostSharp.MSBuild.v4.2.22.Release.dll",
-        "tools/PostSharp.properties",
-        "tools/PostSharp.targets",
-        "tools/PostSharp.tasks",
-        "tools/PostSharp.Version.properties",
-        "tools/PostSharp-Tools.exe",
-        "tools/uninstall.ps1"
-      ]
-    },
-    "System.Xml.XDocument/4.0.11-beta-23516": {
+    "Microsoft.AspNet.Identity.Core/2.2.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sVbIsIQ8c3UnhnV9a8/J1boDVLpfqVsolNJ/nIvrU4g3TE0RpC2yFkivPmXYpwllsa1b6ajxZcZ+ItMhhXy8vA==",
+      "sha512": "jjurNglpmcv0SLBd4Fmar8ZoJ2yqfTf6iuP3p8wVH7Nvanfo8l3qTBzq3qRQz2BQlb6iXJiDWPjcnIImVz512g==",
       "files": [
-        "lib/dotnet5.4/System.Xml.XDocument.dll",
-        "lib/MonoAndroid10/_._",
-        "lib/MonoTouch10/_._",
-        "lib/net45/_._",
-        "lib/netcore50/System.Xml.XDocument.dll",
-        "lib/win8/_._",
-        "lib/wp80/_._",
-        "lib/wpa81/_._",
-        "lib/xamarinios10/_._",
-        "lib/xamarinmac20/_._",
-        "ref/dotnet5.1/de/System.Xml.XDocument.xml",
-        "ref/dotnet5.1/es/System.Xml.XDocument.xml",
-        "ref/dotnet5.1/fr/System.Xml.XDocument.xml",
-        "ref/dotnet5.1/it/System.Xml.XDocument.xml",
-        "ref/dotnet5.1/ja/System.Xml.XDocument.xml",
-        "ref/dotnet5.1/ko/System.Xml.XDocument.xml",
-        "ref/dotnet5.1/ru/System.Xml.XDocument.xml",
-        "ref/dotnet5.1/System.Xml.XDocument.dll",
-        "ref/dotnet5.1/System.Xml.XDocument.xml",
-        "ref/dotnet5.1/zh-hans/System.Xml.XDocument.xml",
-        "ref/dotnet5.1/zh-hant/System.Xml.XDocument.xml",
-        "ref/dotnet5.4/de/System.Xml.XDocument.xml",
-        "ref/dotnet5.4/es/System.Xml.XDocument.xml",
-        "ref/dotnet5.4/fr/System.Xml.XDocument.xml",
-        "ref/dotnet5.4/it/System.Xml.XDocument.xml",
-        "ref/dotnet5.4/ja/System.Xml.XDocument.xml",
-        "ref/dotnet5.4/ko/System.Xml.XDocument.xml",
-        "ref/dotnet5.4/ru/System.Xml.XDocument.xml",
-        "ref/dotnet5.4/System.Xml.XDocument.dll",
-        "ref/dotnet5.4/System.Xml.XDocument.xml",
-        "ref/dotnet5.4/zh-hans/System.Xml.XDocument.xml",
-        "ref/dotnet5.4/zh-hant/System.Xml.XDocument.xml",
-        "ref/MonoAndroid10/_._",
-        "ref/MonoTouch10/_._",
-        "ref/net45/_._",
-        "ref/netcore50/de/System.Xml.XDocument.xml",
-        "ref/netcore50/es/System.Xml.XDocument.xml",
-        "ref/netcore50/fr/System.Xml.XDocument.xml",
-        "ref/netcore50/it/System.Xml.XDocument.xml",
-        "ref/netcore50/ja/System.Xml.XDocument.xml",
-        "ref/netcore50/ko/System.Xml.XDocument.xml",
-        "ref/netcore50/ru/System.Xml.XDocument.xml",
-        "ref/netcore50/System.Xml.XDocument.dll",
-        "ref/netcore50/System.Xml.XDocument.xml",
-        "ref/netcore50/zh-hans/System.Xml.XDocument.xml",
-        "ref/netcore50/zh-hant/System.Xml.XDocument.xml",
-        "ref/win8/_._",
-        "ref/wp80/_._",
-        "ref/wpa81/_._",
-        "ref/xamarinios10/_._",
-        "ref/xamarinmac20/_._",
-        "System.Xml.XDocument.4.0.11-beta-23516.nupkg",
-        "System.Xml.XDocument.4.0.11-beta-23516.nupkg.sha512",
-        "System.Xml.XDocument.nuspec"
+        "lib/net45/Microsoft.AspNet.Identity.Core.dll",
+        "lib/net45/Microsoft.AspNet.Identity.Core.xml",
+        "Microsoft.AspNet.Identity.Core.2.2.1.nupkg",
+        "Microsoft.AspNet.Identity.Core.2.2.1.nupkg.sha512",
+        "Microsoft.AspNet.Identity.Core.nuspec"
+      ]
+    },
+    "Microsoft.AspNet.Identity.Owin/2.2.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "Cz/dqC85+6bgPj9Mt1qGLJ+v8HdTqXTMe1ms4e8pzPXJjDJw3DK7XtimtDtWwiDs63vnIDgy195TByV9wxEwjA==",
+      "files": [
+        "lib/net45/Microsoft.AspNet.Identity.Owin.dll",
+        "lib/net45/Microsoft.AspNet.Identity.Owin.xml",
+        "Microsoft.AspNet.Identity.Owin.2.2.1.nupkg",
+        "Microsoft.AspNet.Identity.Owin.2.2.1.nupkg.sha512",
+        "Microsoft.AspNet.Identity.Owin.nuspec"
+      ]
+    },
+    "Microsoft.Owin/2.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "lk0kK64mlmcmtWX8YOYkZsnZKDoGEzMZhe8e1bcP+FFcgD4f2QfKwvu5Z8Bh8WS0VO7Rgk+DJ0hwW0k+S/UGMg==",
+      "files": [
+        "lib/net40/Microsoft.Owin.dll",
+        "lib/net40/Microsoft.Owin.XML",
+        "lib/net45/Microsoft.Owin.dll",
+        "lib/net45/Microsoft.Owin.XML",
+        "Microsoft.Owin.2.1.0.nupkg",
+        "Microsoft.Owin.2.1.0.nupkg.sha512",
+        "Microsoft.Owin.nuspec"
+      ]
+    },
+    "Microsoft.Owin.Security/2.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "4n1V0p+O6W1L0xHUM8Cjp2Y+MmmUkiCZv6PvRNIDCJD9zlerBJa2HECo9lUiWC+KuasQJ3QxB1FmipNBxdXXIQ==",
+      "files": [
+        "lib/net45/Microsoft.Owin.Security.dll",
+        "lib/net45/Microsoft.Owin.Security.XML",
+        "Microsoft.Owin.Security.2.1.0.nupkg",
+        "Microsoft.Owin.Security.2.1.0.nupkg.sha512",
+        "Microsoft.Owin.Security.nuspec"
+      ]
+    },
+    "Microsoft.Owin.Security.Cookies/2.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "P+3cjwBpUDGF+5s+oMfyySG0qvLqb71M+1q9jGSsaF0qCg14ix0qF5pEV6IqhGUEgV40E/1K4hDcWjS+essVoQ==",
+      "files": [
+        "lib/net45/Microsoft.Owin.Security.Cookies.dll",
+        "lib/net45/Microsoft.Owin.Security.Cookies.xml",
+        "Microsoft.Owin.Security.Cookies.2.1.0.nupkg",
+        "Microsoft.Owin.Security.Cookies.2.1.0.nupkg.sha512",
+        "Microsoft.Owin.Security.Cookies.nuspec"
+      ]
+    },
+    "Microsoft.Owin.Security.OAuth/2.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "jR/LoeV02Cne9IV6fG4L9KR+uofPLokq6sxGy4bBDxLAAmZ35y0H/NiV6riqXSee6PypNAcJzTytJpYb0xK6Hw==",
+      "files": [
+        "lib/net45/Microsoft.Owin.Security.OAuth.dll",
+        "lib/net45/Microsoft.Owin.Security.OAuth.XML",
+        "Microsoft.Owin.Security.OAuth.2.1.0.nupkg",
+        "Microsoft.Owin.Security.OAuth.2.1.0.nupkg.sha512",
+        "Microsoft.Owin.Security.OAuth.nuspec"
+      ]
+    },
+    "Newtonsoft.Json/4.5.11": {
+      "type": "package",
+      "sha512": "IZ0vmfvcJrUONMIG3St+1EzSlnHc9qFY6/FU2YMHNXaGtdm6sSwIUAdXPAw1k3IwpxjVmZ0w9Pzszd8GkyrpFA==",
+      "files": [
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/portable-net40+sl4+wp7+win8/Newtonsoft.Json.dll",
+        "lib/portable-net40+sl4+wp7+win8/Newtonsoft.Json.xml",
+        "lib/sl3-wp/Newtonsoft.Json.dll",
+        "lib/sl3-wp/Newtonsoft.Json.xml",
+        "lib/sl4/Newtonsoft.Json.dll",
+        "lib/sl4/Newtonsoft.Json.xml",
+        "lib/sl4-windowsphone71/Newtonsoft.Json.dll",
+        "lib/sl4-windowsphone71/Newtonsoft.Json.xml",
+        "lib/winrt45/Newtonsoft.Json.dll",
+        "lib/winrt45/Newtonsoft.Json.xml",
+        "Newtonsoft.Json.4.5.11.nupkg",
+        "Newtonsoft.Json.4.5.11.nupkg.sha512",
+        "Newtonsoft.Json.nuspec"
+      ]
+    },
+    "Owin/1.0.0": {
+      "type": "package",
+      "sha512": "OseTFniKmyp76mEzOBwIKGBRS5eMoYNkMKaMXOpxx9jv88+b6mh1rSaw43vjBOItNhaLFG3d0a20PfHyibH5sw==",
+      "files": [
+        "lib/net40/Owin.dll",
+        "OWIN.1.0.0.nupkg",
+        "OWIN.1.0.0.nupkg.sha512",
+        "OWIN.nuspec"
+      ]
+    },
+    "ServiceProviderExtensions/1.0.0": {
+      "type": "package",
+      "sha512": "Sk++yxuJuS2MMPQHB+pR4l/Q1jn7kb1oYS70FDIgG5vd57bhvJRQIHB1lQprE8K0yhnzPLu9WwtY2ER/cIKZyg==",
+      "files": [
+        "lib/net40/ServiceProviderExtensions.dll",
+        "ServiceProviderExtensions.1.0.0.nupkg",
+        "ServiceProviderExtensions.1.0.0.nupkg.sha512",
+        "ServiceProviderExtensions.nuspec"
       ]
     }
   },
   "projectFileDependencyGroups": {
     "": [
-      "PostSharp >= 4.2.22",
-      "System.Xml.XDocument >= 4.0.11-beta-23516"
+      "Microsoft.AspNet.Identity.Owin >= 2.2.1",
+      "ServiceProviderExtensions >= 1.0.0"
     ],
-    ".NETFramework,Version=v4.5.1": []
+    "DNX,Version=v4.5.1": [
+      "fx/System.ComponentModel.DataAnnotations >= 4.0.0"
+    ]
   }
 }
