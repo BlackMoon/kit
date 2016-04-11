@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Kit.Kernel.CQRS.Validation;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Kit.Kernel.CQRS.Command
 {
@@ -19,8 +20,8 @@ namespace Kit.Kernel.CQRS.Command
             if (command == null)
                 throw new ArgumentNullException(nameof(command));
 
-            var handler = _serviceProvider.GetService<ICommandHandler<TParameter>>();
-            handler?.Execute(command);
+            var handler = _serviceProvider.GetRequiredService<ICommandHandler<TParameter>>();
+            handler.Execute(command);
         }
 
         public TResult Dispatch<TParameter, TResult>(TParameter command) where TParameter : ICommand where TResult : ICommandResult
@@ -28,8 +29,8 @@ namespace Kit.Kernel.CQRS.Command
             if (command == null)
                 throw new ArgumentNullException(nameof(command));
 
-            var handler = _serviceProvider.GetService<ICommandHandlerWithResult<TParameter, TResult>>();
-            return (handler != null) ? handler.Execute(command) : default(TResult);
+            var handler = _serviceProvider.GetRequiredService<ICommandHandlerWithResult<TParameter, TResult>>();
+            return handler.Execute(command);
         }
 
         /// <summary>

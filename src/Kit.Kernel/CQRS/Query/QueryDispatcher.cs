@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Kit.Kernel.CQRS.Query
 {
@@ -15,9 +16,9 @@ namespace Kit.Kernel.CQRS.Query
         {
             if (query == null)
                 throw new ArgumentNullException(nameof(query));
-
-            var handler = _serviceProvider.GetService<IQueryHandler<TParameter, TResult>>();
-            return (handler != null) ? handler.Execute(query) : default(TResult);
+            
+            var handler = _serviceProvider.GetRequiredService<IQueryHandler<TParameter, TResult>>();
+            return handler.Execute(query);
         }
     }
 }
