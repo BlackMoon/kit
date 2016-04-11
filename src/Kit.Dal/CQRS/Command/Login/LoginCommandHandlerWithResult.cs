@@ -15,7 +15,7 @@ namespace Kit.Dal.CQRS.Command.Login
 
         public LoginCommandResult Execute(LoginCommand command)
         {
-            LoginStatus status = LoginStatus.Expiring;
+            LoginStatus status = LoginStatus.Expired;
             string msg = null;
             msg = "Срок действия Вашего пароля истек. Смените пароль или обратитесь к администратору.";
             try

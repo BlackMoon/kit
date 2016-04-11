@@ -54,6 +54,11 @@
             Словарь соответвий [наименование провайдера - тип DbManager'a] 
             </summary>
         </member>
+        <member name="T:Kit.Dal.Interception.TransactionInterceptor">
+            <summary>
+            Interceptor для запуска транзакций
+            </summary>
+        </member>
         <member name="F:Kit.Dal.Oracle.OracleDbManager._dbConnection">
             <summary>
             DbConnection
