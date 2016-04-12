@@ -15,13 +15,12 @@ namespace Kit.Dal.CQRS.Command.Login
 
         public LoginCommandResult Execute(LoginCommand command)
         {
-            LoginStatus status = LoginStatus.Expired;
+            LoginStatus status = LoginStatus.Success;
             string msg = null;
-            msg = "Срок действия Вашего пароля истек. Смените пароль или обратитесь к администратору.";
+            
             try
             {
-                _dbManager.Open();
-                _dbManager.Close();
+                _dbManager.Open($"Data Source={command.DataSource};User Id={command.Login};Password={command.Password}");
             }
             catch (OracleException ex) when (ex.Number == 28001)
             {
@@ -40,7 +39,7 @@ namespace Kit.Dal.CQRS.Command.Login
             }
             finally
             {
-                //_dbManager.Close();
+                _dbManager.Close();
             }
             
 

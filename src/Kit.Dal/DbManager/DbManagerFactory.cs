@@ -31,7 +31,7 @@ namespace Kit.Dal.DbManager
             }
         }
 
-        public static IDbManager CreateDbManager(string providerName)
+        public static IDbManager CreateDbManager(string providerName, string connectionString = null)
         {
             IDbManager dbManager = null;
 
@@ -39,9 +39,12 @@ namespace Kit.Dal.DbManager
 
             if (Managers != null)
                 t = Managers.ContainsKey(providerName) ? Managers[providerName] : Managers.Values.FirstOrDefault();
-            
+
             if (t != null)
-                dbManager = (IDbManager)Activator.CreateInstance(t, "Data Source=aql.KPI;User Id=KPI;Password=KPI");
+            {
+                dbManager = (IDbManager) Activator.CreateInstance(t);
+                dbManager.ConnectionString = connectionString;
+            }
 
             return dbManager;
         }

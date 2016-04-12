@@ -55,11 +55,6 @@ namespace Kit.Dal.Oracle
 
         public IDbDataParameter[] DataParameters { get; }
 
-        public OracleDbManager(string connectionString)
-        {
-            ConnectionString = connectionString;
-        }
-
         public void BeginTransaction()
         {
             _transaction = DbConnection.BeginTransaction() as OracleTransaction;
@@ -82,6 +77,12 @@ namespace Kit.Dal.Oracle
                 DbConnection.ConnectionString = ConnectionString;
                 DbConnection.Open();
             }
+        }
+
+        public void Open(string connectionString)
+        {
+            ConnectionString = connectionString;
+            Open();
         }
 
         /// <summary>

@@ -17,6 +17,7 @@ namespace Kit.Dal.DbManager
         IDbCommand DbCommand { get; }
         IDbDataParameter[] DataParameters { get; }
         void Open();
+        void Open(string connectionString);
         void OpenWithNewPassword(string newPassword);
         void BeginTransaction();
         void CommitTransaction();
