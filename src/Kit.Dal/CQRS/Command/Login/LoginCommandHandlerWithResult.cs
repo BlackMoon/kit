@@ -16,15 +16,15 @@ namespace Kit.Dal.CQRS.Command.Login
 
         public LoginCommandResult Execute(LoginCommand command)
         {
-            LoginStatus status = LoginStatus.Success;
+            LoginStatus status = LoginStatus.Failure;
             string msg = null;
             
             try
             {
                 _dbManager.Open($"Data Source={command.DataSource};User Id={command.Login};Password={command.Password}");
 
-                object res = _dbManager.ExecuteScalar(CommandType.Text, "SELECT -100 FROM dual");
-                msg = res.ToString();
+                //object res = _dbManager.ExecuteScalar(CommandType.Text, "SELECT -100 FROM dual");
+                //msg = res.ToString();
             }
             catch (OracleException ex) when (ex.Number == 28001)
             {

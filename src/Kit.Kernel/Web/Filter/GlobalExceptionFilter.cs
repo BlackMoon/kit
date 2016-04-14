@@ -12,7 +12,7 @@ namespace Kit.Kernel.Web.Filter
         public void OnException(ExceptionContext context)
         {
             if (context.HttpContext.Request.IsAjax())
-                context.Result = new ObjectResult(new { context.Exception.Message }) { StatusCode = 500 };
+                context.Result = new ObjectResult(new { context.Exception.Message, context.Exception.StackTrace }) { StatusCode = 500 };
         }
     }
 }
