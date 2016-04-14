@@ -143,7 +143,18 @@ namespace Kit.Dal.Oracle
 
         public object ExecuteScalar(CommandType commandType, string commandText)
         {
-            throw new NotImplementedException();
+            Open();
+
+            DbCommand = new OracleCommand();
+            PrepareCommand(DbCommand, DbConnection, Transaction, commandType, commandText, null);
+
+            object returnValue = DbCommand.ExecuteScalar();
+            DbCommand.Parameters.Clear();
+
+            if (_wasClosed)
+                DbConnection.Close();
+
+            return returnValue;
         }
 
         public int ExecuteNonQuery(CommandType commandType, string commandText)

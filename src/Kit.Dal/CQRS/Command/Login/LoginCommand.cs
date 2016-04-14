@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Kit.Kernel;
 using Kit.Kernel.CQRS.Command;
+using Kit.Kernel.Web.EncryptData;
 
 namespace Kit.Dal.CQRS.Command.Login
 {
@@ -8,7 +10,7 @@ namespace Kit.Dal.CQRS.Command.Login
         [Required(ErrorMessage = "Введите имя пользователя")]
         public string Login { get; set; }
 
-        [DataType(DataType.Password)]
+        [EncryptDataType(DataType.Password)]
         [Required(ErrorMessage = "Введите пароль")]
         public string Password { get; set; }
 

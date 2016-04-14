@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using Kit.Dal.DbManager;
 using Kit.Kernel.CQRS.Command;
 using Oracle.DataAccess.Client;
@@ -21,6 +22,9 @@ namespace Kit.Dal.CQRS.Command.Login
             try
             {
                 _dbManager.Open($"Data Source={command.DataSource};User Id={command.Login};Password={command.Password}");
+
+                object res = _dbManager.ExecuteScalar(CommandType.Text, "SELECT -100 FROM dual");
+                msg = res.ToString();
             }
             catch (OracleException ex) when (ex.Number == 28001)
             {
@@ -41,7 +45,6 @@ namespace Kit.Dal.CQRS.Command.Login
             {
                 _dbManager.Close();
             }
-            
 
             return new LoginCommandResult() { Status = status, Message = msg };
         }
