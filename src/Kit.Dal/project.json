@@ -26,12 +26,6 @@
         "Kit.Kernel": "1.0.0-*",
         "Microsoft.Owin": "3.0.1",
         "odac.x64": "12.1.2400"
-    },
-
-    "scripts": {
-        "postbuild": [
-            "echo postBuild executed"
-        ]
-    }
+    }  
 
 }
