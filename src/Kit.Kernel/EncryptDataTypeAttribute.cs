@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Kit.Kernel.Web.EncryptData
+namespace Kit.Kernel
 {
     /// <summary>
     /// Аттрибут для шифрования значений-полей ViewModel'и

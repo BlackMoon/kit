@@ -18,8 +18,10 @@
     "dependencies": {
         "Castle.Core": "3.3.3",
         "DryIoc.Dnx.DependencyInjection": "1.4.0-rc1",
-        "Mapster": "2.3.0",        
-        "Microsoft.AspNet.Identity.Owin": "2.2.1",        
+        "Mapster": "2.3.0",
+        "Microsoft.AspNet.Identity.Owin": "2.2.1",
+        "Microsoft.AspNet.Http.Extensions": "1.0.0-rc1-final",
+        "Microsoft.Extensions.OptionsModel": "1.0.0-rc1-final",
         "ServiceProviderExtensions": "1.0.0"
     }
 

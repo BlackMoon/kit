@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Kit.Kernel;
 using Kit.Kernel.CQRS.Command;
-using Kit.Kernel.Web.EncryptData;
 
 namespace Kit.Dal.CQRS.Command.Login
 {
