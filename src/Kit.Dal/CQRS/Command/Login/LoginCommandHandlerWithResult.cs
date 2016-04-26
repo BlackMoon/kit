@@ -21,7 +21,7 @@ namespace Kit.Dal.CQRS.Command.Login
             
             try
             {
-                _dbManager.Open($"Data Source={command.DataSource};User Id={command.Login};Password={command.Password}");
+                _dbManager.Open($"Data Source={command.DataSource};User Id={command.UserName};Password={command.Password}");
             }
             catch (OracleException ex) when (ex.Number == 28001)
             {

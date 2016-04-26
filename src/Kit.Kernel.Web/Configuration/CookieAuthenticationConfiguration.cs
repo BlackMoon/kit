@@ -1,10 +1,9 @@
-﻿using System;
-using Microsoft.AspNet.Http;
+﻿using Microsoft.Owin.Security.Cookies;
 
 namespace Kit.Kernel.Web.Configuration
 {
     /// <summary>
-    /// Параметры проверки подлинности [authrntication mode=forms/cookie]
+    /// Параметры проверки подлинности [authentication mode=forms/cookie]
     /// </summary>
     public class CookieAuthenticationConfiguration
     {
@@ -14,7 +13,7 @@ namespace Kit.Kernel.Web.Configuration
 
         public bool CookieHttpOnly { get; set; }
 
-        public string CookieName { get; set; }
+        public string CookieName { get; set; } = CookieAuthenticationDefaults.CookiePrefix + CookieAuthenticationDefaults.AuthenticationType;
 
         public string CookiePath { get; set; }
 
