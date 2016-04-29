@@ -1,4 +1,4 @@
-﻿namespace Stc.Core.Entry.Core
+﻿namespace Kit.Kernel.Identity
 {
     /// <summary>
     /// Типы заявок (claims) для строки соединения (ConnectionString)
