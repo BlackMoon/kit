@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data;
 using Kit.Dal.DbManager;
 using Kit.Kernel.CQRS.Command;
 using Oracle.DataAccess.Client;
@@ -30,7 +29,7 @@ namespace Kit.Dal.CQRS.Command.Login
             }
             catch (OracleException ex) when (ex.Number == 28002)
             {
-                msg = "Срок действия Вашего пароля истекает, учетная запись будет заблокирована. Смените пароль или обратитесь к администратору.Сменить пароль?";
+                msg = "Срок действия Вашего пароля истекает, учетная запись будет заблокирована. Смените пароль или обратитесь к администратору. Сменить пароль?";
                 status = LoginStatus.Expiring;
             }
             catch (Exception ex)

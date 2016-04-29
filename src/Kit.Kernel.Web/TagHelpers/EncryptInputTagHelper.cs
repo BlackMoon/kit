@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using Kit.Kernel.Web.EncryptData;
 using Microsoft.AspNet.Mvc.ModelBinding.Metadata;
 using Microsoft.AspNet.Mvc.TagHelpers;
 using Microsoft.AspNet.Mvc.ViewFeatures;

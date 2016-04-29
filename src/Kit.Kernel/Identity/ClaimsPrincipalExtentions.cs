@@ -20,11 +20,11 @@ namespace Kit.Kernel.Identity
 
             if (ci != null && ci.IsAuthenticated)
             {
-                string passwd = ci.FindFirstValue("Password"),
-                       server = ci.FindFirstValue("Server"),
-                       user = ci.FindFirstValue(ClaimTypes.Name);
+                string passwd = ci.FindFirstValue(ConnectionStringClaimTypes.Password),
+                       datasource = ci.FindFirstValue(ConnectionStringClaimTypes.DataSource),
+                       user = ci.FindFirstValue(ConnectionStringClaimTypes.UserId);
 
-                connectionString = $"Data Source={server};User Id={user};Password={passwd}";
+                connectionString = $"Data Source={datasource};User Id={user};Password={passwd}";
             }
 
             return connectionString;

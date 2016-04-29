@@ -1,10 +1,6 @@
 ﻿using Microsoft.AspNet.Razor.TagHelpers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace IdSvrHost.UI.TagHelpers
+namespace Kit.Kernel.Web.TagHelpers
 {
     [HtmlTargetElement(Attributes = "hide-if")]
     public class HideIfTagHelper : TagHelper

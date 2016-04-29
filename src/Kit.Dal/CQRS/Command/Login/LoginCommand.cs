@@ -4,7 +4,7 @@ using Kit.Kernel.CQRS.Command;
 
 namespace Kit.Dal.CQRS.Command.Login
 {
-    public class LoginCommand : ICommand
+    public class LoginCommand : SignInCommand
     {
         [Required(ErrorMessage = "Введите имя пользователя")]
         public string UserName { get; set; }
@@ -15,10 +15,5 @@ namespace Kit.Dal.CQRS.Command.Login
 
         [Required(ErrorMessage = "Выберите сервер")]
         public string DataSource { get; set; }
-
-        /// <summary>
-        /// Identity Token Id (аутентификация через OpenId)
-        /// </summary>
-        public string SignInId { get; set; }
     }
 }
