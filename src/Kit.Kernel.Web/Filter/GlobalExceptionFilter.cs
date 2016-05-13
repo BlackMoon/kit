@@ -1,4 +1,4 @@
-﻿using Kit.Kernel.Web.Ajax;
+﻿using Kit.Kernel.Web.Http.Ajax;
 using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Mvc.Filters;
 

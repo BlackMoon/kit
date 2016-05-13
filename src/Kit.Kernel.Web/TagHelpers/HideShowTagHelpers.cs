@@ -11,9 +11,7 @@ namespace Kit.Kernel.Web.TagHelpers
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             if (HideIf)
-            {
                 output.SuppressOutput();
-            }
         }
     }
 
@@ -25,10 +23,8 @@ namespace Kit.Kernel.Web.TagHelpers
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
-            if (ShowIf == false)
-            {
+            if (!ShowIf)
                 output.SuppressOutput();
-            }
         }
     }
 
@@ -41,9 +37,7 @@ namespace Kit.Kernel.Web.TagHelpers
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             if (HideIfNull == null)
-            {
                 output.SuppressOutput();
-            }
         }
     }
 
@@ -56,9 +50,7 @@ namespace Kit.Kernel.Web.TagHelpers
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             if (ShowIfNull != null)
-            {
                 output.SuppressOutput();
-            }
         }
     }
 }
