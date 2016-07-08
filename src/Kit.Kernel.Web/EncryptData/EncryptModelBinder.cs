@@ -1,13 +1,13 @@
 ﻿using System.Linq;
-using Microsoft.AspNet.Mvc.ModelBinding;
-using Microsoft.AspNet.Mvc.ModelBinding.Metadata;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Metadata;
 
 namespace Kit.Kernel.Web.EncryptData
 {
     /// <summary>
     /// ModelBinder для дешифрования EncryptedDataType свойств
     /// </summary>
-    public class EncryptModelBinder : MutableObjectModelBinder
+    /*public class EncryptModelBinder : MutableObjectModelBinder
     {
         protected override void SetProperty(ModelBindingContext bindingContext, ModelMetadata metadata, ModelMetadata propertyMetadata, ModelBindingResult result)
         {
@@ -27,5 +27,5 @@ namespace Kit.Kernel.Web.EncryptData
 
             base.SetProperty(bindingContext, metadata, propertyMetadata, result);
         }
-    }
+    }*/
 }

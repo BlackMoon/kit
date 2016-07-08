@@ -1,7 +1,7 @@
 ﻿using System;
 using Kit.Dal.Configurations;
 using Kit.Kernel.CQRS.Job;
-using Microsoft.Extensions.OptionsModel;
+using Microsoft.Extensions.Options;
 
 namespace Kit.Dal.Oracle.Job
 {

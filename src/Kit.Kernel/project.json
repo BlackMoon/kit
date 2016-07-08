@@ -4,7 +4,7 @@
     "authors": [ "romanovrv" ],
 
     "frameworks": {
-        "net451": {
+        "net452": {
             "frameworkAssemblies": {               
                 "System.ComponentModel.DataAnnotations": "4.0.0.0"
             } 
@@ -12,12 +12,12 @@
     },
 
     "dependencies": {
-        "Castle.Core": "3.3.3",
-        "DryIoc": "2.6.2",        
+        "Castle.Core": "3.3.3",        
+        "DryIoc.AspNetCore.DependencyInjection": "1.0.0-rc2",
         "Mapster": "2.3.0",
         "Microsoft.AspNet.Http.Extensions": "1.0.0-rc1-final",
         "Microsoft.AspNet.Identity.Owin": "2.2.1",
-        "Microsoft.Extensions.OptionsModel": "1.0.0-rc1-final",
+        "Microsoft.Extensions.Options": "1.0.0",
         "ServiceProviderExtensions": "1.0.0"
     }
 }

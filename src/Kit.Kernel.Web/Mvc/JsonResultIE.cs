@@ -1,8 +1,6 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Kit.Kernel.Web.Http;
-using Microsoft.AspNet.Mvc;
-using Microsoft.Net.Http.Headers;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Kit.Kernel.Web.Mvc
 {
@@ -19,7 +17,7 @@ namespace Kit.Kernel.Web.Mvc
         public override void ExecuteResult(ActionContext context)
         {
             if (context.HttpContext.Request.IsIe8())
-                ContentType = new MediaTypeHeaderValue("text/html");
+                ContentType = "text/html";
 
             base.ExecuteResult(context);
         }
@@ -27,7 +25,7 @@ namespace Kit.Kernel.Web.Mvc
         public override Task ExecuteResultAsync(ActionContext context)
         {
             if (context.HttpContext.Request.IsIe8())
-                ContentType = new MediaTypeHeaderValue("text/html");
+                ContentType = "text/html";
 
             return base.ExecuteResultAsync(context);
         }

@@ -1,7 +1,7 @@
 ﻿using Kit.Kernel.Web.Http;
 using Kit.Kernel.Web.Http.Ajax;
-using Microsoft.AspNet.Mvc;
-using Microsoft.AspNet.Mvc.Filters;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace Kit.Kernel.Web.Mvc.Filter
 {
@@ -12,7 +12,7 @@ namespace Kit.Kernel.Web.Mvc.Filter
     {
         public void OnException(ExceptionContext context)
         {
-            Microsoft.AspNet.Http.HttpRequest request = context.HttpContext.Request;
+            Microsoft.AspNetCore.Http.HttpRequest request = context.HttpContext.Request;
             if (request.IsAjax())
             {
                 context.Result = new ObjectResult(new { context.Exception.Message, context.Exception.StackTrace }) { StatusCode = 500 };
