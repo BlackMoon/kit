@@ -1,10 +1,7 @@
 ﻿{
     "version": "1.0.0-*",
     "description": "Kit.Kernel.Web Class Library",
-    "authors": [ "romanovrv" ],
-    "tags": [ "" ],
-    "projectUrl": "",
-    "licenseUrl": "",
+    "authors": [ "romanovrv" ],    
 
     "dependencies": {        
         "Microsoft.AspNet.Mvc.TagHelpers": "6.0.0-rc1-final",        
@@ -12,7 +9,7 @@
     },
 
     "frameworks": {
-        "dnx451": {     
+        "net451": {     
         }
     }
 }

@@ -2,7 +2,7 @@
   "locked": false,
   "version": 2,
   "targets": {
-    "DNX,Version=v4.5.1": {
+    ".NETFramework,Version=v4.5.1": {
       "Castle.Core/3.3.3": {
         "type": "package",
         "compile": {
@@ -12,38 +12,14 @@
           "lib/net45/Castle.Core.dll": {}
         }
       },
-      "DryIoc.Dnx/2.2.2-rc1": {
+      "DryIoc/2.6.2": {
         "type": "package",
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/dnx451/DryIoc.Dnx.dll": {}
-        },
-        "runtime": {
-          "lib/dnx451/DryIoc.Dnx.dll": {}
-        }
-      },
-      "DryIoc.Dnx.DependencyInjection/1.4.0-rc1": {
-        "type": "package",
-        "dependencies": {
-          "DryIoc.Dnx": "2.2.2-rc1",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0-rc1-final"
-        },
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/dnx451/DryIoc.Dnx.DependencyInjection.dll": {}
-        },
-        "runtime": {
-          "lib/dnx451/DryIoc.Dnx.DependencyInjection.dll": {}
+        "contentFiles": {
+          "contentFiles/any/any/_._": {
+            "buildAction": "None",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          }
         }
       },
       "EntityFramework/6.1.3": {
@@ -52,37 +28,21 @@
           "System.ComponentModel.DataAnnotations"
         ],
         "compile": {
-          "lib/net45/EntityFramework.dll": {},
-          "lib/net45/EntityFramework.SqlServer.dll": {}
+          "lib/net45/EntityFramework.SqlServer.dll": {},
+          "lib/net45/EntityFramework.dll": {}
         },
         "runtime": {
-          "lib/net45/EntityFramework.dll": {},
-          "lib/net45/EntityFramework.SqlServer.dll": {}
+          "lib/net45/EntityFramework.SqlServer.dll": {},
+          "lib/net45/EntityFramework.dll": {}
         }
-      },
-      "Kit.Kernel/1.0.0": {
-        "type": "project",
-        "framework": "DNX,Version=v4.5.1",
-        "dependencies": {
-          "Castle.Core": "3.3.3",
-          "DryIoc.Dnx.DependencyInjection": "1.4.0-rc1",
-          "Mapster": "2.3.0",
-          "Microsoft.AspNet.Http.Extensions": "1.0.0-rc1-final",
-          "Microsoft.AspNet.Identity.Owin": "2.2.1",
-          "Microsoft.Extensions.OptionsModel": "1.0.0-rc1-final",
-          "ServiceProviderExtensions": "1.0.0"
-        },
-        "frameworkAssemblies": [
-          "System.ComponentModel.DataAnnotations"
-        ]
       },
       "Mapster/2.3.0": {
         "type": "package",
         "frameworkAssemblies": [
           "Microsoft.CSharp",
-          "mscorlib",
           "System",
-          "System.Core"
+          "System.Core",
+          "mscorlib"
         ],
         "compile": {
           "lib/net45/Mapster.dll": {}
@@ -99,9 +59,9 @@
         },
         "frameworkAssemblies": [
           "Microsoft.CSharp",
-          "mscorlib",
           "System",
-          "System.Core"
+          "System.Core",
+          "mscorlib"
         ],
         "compile": {
           "lib/net451/Microsoft.AspNet.Http.Abstractions.dll": {}
@@ -119,9 +79,9 @@
         },
         "frameworkAssemblies": [
           "Microsoft.CSharp",
-          "mscorlib",
           "System",
-          "System.Core"
+          "System.Core",
+          "mscorlib"
         ],
         "compile": {
           "lib/net451/Microsoft.AspNet.Http.Extensions.dll": {}
@@ -137,9 +97,9 @@
         },
         "frameworkAssemblies": [
           "Microsoft.CSharp",
-          "mscorlib",
           "System",
-          "System.Core"
+          "System.Core",
+          "mscorlib"
         ],
         "compile": {
           "lib/net451/Microsoft.AspNet.Http.Features.dll": {}
@@ -179,9 +139,9 @@
         },
         "frameworkAssemblies": [
           "Microsoft.CSharp",
-          "mscorlib",
           "System",
-          "System.Core"
+          "System.Core",
+          "mscorlib"
         ],
         "compile": {
           "lib/net451/Microsoft.Extensions.Configuration.dll": {}
@@ -197,9 +157,9 @@
         },
         "frameworkAssemblies": [
           "Microsoft.CSharp",
-          "mscorlib",
           "System",
-          "System.Core"
+          "System.Core",
+          "mscorlib"
         ],
         "compile": {
           "lib/net451/Microsoft.Extensions.Configuration.Abstractions.dll": {}
@@ -215,9 +175,9 @@
         },
         "frameworkAssemblies": [
           "Microsoft.CSharp",
-          "mscorlib",
           "System",
-          "System.Core"
+          "System.Core",
+          "mscorlib"
         ],
         "compile": {
           "lib/net451/Microsoft.Extensions.Configuration.Binder.dll": {}
@@ -230,9 +190,9 @@
         "type": "package",
         "frameworkAssemblies": [
           "Microsoft.CSharp",
-          "mscorlib",
           "System",
-          "System.Core"
+          "System.Core",
+          "mscorlib"
         ],
         "compile": {
           "lib/net451/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
@@ -250,9 +210,9 @@
         },
         "frameworkAssemblies": [
           "Microsoft.CSharp",
-          "mscorlib",
           "System",
-          "System.Core"
+          "System.Core",
+          "mscorlib"
         ],
         "compile": {
           "lib/net451/Microsoft.Extensions.OptionsModel.dll": {}
@@ -265,9 +225,9 @@
         "type": "package",
         "frameworkAssemblies": [
           "Microsoft.CSharp",
-          "mscorlib",
           "System",
-          "System.Core"
+          "System.Core",
+          "mscorlib"
         ],
         "compile": {
           "lib/net451/Microsoft.Extensions.Primitives.dll": {}
@@ -280,9 +240,9 @@
         "type": "package",
         "frameworkAssemblies": [
           "Microsoft.CSharp",
-          "mscorlib",
           "System",
-          "System.Core"
+          "System.Core",
+          "mscorlib"
         ],
         "compile": {
           "lib/net451/Microsoft.Extensions.WebEncoders.Core.dll": {}
@@ -295,9 +255,9 @@
         "type": "package",
         "frameworkAssemblies": [
           "Microsoft.CSharp",
-          "mscorlib",
           "System",
-          "System.Core"
+          "System.Core",
+          "mscorlib"
         ],
         "compile": {
           "lib/net451/Microsoft.Net.Http.Headers.dll": {}
@@ -369,7 +329,7 @@
           "lib/net40/Newtonsoft.Json.dll": {}
         }
       },
-      "odac.x64/12.1.2400": {
+      "odac.x86/12.1.2400": {
         "type": "package",
         "compile": {
           "lib/net40/Oracle.DataAccess.dll": {}
@@ -395,72 +355,13 @@
         "runtime": {
           "lib/net40/ServiceProviderExtensions.dll": {}
         }
-      }
-    },
-    "DNX,Version=v4.5.1/win7-x86": {
-      "Castle.Core/3.3.3": {
-        "type": "package",
-        "compile": {
-          "lib/net45/Castle.Core.dll": {}
-        },
-        "runtime": {
-          "lib/net45/Castle.Core.dll": {}
-        }
-      },
-      "DryIoc.Dnx/2.2.2-rc1": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/dnx451/DryIoc.Dnx.dll": {}
-        },
-        "runtime": {
-          "lib/dnx451/DryIoc.Dnx.dll": {}
-        }
-      },
-      "DryIoc.Dnx.DependencyInjection/1.4.0-rc1": {
-        "type": "package",
-        "dependencies": {
-          "DryIoc.Dnx": "2.2.2-rc1",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0-rc1-final"
-        },
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/dnx451/DryIoc.Dnx.DependencyInjection.dll": {}
-        },
-        "runtime": {
-          "lib/dnx451/DryIoc.Dnx.DependencyInjection.dll": {}
-        }
-      },
-      "EntityFramework/6.1.3": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "System.ComponentModel.DataAnnotations"
-        ],
-        "compile": {
-          "lib/net45/EntityFramework.dll": {},
-          "lib/net45/EntityFramework.SqlServer.dll": {}
-        },
-        "runtime": {
-          "lib/net45/EntityFramework.dll": {},
-          "lib/net45/EntityFramework.SqlServer.dll": {}
-        }
       },
       "Kit.Kernel/1.0.0": {
         "type": "project",
-        "framework": "DNX,Version=v4.5.1",
+        "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
           "Castle.Core": "3.3.3",
-          "DryIoc.Dnx.DependencyInjection": "1.4.0-rc1",
+          "DryIoc": "2.6.2",
           "Mapster": "2.3.0",
           "Microsoft.AspNet.Http.Extensions": "1.0.0-rc1-final",
           "Microsoft.AspNet.Identity.Owin": "2.2.1",
@@ -469,733 +370,20 @@
         },
         "frameworkAssemblies": [
           "System.ComponentModel.DataAnnotations"
-        ]
-      },
-      "Mapster/2.3.0": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
         ],
         "compile": {
-          "lib/net45/Mapster.dll": {}
+          "net451/Kit.Kernel.dll": {}
         },
         "runtime": {
-          "lib/net45/Mapster.dll": {}
-        }
-      },
-      "Microsoft.AspNet.Http.Abstractions/1.0.0-rc1-final": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNet.Http.Features": "1.0.0-rc1-final",
-          "Microsoft.Extensions.WebEncoders.Core": "1.0.0-rc1-final"
-        },
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/net451/Microsoft.AspNet.Http.Abstractions.dll": {}
-        },
-        "runtime": {
-          "lib/net451/Microsoft.AspNet.Http.Abstractions.dll": {}
-        }
-      },
-      "Microsoft.AspNet.Http.Extensions/1.0.0-rc1-final": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNet.Http.Abstractions": "1.0.0-rc1-final",
-          "Microsoft.Extensions.WebEncoders.Core": "1.0.0-rc1-final",
-          "Microsoft.Net.Http.Headers": "1.0.0-rc1-final"
-        },
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/net451/Microsoft.AspNet.Http.Extensions.dll": {}
-        },
-        "runtime": {
-          "lib/net451/Microsoft.AspNet.Http.Extensions.dll": {}
-        }
-      },
-      "Microsoft.AspNet.Http.Features/1.0.0-rc1-final": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.Primitives": "1.0.0-rc1-final"
-        },
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/net451/Microsoft.AspNet.Http.Features.dll": {}
-        },
-        "runtime": {
-          "lib/net451/Microsoft.AspNet.Http.Features.dll": {}
-        }
-      },
-      "Microsoft.AspNet.Identity.Core/2.2.1": {
-        "type": "package",
-        "compile": {
-          "lib/net45/Microsoft.AspNet.Identity.Core.dll": {}
-        },
-        "runtime": {
-          "lib/net45/Microsoft.AspNet.Identity.Core.dll": {}
-        }
-      },
-      "Microsoft.AspNet.Identity.Owin/2.2.1": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNet.Identity.Core": "2.2.1",
-          "Microsoft.Owin.Security": "2.1.0",
-          "Microsoft.Owin.Security.Cookies": "2.1.0",
-          "Microsoft.Owin.Security.OAuth": "2.1.0"
-        },
-        "compile": {
-          "lib/net45/Microsoft.AspNet.Identity.Owin.dll": {}
-        },
-        "runtime": {
-          "lib/net45/Microsoft.AspNet.Identity.Owin.dll": {}
-        }
-      },
-      "Microsoft.Extensions.Configuration/1.0.0-rc1-final": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.Configuration.Abstractions": "1.0.0-rc1-final"
-        },
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/net451/Microsoft.Extensions.Configuration.dll": {}
-        },
-        "runtime": {
-          "lib/net451/Microsoft.Extensions.Configuration.dll": {}
-        }
-      },
-      "Microsoft.Extensions.Configuration.Abstractions/1.0.0-rc1-final": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.Primitives": "1.0.0-rc1-final"
-        },
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/net451/Microsoft.Extensions.Configuration.Abstractions.dll": {}
-        },
-        "runtime": {
-          "lib/net451/Microsoft.Extensions.Configuration.Abstractions.dll": {}
-        }
-      },
-      "Microsoft.Extensions.Configuration.Binder/1.0.0-rc1-final": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.Configuration": "1.0.0-rc1-final"
-        },
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/net451/Microsoft.Extensions.Configuration.Binder.dll": {}
-        },
-        "runtime": {
-          "lib/net451/Microsoft.Extensions.Configuration.Binder.dll": {}
-        }
-      },
-      "Microsoft.Extensions.DependencyInjection.Abstractions/1.0.0-rc1-final": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/net451/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
-        },
-        "runtime": {
-          "lib/net451/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
-        }
-      },
-      "Microsoft.Extensions.OptionsModel/1.0.0-rc1-final": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.Configuration.Abstractions": "1.0.0-rc1-final",
-          "Microsoft.Extensions.Configuration.Binder": "1.0.0-rc1-final",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0-rc1-final"
-        },
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/net451/Microsoft.Extensions.OptionsModel.dll": {}
-        },
-        "runtime": {
-          "lib/net451/Microsoft.Extensions.OptionsModel.dll": {}
-        }
-      },
-      "Microsoft.Extensions.Primitives/1.0.0-rc1-final": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/net451/Microsoft.Extensions.Primitives.dll": {}
-        },
-        "runtime": {
-          "lib/net451/Microsoft.Extensions.Primitives.dll": {}
-        }
-      },
-      "Microsoft.Extensions.WebEncoders.Core/1.0.0-rc1-final": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/net451/Microsoft.Extensions.WebEncoders.Core.dll": {}
-        },
-        "runtime": {
-          "lib/net451/Microsoft.Extensions.WebEncoders.Core.dll": {}
-        }
-      },
-      "Microsoft.Net.Http.Headers/1.0.0-rc1-final": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/net451/Microsoft.Net.Http.Headers.dll": {}
-        },
-        "runtime": {
-          "lib/net451/Microsoft.Net.Http.Headers.dll": {}
-        }
-      },
-      "Microsoft.Owin/3.0.1": {
-        "type": "package",
-        "dependencies": {
-          "Owin": "1.0.0"
-        },
-        "compile": {
-          "lib/net45/Microsoft.Owin.dll": {}
-        },
-        "runtime": {
-          "lib/net45/Microsoft.Owin.dll": {}
-        }
-      },
-      "Microsoft.Owin.Security/2.1.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Owin": "2.1.0",
-          "Owin": "1.0.0"
-        },
-        "compile": {
-          "lib/net45/Microsoft.Owin.Security.dll": {}
-        },
-        "runtime": {
-          "lib/net45/Microsoft.Owin.Security.dll": {}
-        }
-      },
-      "Microsoft.Owin.Security.Cookies/2.1.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Owin": "2.1.0",
-          "Microsoft.Owin.Security": "2.1.0",
-          "Owin": "1.0.0"
-        },
-        "compile": {
-          "lib/net45/Microsoft.Owin.Security.Cookies.dll": {}
-        },
-        "runtime": {
-          "lib/net45/Microsoft.Owin.Security.Cookies.dll": {}
-        }
-      },
-      "Microsoft.Owin.Security.OAuth/2.1.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Owin": "2.1.0",
-          "Microsoft.Owin.Security": "2.1.0",
-          "Newtonsoft.Json": "4.5.11",
-          "Owin": "1.0.0"
-        },
-        "compile": {
-          "lib/net45/Microsoft.Owin.Security.OAuth.dll": {}
-        },
-        "runtime": {
-          "lib/net45/Microsoft.Owin.Security.OAuth.dll": {}
-        }
-      },
-      "Newtonsoft.Json/4.5.11": {
-        "type": "package",
-        "compile": {
-          "lib/net40/Newtonsoft.Json.dll": {}
-        },
-        "runtime": {
-          "lib/net40/Newtonsoft.Json.dll": {}
-        }
-      },
-      "odac.x64/12.1.2400": {
-        "type": "package",
-        "compile": {
-          "lib/net40/Oracle.DataAccess.dll": {}
-        },
-        "runtime": {
-          "lib/net40/Oracle.DataAccess.dll": {}
-        }
-      },
-      "Owin/1.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/net40/Owin.dll": {}
-        },
-        "runtime": {
-          "lib/net40/Owin.dll": {}
-        }
-      },
-      "ServiceProviderExtensions/1.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/net40/ServiceProviderExtensions.dll": {}
-        },
-        "runtime": {
-          "lib/net40/ServiceProviderExtensions.dll": {}
-        }
-      }
-    },
-    "DNX,Version=v4.5.1/win7-x64": {
-      "Castle.Core/3.3.3": {
-        "type": "package",
-        "compile": {
-          "lib/net45/Castle.Core.dll": {}
-        },
-        "runtime": {
-          "lib/net45/Castle.Core.dll": {}
-        }
-      },
-      "DryIoc.Dnx/2.2.2-rc1": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/dnx451/DryIoc.Dnx.dll": {}
-        },
-        "runtime": {
-          "lib/dnx451/DryIoc.Dnx.dll": {}
-        }
-      },
-      "DryIoc.Dnx.DependencyInjection/1.4.0-rc1": {
-        "type": "package",
-        "dependencies": {
-          "DryIoc.Dnx": "2.2.2-rc1",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0-rc1-final"
-        },
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/dnx451/DryIoc.Dnx.DependencyInjection.dll": {}
-        },
-        "runtime": {
-          "lib/dnx451/DryIoc.Dnx.DependencyInjection.dll": {}
-        }
-      },
-      "EntityFramework/6.1.3": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "System.ComponentModel.DataAnnotations"
-        ],
-        "compile": {
-          "lib/net45/EntityFramework.dll": {},
-          "lib/net45/EntityFramework.SqlServer.dll": {}
-        },
-        "runtime": {
-          "lib/net45/EntityFramework.dll": {},
-          "lib/net45/EntityFramework.SqlServer.dll": {}
-        }
-      },
-      "Kit.Kernel/1.0.0": {
-        "type": "project",
-        "framework": "DNX,Version=v4.5.1",
-        "dependencies": {
-          "Castle.Core": "3.3.3",
-          "DryIoc.Dnx.DependencyInjection": "1.4.0-rc1",
-          "Mapster": "2.3.0",
-          "Microsoft.AspNet.Http.Extensions": "1.0.0-rc1-final",
-          "Microsoft.AspNet.Identity.Owin": "2.2.1",
-          "Microsoft.Extensions.OptionsModel": "1.0.0-rc1-final",
-          "ServiceProviderExtensions": "1.0.0"
-        },
-        "frameworkAssemblies": [
-          "System.ComponentModel.DataAnnotations"
-        ]
-      },
-      "Mapster/2.3.0": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/net45/Mapster.dll": {}
-        },
-        "runtime": {
-          "lib/net45/Mapster.dll": {}
-        }
-      },
-      "Microsoft.AspNet.Http.Abstractions/1.0.0-rc1-final": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNet.Http.Features": "1.0.0-rc1-final",
-          "Microsoft.Extensions.WebEncoders.Core": "1.0.0-rc1-final"
-        },
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/net451/Microsoft.AspNet.Http.Abstractions.dll": {}
-        },
-        "runtime": {
-          "lib/net451/Microsoft.AspNet.Http.Abstractions.dll": {}
-        }
-      },
-      "Microsoft.AspNet.Http.Extensions/1.0.0-rc1-final": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNet.Http.Abstractions": "1.0.0-rc1-final",
-          "Microsoft.Extensions.WebEncoders.Core": "1.0.0-rc1-final",
-          "Microsoft.Net.Http.Headers": "1.0.0-rc1-final"
-        },
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/net451/Microsoft.AspNet.Http.Extensions.dll": {}
-        },
-        "runtime": {
-          "lib/net451/Microsoft.AspNet.Http.Extensions.dll": {}
-        }
-      },
-      "Microsoft.AspNet.Http.Features/1.0.0-rc1-final": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.Primitives": "1.0.0-rc1-final"
-        },
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/net451/Microsoft.AspNet.Http.Features.dll": {}
-        },
-        "runtime": {
-          "lib/net451/Microsoft.AspNet.Http.Features.dll": {}
-        }
-      },
-      "Microsoft.AspNet.Identity.Core/2.2.1": {
-        "type": "package",
-        "compile": {
-          "lib/net45/Microsoft.AspNet.Identity.Core.dll": {}
-        },
-        "runtime": {
-          "lib/net45/Microsoft.AspNet.Identity.Core.dll": {}
-        }
-      },
-      "Microsoft.AspNet.Identity.Owin/2.2.1": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNet.Identity.Core": "2.2.1",
-          "Microsoft.Owin.Security": "2.1.0",
-          "Microsoft.Owin.Security.Cookies": "2.1.0",
-          "Microsoft.Owin.Security.OAuth": "2.1.0"
-        },
-        "compile": {
-          "lib/net45/Microsoft.AspNet.Identity.Owin.dll": {}
-        },
-        "runtime": {
-          "lib/net45/Microsoft.AspNet.Identity.Owin.dll": {}
-        }
-      },
-      "Microsoft.Extensions.Configuration/1.0.0-rc1-final": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.Configuration.Abstractions": "1.0.0-rc1-final"
-        },
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/net451/Microsoft.Extensions.Configuration.dll": {}
-        },
-        "runtime": {
-          "lib/net451/Microsoft.Extensions.Configuration.dll": {}
-        }
-      },
-      "Microsoft.Extensions.Configuration.Abstractions/1.0.0-rc1-final": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.Primitives": "1.0.0-rc1-final"
-        },
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/net451/Microsoft.Extensions.Configuration.Abstractions.dll": {}
-        },
-        "runtime": {
-          "lib/net451/Microsoft.Extensions.Configuration.Abstractions.dll": {}
-        }
-      },
-      "Microsoft.Extensions.Configuration.Binder/1.0.0-rc1-final": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.Configuration": "1.0.0-rc1-final"
-        },
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/net451/Microsoft.Extensions.Configuration.Binder.dll": {}
-        },
-        "runtime": {
-          "lib/net451/Microsoft.Extensions.Configuration.Binder.dll": {}
-        }
-      },
-      "Microsoft.Extensions.DependencyInjection.Abstractions/1.0.0-rc1-final": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/net451/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
-        },
-        "runtime": {
-          "lib/net451/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
-        }
-      },
-      "Microsoft.Extensions.OptionsModel/1.0.0-rc1-final": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.Configuration.Abstractions": "1.0.0-rc1-final",
-          "Microsoft.Extensions.Configuration.Binder": "1.0.0-rc1-final",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0-rc1-final"
-        },
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/net451/Microsoft.Extensions.OptionsModel.dll": {}
-        },
-        "runtime": {
-          "lib/net451/Microsoft.Extensions.OptionsModel.dll": {}
-        }
-      },
-      "Microsoft.Extensions.Primitives/1.0.0-rc1-final": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/net451/Microsoft.Extensions.Primitives.dll": {}
-        },
-        "runtime": {
-          "lib/net451/Microsoft.Extensions.Primitives.dll": {}
-        }
-      },
-      "Microsoft.Extensions.WebEncoders.Core/1.0.0-rc1-final": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/net451/Microsoft.Extensions.WebEncoders.Core.dll": {}
-        },
-        "runtime": {
-          "lib/net451/Microsoft.Extensions.WebEncoders.Core.dll": {}
-        }
-      },
-      "Microsoft.Net.Http.Headers/1.0.0-rc1-final": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/net451/Microsoft.Net.Http.Headers.dll": {}
-        },
-        "runtime": {
-          "lib/net451/Microsoft.Net.Http.Headers.dll": {}
-        }
-      },
-      "Microsoft.Owin/3.0.1": {
-        "type": "package",
-        "dependencies": {
-          "Owin": "1.0.0"
-        },
-        "compile": {
-          "lib/net45/Microsoft.Owin.dll": {}
-        },
-        "runtime": {
-          "lib/net45/Microsoft.Owin.dll": {}
-        }
-      },
-      "Microsoft.Owin.Security/2.1.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Owin": "2.1.0",
-          "Owin": "1.0.0"
-        },
-        "compile": {
-          "lib/net45/Microsoft.Owin.Security.dll": {}
-        },
-        "runtime": {
-          "lib/net45/Microsoft.Owin.Security.dll": {}
-        }
-      },
-      "Microsoft.Owin.Security.Cookies/2.1.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Owin": "2.1.0",
-          "Microsoft.Owin.Security": "2.1.0",
-          "Owin": "1.0.0"
-        },
-        "compile": {
-          "lib/net45/Microsoft.Owin.Security.Cookies.dll": {}
-        },
-        "runtime": {
-          "lib/net45/Microsoft.Owin.Security.Cookies.dll": {}
-        }
-      },
-      "Microsoft.Owin.Security.OAuth/2.1.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Owin": "2.1.0",
-          "Microsoft.Owin.Security": "2.1.0",
-          "Newtonsoft.Json": "4.5.11",
-          "Owin": "1.0.0"
-        },
-        "compile": {
-          "lib/net45/Microsoft.Owin.Security.OAuth.dll": {}
-        },
-        "runtime": {
-          "lib/net45/Microsoft.Owin.Security.OAuth.dll": {}
-        }
-      },
-      "Newtonsoft.Json/4.5.11": {
-        "type": "package",
-        "compile": {
-          "lib/net40/Newtonsoft.Json.dll": {}
-        },
-        "runtime": {
-          "lib/net40/Newtonsoft.Json.dll": {}
-        }
-      },
-      "odac.x64/12.1.2400": {
-        "type": "package",
-        "compile": {
-          "lib/net40/Oracle.DataAccess.dll": {}
-        },
-        "runtime": {
-          "lib/net40/Oracle.DataAccess.dll": {}
-        }
-      },
-      "Owin/1.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/net40/Owin.dll": {}
-        },
-        "runtime": {
-          "lib/net40/Owin.dll": {}
-        }
-      },
-      "ServiceProviderExtensions/1.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/net40/ServiceProviderExtensions.dll": {}
-        },
-        "runtime": {
-          "lib/net40/ServiceProviderExtensions.dll": {}
+          "net451/Kit.Kernel.dll": {}
         }
       }
     }
   },
   "libraries": {
-    "Kit.Kernel/1.0.0": {
-      "type": "project",
-      "path": "../Kit.Kernel/project.json"
-    },
     "Castle.Core/3.3.3": {
-      "type": "package",
       "sha512": "tvVrLbHhtAGubUUDbEkH9JlivdlJOTI25u3hlyHpPxuJdTVi/yVQKWCYvGpafGPm7G1ibdWj4brqhtSQkAmN+g==",
+      "type": "package",
       "files": [
         "ASL - Apache Software Foundation License.txt",
         "BreakingChanges.txt",
@@ -1203,6 +391,7 @@
         "Castle.Core.3.3.3.nupkg.sha512",
         "Castle.Core.nuspec",
         "Changes.txt",
+        "License.txt",
         "lib/net35/Castle.Core.dll",
         "lib/net35/Castle.Core.xml",
         "lib/net40-client/Castle.Core.dll",
@@ -1213,321 +402,309 @@
         "lib/sl4/Castle.Core.xml",
         "lib/sl5/Castle.Core.dll",
         "lib/sl5/Castle.Core.xml",
-        "License.txt",
         "readme.txt"
       ]
     },
-    "DryIoc.Dnx/2.2.2-rc1": {
+    "DryIoc/2.6.2": {
+      "sha512": "VIvI123HSbLDlJR4+GDX8ueWXnb0/sTc5MaXqwZYiLfyIThdbstGMJ3uSwpZTnI7sO/5Cvh9X1AhOkIGXHGFUA==",
       "type": "package",
-      "sha512": "oREscWEu5OK3UJrwThWH1WU/+uhCYOVkNCSJHpxy23kD4QDFsy23kkdgrTsm2DHh7qigqz/OG3rzKEkVSPH2MQ==",
+      "path": "DryIoc/2.6.2",
       "files": [
-        "DryIoc.Dnx.2.2.2-rc1.nupkg",
-        "DryIoc.Dnx.2.2.2-rc1.nupkg.sha512",
-        "DryIoc.Dnx.nuspec",
-        "lib/dnx451/DryIoc.Dnx.dll",
-        "lib/dnx451/DryIoc.Dnx.xml",
-        "lib/dotnet5.4/DryIoc.Dnx.dll",
-        "lib/dotnet5.4/DryIoc.Dnx.xml"
-      ]
-    },
-    "DryIoc.Dnx.DependencyInjection/1.4.0-rc1": {
-      "type": "package",
-      "sha512": "aEdxdX+/1OIv++ya7i78W2q5zsV7sN8UF0B7i3p7O68PH3lh/RrD8rh4D8kwanH/kxi+oHgON2+jko5F6WqK/Q==",
-      "files": [
-        "DryIoc.Dnx.DependencyInjection.1.4.0-rc1.nupkg",
-        "DryIoc.Dnx.DependencyInjection.1.4.0-rc1.nupkg.sha512",
-        "DryIoc.Dnx.DependencyInjection.nuspec",
-        "lib/dnx451/DryIoc.Dnx.DependencyInjection.dll",
-        "lib/dnx451/DryIoc.Dnx.DependencyInjection.xml",
-        "lib/dotnet5.4/DryIoc.Dnx.DependencyInjection.dll",
-        "lib/dotnet5.4/DryIoc.Dnx.DependencyInjection.xml"
+        "DryIoc.2.6.2.nupkg.sha512",
+        "DryIoc.nuspec",
+        "LICENSE.txt",
+        "content/net35/DryIoc/Container.cs",
+        "content/net35/DryIoc/FactoryCompiler.cs",
+        "content/net35/DryIoc/ImTools.cs",
+        "content/net35/DryIoc/Ported-net40.cs",
+        "content/net35/DryIoc/Ported-net45.cs",
+        "content/net40/DryIoc/Container.cs",
+        "content/net40/DryIoc/FactoryCompiler.cs",
+        "content/net40/DryIoc/ImTools.cs",
+        "content/net40/DryIoc/Ported-net45.cs",
+        "content/net45/DryIoc/AsyncExecutionFlowScopeContext.cs",
+        "content/net45/DryIoc/Container.cs",
+        "content/net45/DryIoc/FactoryCompiler.cs",
+        "content/net45/DryIoc/ImTools.cs",
+        "content/portable-net4+sl5+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/DryIoc/Container.cs",
+        "content/portable-net4+sl5+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/DryIoc/ImTools.cs",
+        "content/portable-net4+sl5+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/DryIoc/Ported-net45.cs",
+        "content/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/DryIoc/Container.cs",
+        "content/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/DryIoc/ImTools.cs",
+        "contentFiles/cs/any/Container.cs",
+        "contentFiles/cs/any/ImTools.cs"
       ]
     },
     "EntityFramework/6.1.3": {
-      "type": "package",
-      "serviceable": true,
       "sha512": "2xzFHAF3VVdmTR3//MygtQpwfbDjeaq+nQwCcokLzen7MKHOojPaxNPQPa4diHY1QtcR7zlHAJHNRqPB7W2Syw==",
+      "type": "package",
       "files": [
-        "content/App.config.transform",
-        "content/Web.config.transform",
         "EntityFramework.6.1.3.nupkg",
         "EntityFramework.6.1.3.nupkg.sha512",
         "EntityFramework.nuspec",
-        "lib/net40/EntityFramework.dll",
+        "content/App.config.transform",
+        "content/Web.config.transform",
         "lib/net40/EntityFramework.SqlServer.dll",
         "lib/net40/EntityFramework.SqlServer.xml",
+        "lib/net40/EntityFramework.dll",
         "lib/net40/EntityFramework.xml",
-        "lib/net45/EntityFramework.dll",
         "lib/net45/EntityFramework.SqlServer.dll",
         "lib/net45/EntityFramework.SqlServer.xml",
+        "lib/net45/EntityFramework.dll",
         "lib/net45/EntityFramework.xml",
-        "tools/about_EntityFramework.help.txt",
-        "tools/EntityFramework.PowerShell.dll",
         "tools/EntityFramework.PowerShell.Utility.dll",
+        "tools/EntityFramework.PowerShell.dll",
         "tools/EntityFramework.psd1",
         "tools/EntityFramework.psm1",
+        "tools/about_EntityFramework.help.txt",
         "tools/init.ps1",
         "tools/install.ps1",
         "tools/migrate.exe"
       ]
     },
     "Mapster/2.3.0": {
-      "type": "package",
       "sha512": "gLOsLTWNHoD7mRXOwcEAOXlq10kOQF3RNAOLeIfm6RGPyhLF6Hqrc/YWMLTHetaoLDsIYFE/rxXExpjbePG5YA==",
+      "type": "package",
       "files": [
+        "Mapster.2.3.0.nupkg",
+        "Mapster.2.3.0.nupkg.sha512",
+        "Mapster.nuspec",
         "lib/dotnet5.4/Mapster.dll",
         "lib/dotnet5.4/Mapster.xml",
         "lib/net40/Mapster.dll",
         "lib/net40/Mapster.xml",
         "lib/net45/Mapster.dll",
-        "lib/net45/Mapster.xml",
-        "Mapster.2.3.0.nupkg",
-        "Mapster.2.3.0.nupkg.sha512",
-        "Mapster.nuspec"
+        "lib/net45/Mapster.xml"
       ]
     },
     "Microsoft.AspNet.Http.Abstractions/1.0.0-rc1-final": {
-      "type": "package",
-      "serviceable": true,
       "sha512": "sfzc1WJMl8wGCF+rChVfJ7otT6tTv24RNXUej2r8tlQ2RDNnAozYyGb0SCW2mxpHrC31On99Wt0rksgF0c2WUw==",
+      "type": "package",
       "files": [
+        "Microsoft.AspNet.Http.Abstractions.1.0.0-rc1-final.nupkg",
+        "Microsoft.AspNet.Http.Abstractions.1.0.0-rc1-final.nupkg.sha512",
+        "Microsoft.AspNet.Http.Abstractions.nuspec",
         "lib/dotnet5.4/Microsoft.AspNet.Http.Abstractions.dll",
         "lib/dotnet5.4/Microsoft.AspNet.Http.Abstractions.xml",
         "lib/net451/Microsoft.AspNet.Http.Abstractions.dll",
-        "lib/net451/Microsoft.AspNet.Http.Abstractions.xml",
-        "Microsoft.AspNet.Http.Abstractions.1.0.0-rc1-final.nupkg",
-        "Microsoft.AspNet.Http.Abstractions.1.0.0-rc1-final.nupkg.sha512",
-        "Microsoft.AspNet.Http.Abstractions.nuspec"
+        "lib/net451/Microsoft.AspNet.Http.Abstractions.xml"
       ]
     },
     "Microsoft.AspNet.Http.Extensions/1.0.0-rc1-final": {
-      "type": "package",
-      "serviceable": true,
       "sha512": "rsjbxD9W6NfqP0WNHMRyetIh6ZoKRbK1ea0V5xWdVAx53WdvgBy0HmkSwXt506+xU65jjZP19F4Ua4YjZdPHfQ==",
+      "type": "package",
       "files": [
+        "Microsoft.AspNet.Http.Extensions.1.0.0-rc1-final.nupkg",
+        "Microsoft.AspNet.Http.Extensions.1.0.0-rc1-final.nupkg.sha512",
+        "Microsoft.AspNet.Http.Extensions.nuspec",
         "lib/dotnet5.4/Microsoft.AspNet.Http.Extensions.dll",
         "lib/dotnet5.4/Microsoft.AspNet.Http.Extensions.xml",
         "lib/net451/Microsoft.AspNet.Http.Extensions.dll",
-        "lib/net451/Microsoft.AspNet.Http.Extensions.xml",
-        "Microsoft.AspNet.Http.Extensions.1.0.0-rc1-final.nupkg",
-        "Microsoft.AspNet.Http.Extensions.1.0.0-rc1-final.nupkg.sha512",
-        "Microsoft.AspNet.Http.Extensions.nuspec"
+        "lib/net451/Microsoft.AspNet.Http.Extensions.xml"
       ]
     },
     "Microsoft.AspNet.Http.Features/1.0.0-rc1-final": {
-      "type": "package",
-      "serviceable": true,
       "sha512": "WlscfdAvN8XaaK1iv1Iewp5emei7+0SlXNkUh7kMJpeaS6K0GhwNmwqZR6VrT1oN+Maw98nEONHS34/suqQwOA==",
+      "type": "package",
       "files": [
+        "Microsoft.AspNet.Http.Features.1.0.0-rc1-final.nupkg",
+        "Microsoft.AspNet.Http.Features.1.0.0-rc1-final.nupkg.sha512",
+        "Microsoft.AspNet.Http.Features.nuspec",
         "lib/dotnet5.4/Microsoft.AspNet.Http.Features.dll",
         "lib/dotnet5.4/Microsoft.AspNet.Http.Features.xml",
         "lib/net451/Microsoft.AspNet.Http.Features.dll",
-        "lib/net451/Microsoft.AspNet.Http.Features.xml",
-        "Microsoft.AspNet.Http.Features.1.0.0-rc1-final.nupkg",
-        "Microsoft.AspNet.Http.Features.1.0.0-rc1-final.nupkg.sha512",
-        "Microsoft.AspNet.Http.Features.nuspec"
+        "lib/net451/Microsoft.AspNet.Http.Features.xml"
       ]
     },
     "Microsoft.AspNet.Identity.Core/2.2.1": {
-      "type": "package",
-      "serviceable": true,
       "sha512": "jjurNglpmcv0SLBd4Fmar8ZoJ2yqfTf6iuP3p8wVH7Nvanfo8l3qTBzq3qRQz2BQlb6iXJiDWPjcnIImVz512g==",
+      "type": "package",
       "files": [
-        "lib/net45/Microsoft.AspNet.Identity.Core.dll",
-        "lib/net45/Microsoft.AspNet.Identity.Core.xml",
         "Microsoft.AspNet.Identity.Core.2.2.1.nupkg",
         "Microsoft.AspNet.Identity.Core.2.2.1.nupkg.sha512",
-        "Microsoft.AspNet.Identity.Core.nuspec"
+        "Microsoft.AspNet.Identity.Core.nuspec",
+        "lib/net45/Microsoft.AspNet.Identity.Core.dll",
+        "lib/net45/Microsoft.AspNet.Identity.Core.xml"
       ]
     },
     "Microsoft.AspNet.Identity.Owin/2.2.1": {
-      "type": "package",
-      "serviceable": true,
       "sha512": "Cz/dqC85+6bgPj9Mt1qGLJ+v8HdTqXTMe1ms4e8pzPXJjDJw3DK7XtimtDtWwiDs63vnIDgy195TByV9wxEwjA==",
+      "type": "package",
       "files": [
-        "lib/net45/Microsoft.AspNet.Identity.Owin.dll",
-        "lib/net45/Microsoft.AspNet.Identity.Owin.xml",
         "Microsoft.AspNet.Identity.Owin.2.2.1.nupkg",
         "Microsoft.AspNet.Identity.Owin.2.2.1.nupkg.sha512",
-        "Microsoft.AspNet.Identity.Owin.nuspec"
+        "Microsoft.AspNet.Identity.Owin.nuspec",
+        "lib/net45/Microsoft.AspNet.Identity.Owin.dll",
+        "lib/net45/Microsoft.AspNet.Identity.Owin.xml"
       ]
     },
     "Microsoft.Extensions.Configuration/1.0.0-rc1-final": {
-      "type": "package",
-      "serviceable": true,
       "sha512": "2ayWzqMVGWjr8o8bOSnIsyQbi9sLz9Ya8+YM+9tM/ivSnLHuN7TNHNfJv4jTyRZvoOafdh5Ivlc/OdmsZPXlQQ==",
+      "type": "package",
       "files": [
+        "Microsoft.Extensions.Configuration.1.0.0-rc1-final.nupkg",
+        "Microsoft.Extensions.Configuration.1.0.0-rc1-final.nupkg.sha512",
+        "Microsoft.Extensions.Configuration.nuspec",
         "lib/dotnet5.4/Microsoft.Extensions.Configuration.dll",
         "lib/dotnet5.4/Microsoft.Extensions.Configuration.xml",
         "lib/net451/Microsoft.Extensions.Configuration.dll",
         "lib/net451/Microsoft.Extensions.Configuration.xml",
         "lib/netcore50/Microsoft.Extensions.Configuration.dll",
-        "lib/netcore50/Microsoft.Extensions.Configuration.xml",
-        "Microsoft.Extensions.Configuration.1.0.0-rc1-final.nupkg",
-        "Microsoft.Extensions.Configuration.1.0.0-rc1-final.nupkg.sha512",
-        "Microsoft.Extensions.Configuration.nuspec"
+        "lib/netcore50/Microsoft.Extensions.Configuration.xml"
       ]
     },
     "Microsoft.Extensions.Configuration.Abstractions/1.0.0-rc1-final": {
-      "type": "package",
-      "serviceable": true,
       "sha512": "xA7ObOlIswcx2qakv69kz0pnBizFJrmwxRxJyjPOHWfevF4W+OdolZsbKOc12kY7y5upqhAvNGWTblffMvADHA==",
+      "type": "package",
       "files": [
+        "Microsoft.Extensions.Configuration.Abstractions.1.0.0-rc1-final.nupkg",
+        "Microsoft.Extensions.Configuration.Abstractions.1.0.0-rc1-final.nupkg.sha512",
+        "Microsoft.Extensions.Configuration.Abstractions.nuspec",
         "lib/dotnet5.4/Microsoft.Extensions.Configuration.Abstractions.dll",
         "lib/dotnet5.4/Microsoft.Extensions.Configuration.Abstractions.xml",
         "lib/net451/Microsoft.Extensions.Configuration.Abstractions.dll",
         "lib/net451/Microsoft.Extensions.Configuration.Abstractions.xml",
         "lib/netcore50/Microsoft.Extensions.Configuration.Abstractions.dll",
-        "lib/netcore50/Microsoft.Extensions.Configuration.Abstractions.xml",
-        "Microsoft.Extensions.Configuration.Abstractions.1.0.0-rc1-final.nupkg",
-        "Microsoft.Extensions.Configuration.Abstractions.1.0.0-rc1-final.nupkg.sha512",
-        "Microsoft.Extensions.Configuration.Abstractions.nuspec"
+        "lib/netcore50/Microsoft.Extensions.Configuration.Abstractions.xml"
       ]
     },
     "Microsoft.Extensions.Configuration.Binder/1.0.0-rc1-final": {
-      "type": "package",
-      "serviceable": true,
       "sha512": "tuIi7cRq6lbpCybL+z9vamz/KbM+nN9nyJ2Id5bKCdxKDNMnKb9PdMxJ+0DHc8p6fP00PyQucYuN5EpxsYrX6Q==",
+      "type": "package",
       "files": [
+        "Microsoft.Extensions.Configuration.Binder.1.0.0-rc1-final.nupkg",
+        "Microsoft.Extensions.Configuration.Binder.1.0.0-rc1-final.nupkg.sha512",
+        "Microsoft.Extensions.Configuration.Binder.nuspec",
         "lib/dotnet5.4/Microsoft.Extensions.Configuration.Binder.dll",
         "lib/dotnet5.4/Microsoft.Extensions.Configuration.Binder.xml",
         "lib/net451/Microsoft.Extensions.Configuration.Binder.dll",
         "lib/net451/Microsoft.Extensions.Configuration.Binder.xml",
         "lib/netcore50/Microsoft.Extensions.Configuration.Binder.dll",
-        "lib/netcore50/Microsoft.Extensions.Configuration.Binder.xml",
-        "Microsoft.Extensions.Configuration.Binder.1.0.0-rc1-final.nupkg",
-        "Microsoft.Extensions.Configuration.Binder.1.0.0-rc1-final.nupkg.sha512",
-        "Microsoft.Extensions.Configuration.Binder.nuspec"
+        "lib/netcore50/Microsoft.Extensions.Configuration.Binder.xml"
       ]
     },
     "Microsoft.Extensions.DependencyInjection.Abstractions/1.0.0-rc1-final": {
-      "type": "package",
-      "serviceable": true,
       "sha512": "MUKexXAsRZ55C7YZ26ShePZgBeW+6FbasxeIVmZ/BZIgiG4uw6yPOdfl9WvTaUL9SFK2sEPcYLatWmLfTpsOAA==",
+      "type": "package",
       "files": [
+        "Microsoft.Extensions.DependencyInjection.Abstractions.1.0.0-rc1-final.nupkg",
+        "Microsoft.Extensions.DependencyInjection.Abstractions.1.0.0-rc1-final.nupkg.sha512",
+        "Microsoft.Extensions.DependencyInjection.Abstractions.nuspec",
         "lib/dotnet5.4/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
         "lib/dotnet5.4/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
         "lib/net451/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
         "lib/net451/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
         "lib/netcore50/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
-        "lib/netcore50/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
-        "Microsoft.Extensions.DependencyInjection.Abstractions.1.0.0-rc1-final.nupkg",
-        "Microsoft.Extensions.DependencyInjection.Abstractions.1.0.0-rc1-final.nupkg.sha512",
-        "Microsoft.Extensions.DependencyInjection.Abstractions.nuspec"
+        "lib/netcore50/Microsoft.Extensions.DependencyInjection.Abstractions.xml"
       ]
     },
     "Microsoft.Extensions.OptionsModel/1.0.0-rc1-final": {
-      "type": "package",
-      "serviceable": true,
       "sha512": "IhK5pNqRgakrwiv5OrB6hv7e6+TZzYqfJr40Qri0Xgi+oXJklNgbA5eHvzZrghdHfqfSqcvLWtWD0ri6e8Eo1w==",
+      "type": "package",
       "files": [
+        "Microsoft.Extensions.OptionsModel.1.0.0-rc1-final.nupkg",
+        "Microsoft.Extensions.OptionsModel.1.0.0-rc1-final.nupkg.sha512",
+        "Microsoft.Extensions.OptionsModel.nuspec",
         "lib/dotnet5.4/Microsoft.Extensions.OptionsModel.dll",
         "lib/dotnet5.4/Microsoft.Extensions.OptionsModel.xml",
         "lib/net451/Microsoft.Extensions.OptionsModel.dll",
         "lib/net451/Microsoft.Extensions.OptionsModel.xml",
         "lib/netcore50/Microsoft.Extensions.OptionsModel.dll",
-        "lib/netcore50/Microsoft.Extensions.OptionsModel.xml",
-        "Microsoft.Extensions.OptionsModel.1.0.0-rc1-final.nupkg",
-        "Microsoft.Extensions.OptionsModel.1.0.0-rc1-final.nupkg.sha512",
-        "Microsoft.Extensions.OptionsModel.nuspec"
+        "lib/netcore50/Microsoft.Extensions.OptionsModel.xml"
       ]
     },
     "Microsoft.Extensions.Primitives/1.0.0-rc1-final": {
-      "type": "package",
-      "serviceable": true,
       "sha512": "oHWqBARJveyM7LctuqQqvsTC58hxoq0gGnHr6Qsxie71LIkZpfE21IklhSLOsqmv4QIpes/G6k1vZbAQ+cC/nw==",
+      "type": "package",
       "files": [
+        "Microsoft.Extensions.Primitives.1.0.0-rc1-final.nupkg",
+        "Microsoft.Extensions.Primitives.1.0.0-rc1-final.nupkg.sha512",
+        "Microsoft.Extensions.Primitives.nuspec",
         "lib/dotnet5.4/Microsoft.Extensions.Primitives.dll",
         "lib/dotnet5.4/Microsoft.Extensions.Primitives.xml",
         "lib/net451/Microsoft.Extensions.Primitives.dll",
         "lib/net451/Microsoft.Extensions.Primitives.xml",
         "lib/netcore50/Microsoft.Extensions.Primitives.dll",
-        "lib/netcore50/Microsoft.Extensions.Primitives.xml",
-        "Microsoft.Extensions.Primitives.1.0.0-rc1-final.nupkg",
-        "Microsoft.Extensions.Primitives.1.0.0-rc1-final.nupkg.sha512",
-        "Microsoft.Extensions.Primitives.nuspec"
+        "lib/netcore50/Microsoft.Extensions.Primitives.xml"
       ]
     },
     "Microsoft.Extensions.WebEncoders.Core/1.0.0-rc1-final": {
-      "type": "package",
-      "serviceable": true,
       "sha512": "wt47w3Zu7JvuD7CfRSCaz0IZL5EzpuzicRm6Qcidteb2TVeB98Psg7YGiwIBeYB1b52YFTBgqC+ySKk/GRhy2A==",
+      "type": "package",
       "files": [
+        "Microsoft.Extensions.WebEncoders.Core.1.0.0-rc1-final.nupkg",
+        "Microsoft.Extensions.WebEncoders.Core.1.0.0-rc1-final.nupkg.sha512",
+        "Microsoft.Extensions.WebEncoders.Core.nuspec",
         "lib/dotnet5.4/Microsoft.Extensions.WebEncoders.Core.dll",
         "lib/dotnet5.4/Microsoft.Extensions.WebEncoders.Core.xml",
         "lib/net451/Microsoft.Extensions.WebEncoders.Core.dll",
-        "lib/net451/Microsoft.Extensions.WebEncoders.Core.xml",
-        "Microsoft.Extensions.WebEncoders.Core.1.0.0-rc1-final.nupkg",
-        "Microsoft.Extensions.WebEncoders.Core.1.0.0-rc1-final.nupkg.sha512",
-        "Microsoft.Extensions.WebEncoders.Core.nuspec"
+        "lib/net451/Microsoft.Extensions.WebEncoders.Core.xml"
       ]
     },
     "Microsoft.Net.Http.Headers/1.0.0-rc1-final": {
-      "type": "package",
-      "serviceable": true,
       "sha512": "Y10hkmHQZLieW3J6J+vTiq86vifmJ7Vc2zrwNR349oAaUGjTHL0ws6rqHn0JDIcawBna4AE3OBNsL9vuZuE8bw==",
+      "type": "package",
       "files": [
+        "Microsoft.Net.Http.Headers.1.0.0-rc1-final.nupkg",
+        "Microsoft.Net.Http.Headers.1.0.0-rc1-final.nupkg.sha512",
+        "Microsoft.Net.Http.Headers.nuspec",
         "lib/dotnet5.4/Microsoft.Net.Http.Headers.dll",
         "lib/dotnet5.4/Microsoft.Net.Http.Headers.xml",
         "lib/net451/Microsoft.Net.Http.Headers.dll",
-        "lib/net451/Microsoft.Net.Http.Headers.xml",
-        "Microsoft.Net.Http.Headers.1.0.0-rc1-final.nupkg",
-        "Microsoft.Net.Http.Headers.1.0.0-rc1-final.nupkg.sha512",
-        "Microsoft.Net.Http.Headers.nuspec"
+        "lib/net451/Microsoft.Net.Http.Headers.xml"
       ]
     },
     "Microsoft.Owin/3.0.1": {
-      "type": "package",
-      "serviceable": true,
       "sha512": "64yZsGN9uRnXNVAyAT4F6KWmdDUJ6yX4uqzxKTdGANKH1oMt0IKZ7THRRa3mXIOo8iSu4tq/DCBUycUY9pXZzw==",
+      "type": "package",
       "files": [
-        "lib/net45/Microsoft.Owin.dll",
-        "lib/net45/Microsoft.Owin.XML",
         "Microsoft.Owin.3.0.1.nupkg",
         "Microsoft.Owin.3.0.1.nupkg.sha512",
-        "Microsoft.Owin.nuspec"
+        "Microsoft.Owin.nuspec",
+        "lib/net45/Microsoft.Owin.XML",
+        "lib/net45/Microsoft.Owin.dll"
       ]
     },
     "Microsoft.Owin.Security/2.1.0": {
-      "type": "package",
-      "serviceable": true,
       "sha512": "4n1V0p+O6W1L0xHUM8Cjp2Y+MmmUkiCZv6PvRNIDCJD9zlerBJa2HECo9lUiWC+KuasQJ3QxB1FmipNBxdXXIQ==",
+      "type": "package",
       "files": [
-        "lib/net45/Microsoft.Owin.Security.dll",
-        "lib/net45/Microsoft.Owin.Security.XML",
         "Microsoft.Owin.Security.2.1.0.nupkg",
         "Microsoft.Owin.Security.2.1.0.nupkg.sha512",
-        "Microsoft.Owin.Security.nuspec"
+        "Microsoft.Owin.Security.nuspec",
+        "lib/net45/Microsoft.Owin.Security.XML",
+        "lib/net45/Microsoft.Owin.Security.dll"
       ]
     },
     "Microsoft.Owin.Security.Cookies/2.1.0": {
-      "type": "package",
-      "serviceable": true,
       "sha512": "P+3cjwBpUDGF+5s+oMfyySG0qvLqb71M+1q9jGSsaF0qCg14ix0qF5pEV6IqhGUEgV40E/1K4hDcWjS+essVoQ==",
+      "type": "package",
       "files": [
-        "lib/net45/Microsoft.Owin.Security.Cookies.dll",
-        "lib/net45/Microsoft.Owin.Security.Cookies.xml",
         "Microsoft.Owin.Security.Cookies.2.1.0.nupkg",
         "Microsoft.Owin.Security.Cookies.2.1.0.nupkg.sha512",
-        "Microsoft.Owin.Security.Cookies.nuspec"
+        "Microsoft.Owin.Security.Cookies.nuspec",
+        "lib/net45/Microsoft.Owin.Security.Cookies.dll",
+        "lib/net45/Microsoft.Owin.Security.Cookies.xml"
       ]
     },
     "Microsoft.Owin.Security.OAuth/2.1.0": {
-      "type": "package",
-      "serviceable": true,
       "sha512": "jR/LoeV02Cne9IV6fG4L9KR+uofPLokq6sxGy4bBDxLAAmZ35y0H/NiV6riqXSee6PypNAcJzTytJpYb0xK6Hw==",
+      "type": "package",
       "files": [
-        "lib/net45/Microsoft.Owin.Security.OAuth.dll",
-        "lib/net45/Microsoft.Owin.Security.OAuth.XML",
         "Microsoft.Owin.Security.OAuth.2.1.0.nupkg",
         "Microsoft.Owin.Security.OAuth.2.1.0.nupkg.sha512",
-        "Microsoft.Owin.Security.OAuth.nuspec"
+        "Microsoft.Owin.Security.OAuth.nuspec",
+        "lib/net45/Microsoft.Owin.Security.OAuth.XML",
+        "lib/net45/Microsoft.Owin.Security.OAuth.dll"
       ]
     },
     "Newtonsoft.Json/4.5.11": {
-      "type": "package",
       "sha512": "IZ0vmfvcJrUONMIG3St+1EzSlnHc9qFY6/FU2YMHNXaGtdm6sSwIUAdXPAw1k3IwpxjVmZ0w9Pzszd8GkyrpFA==",
+      "type": "package",
       "files": [
+        "Newtonsoft.Json.4.5.11.nupkg",
+        "Newtonsoft.Json.4.5.11.nupkg.sha512",
+        "Newtonsoft.Json.nuspec",
         "lib/net20/Newtonsoft.Json.dll",
         "lib/net20/Newtonsoft.Json.xml",
         "lib/net35/Newtonsoft.Json.dll",
@@ -1538,47 +715,49 @@
         "lib/portable-net40+sl4+wp7+win8/Newtonsoft.Json.xml",
         "lib/sl3-wp/Newtonsoft.Json.dll",
         "lib/sl3-wp/Newtonsoft.Json.xml",
-        "lib/sl4/Newtonsoft.Json.dll",
-        "lib/sl4/Newtonsoft.Json.xml",
         "lib/sl4-windowsphone71/Newtonsoft.Json.dll",
         "lib/sl4-windowsphone71/Newtonsoft.Json.xml",
+        "lib/sl4/Newtonsoft.Json.dll",
+        "lib/sl4/Newtonsoft.Json.xml",
         "lib/winrt45/Newtonsoft.Json.dll",
-        "lib/winrt45/Newtonsoft.Json.xml",
-        "Newtonsoft.Json.4.5.11.nupkg",
-        "Newtonsoft.Json.4.5.11.nupkg.sha512",
-        "Newtonsoft.Json.nuspec"
+        "lib/winrt45/Newtonsoft.Json.xml"
       ]
     },
-    "odac.x64/12.1.2400": {
+    "odac.x86/12.1.2400": {
+      "sha512": "6SgDoenT1vUxKgjXWodDlIgbMR34hidzMXNuWz5x5cIjKs9qn2r42dbxJo0R81cUyrvfWwaf5rxd+eXcRVsZMg==",
       "type": "package",
-      "sha512": "UwqnawDGF3Vf/f0Vtxf/IZ7QOaxwktyv5TiZ0iFiPbW96PLhGEGdzqgPBFspCr3yzo3FlhbZcdyl9jDVFz1pqg==",
       "files": [
         "build/OraOps12.dll",
         "lib/net40/Oracle.DataAccess.dll",
-        "odac.x64.12.1.2400.nupkg",
-        "odac.x64.12.1.2400.nupkg.sha512",
-        "odac.x64.nuspec"
+        "odac.x86.12.1.2400.nupkg",
+        "odac.x86.12.1.2400.nupkg.sha512",
+        "odac.x86.nuspec"
       ]
     },
     "Owin/1.0.0": {
-      "type": "package",
       "sha512": "OseTFniKmyp76mEzOBwIKGBRS5eMoYNkMKaMXOpxx9jv88+b6mh1rSaw43vjBOItNhaLFG3d0a20PfHyibH5sw==",
+      "type": "package",
       "files": [
-        "lib/net40/Owin.dll",
         "OWIN.1.0.0.nupkg",
         "OWIN.1.0.0.nupkg.sha512",
-        "OWIN.nuspec"
+        "OWIN.nuspec",
+        "lib/net40/Owin.dll"
       ]
     },
     "ServiceProviderExtensions/1.0.0": {
-      "type": "package",
       "sha512": "Sk++yxuJuS2MMPQHB+pR4l/Q1jn7kb1oYS70FDIgG5vd57bhvJRQIHB1lQprE8K0yhnzPLu9WwtY2ER/cIKZyg==",
+      "type": "package",
       "files": [
-        "lib/net40/ServiceProviderExtensions.dll",
         "ServiceProviderExtensions.1.0.0.nupkg",
         "ServiceProviderExtensions.1.0.0.nupkg.sha512",
-        "ServiceProviderExtensions.nuspec"
+        "ServiceProviderExtensions.nuspec",
+        "lib/net40/ServiceProviderExtensions.dll"
       ]
+    },
+    "Kit.Kernel/1.0.0": {
+      "type": "project",
+      "path": "../Kit.Kernel/project.json",
+      "msbuildProject": "../Kit.Kernel/Kit.Kernel.xproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -1586,12 +765,14 @@
       "EntityFramework >= 6.1.3",
       "Kit.Kernel >= 1.0.0-*",
       "Microsoft.Owin >= 3.0.1",
-      "odac.x64 >= 12.1.2400"
+      "odac.x86 >= 12.1.2400"
     ],
-    "DNX,Version=v4.5.1": [
-      "fx/System.Data >= 4.0.0",
-      "fx/System.configuration >= 4.0.0",
-      "fx/System.Xml >= 4.0.0"
+    ".NETFramework,Version=v4.5.1": [
+      "System.Configuration >= 4.0.0",
+      "System.Data >= 4.0.0",
+      "System.Xml >= 4.0.0"
     ]
-  }
+  },
+  "tools": {},
+  "projectFileToolGroups": {}
 }
