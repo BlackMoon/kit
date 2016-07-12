@@ -1,23 +1,22 @@
 {
-    "version": "1.0.0-*",
-    "description": "Kit.Kernel Class Library",
     "authors": [ "romanovrv" ],
-
-    "frameworks": {
-        "net452": {
-            "frameworkAssemblies": {               
-                "System.ComponentModel.DataAnnotations": "4.0.0.0"
-            } 
-        }
-    },
-
     "dependencies": {
-        "Castle.Core": "3.3.3",        
+        "Castle.Core": "3.3.3",
         "DryIoc.AspNetCore.DependencyInjection": "1.0.0-rc2",
         "Mapster": "2.3.0",
-        "Microsoft.AspNet.Http.Extensions": "1.0.0-rc1-final",
+        "Microsoft.AspNetCore.Http.Extensions": "1.0.0",
         "Microsoft.AspNet.Identity.Owin": "2.2.1",
         "Microsoft.Extensions.Options": "1.0.0",
         "ServiceProviderExtensions": "1.0.0"
-    }
+    },
+    "description": "Kit.Kernel Class Library",
+
+    "frameworks": {        
+        "net452": {
+            "frameworkAssemblies": {
+                "System.ComponentModel.DataAnnotations": "4.0.0.0"
+            }
+        }
+    },
+    "version": "1.0.0-*"
 }
