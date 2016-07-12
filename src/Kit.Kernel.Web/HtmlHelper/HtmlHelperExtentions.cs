@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Text;
+using System.Text.Encodings.Web;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.Extensions.WebEncoders;
 
 namespace Kit.Kernel.Web.HtmlHelper
 {
@@ -35,7 +35,7 @@ namespace Kit.Kernel.Web.HtmlHelper
                 link.InnerHtml.AppendHtml(sb.ToString());
 
                 var sw = new System.IO.StringWriter();
-                //link.WriteTo(sw, new HtmlEncoder());
+                link.WriteTo(sw, HtmlEncoder.Default);
 
                 htmlString = new HtmlString(sw.ToString());
             }
