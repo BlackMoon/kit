@@ -1,6 +1,8 @@
 ﻿using System;
 using Kit.Dal.DbManager;
+using Kit.Dal.Interception;
 using Kit.Kernel.CQRS.Command;
+using Kit.Kernel.Interception.Attribute;
 using Oracle.DataAccess.Client;
 
 namespace Kit.Dal.CQRS.Command.Login

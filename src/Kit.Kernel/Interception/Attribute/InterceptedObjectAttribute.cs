@@ -2,6 +2,10 @@
 
 namespace Kit.Kernel.Interception.Attribute
 {
+    /// <summary>
+    /// Аттрибут-метка для перехватываемого объекта
+    /// <para>[InterceptedObject(InterceptorType = typeof(CacheInterceptor))]</para>
+    /// </summary>
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct)]
     public class InterceptedObjectAttribute : System.Attribute
     {
