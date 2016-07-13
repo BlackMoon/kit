@@ -9,7 +9,8 @@ using Kit.Kernel.Interception.Attribute;
 namespace Kit.Dal.CQRS.Query.TnsNames
 {
     /// <summary>
-    /// Получает список tnsnames из ORACLE_HOME (файл TNSNAMES.ORA)
+    /// Получает список tnsnames из ORACLE_HOME (файл TNSNAMES.ORA).
+    /// <para>Необходимо наличие OraOps.dll</para>
     /// </summary>
     [InterceptedObject(InterceptorType = typeof(CacheInterceptor), ServiceInterfaceType = typeof(IQueryHandler<TnsNamesQuery, TnsNamesQueryResult>))]
     public class TnsNamesQueryHandler : IQueryHandler<TnsNamesQuery, TnsNamesQueryResult>
@@ -20,7 +21,7 @@ namespace Kit.Dal.CQRS.Query.TnsNames
                 throw new ArgumentNullException(nameof(query.ProviderInvariantName));
 
             TnsNamesQueryResult tnsNames = new TnsNamesQueryResult();
-            
+           
             DbProviderFactory factory = DbProviderFactories.GetFactory(query.ProviderInvariantName);
 
             if (factory.CanCreateDataSourceEnumerator)
