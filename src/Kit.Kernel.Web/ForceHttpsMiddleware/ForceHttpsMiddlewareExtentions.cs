@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Builder;
 
 namespace Kit.Kernel.Web.ForceHttpsMiddleware
 {
-    public static class HttpsRedirectMiddlewareExtentions
+    public static class ForceHttpsMiddlewareExtentions
     {
         public static IApplicationBuilder UseForceHttps(this IApplicationBuilder app)
         {
