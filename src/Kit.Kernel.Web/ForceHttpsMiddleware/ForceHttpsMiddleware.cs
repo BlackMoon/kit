@@ -12,7 +12,7 @@ namespace Kit.Kernel.Web.ForceHttpsMiddleware
         {
         }
 
-        public ForceHttpsMiddleware(RequestDelegate next, int securePort) : this(next, new ForceHttpsOptions() { SecurePort = securePort })
+        public ForceHttpsMiddleware(RequestDelegate next, int securePort) : this(next, new ForceHttpsOptions() { Port = securePort })
         {
         }
 
@@ -34,7 +34,7 @@ namespace Kit.Kernel.Web.ForceHttpsMiddleware
                 if (pos == -1)
                     pos = host.Length - 1;
 
-                var httpsUrl = $"https://{host.Substring(0, pos)}:{_options.SecurePort}{request.Path}{request.QueryString}";
+                var httpsUrl = $"https://{host.Substring(0, pos)}:{_options.Port}{request.Path}{request.QueryString}";
                 context.Response.Redirect(httpsUrl);
             }
 

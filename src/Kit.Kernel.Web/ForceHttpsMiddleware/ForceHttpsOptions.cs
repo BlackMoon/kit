@@ -10,7 +10,7 @@ namespace Kit.Kernel.Web.ForceHttpsMiddleware
         /// <summary>
         /// HTTPS port
         /// </summary>
-        public int SecurePort { get; set; } = 443;
+        public int Port { get; set; } = 443;
 
         /// <summary>
         /// Обязятельные url для проверки 
