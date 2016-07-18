@@ -4,6 +4,7 @@ using System.Text;
 using System.Text.Encodings.Web;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace Kit.Kernel.Web.HtmlHelper
 {
@@ -41,6 +42,39 @@ namespace Kit.Kernel.Web.HtmlHelper
             }
             else
                 htmlString = new HtmlString(sb.ToString());
+
+            return htmlString;
+        }
+
+        /// <summary>
+        /// Конвертирует c# строку в js переменную
+        /// </summary>
+        /// <param name="htmlHelper"></param>
+        /// <param name="name">Наименование перменной</param>
+        /// <param name="value">Значение</param>
+        /// <param name="addScriptTags">Добавлять теги &lt;script&gt;&lt;/script&gt;</param>
+        /// <returns></returns>
+        public static HtmlString ValueToJs(this IHtmlHelper htmlHelper, string name, string value, bool addScriptTags = false)
+        {
+            HtmlString htmlString = null;
+            if (!(string.IsNullOrEmpty(name) || string.IsNullOrEmpty(value)))
+            {
+                string line = $"var {name} = '{value}';";
+
+                if (addScriptTags)
+                {
+                    TagBuilder link = new TagBuilder("script");
+                    link.MergeAttribute("type", "text/javascript");
+                    link.InnerHtml.AppendHtml(line);
+
+                    var sw = new System.IO.StringWriter();
+                    link.WriteTo(sw, HtmlEncoder.Default);
+
+                    htmlString = new HtmlString(sw.ToString());
+                }
+                else
+                    htmlString = new HtmlString(line);
+            }
 
             return htmlString;
         }
