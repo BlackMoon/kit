@@ -5,8 +5,8 @@ namespace Kit.Dal.CQRS.Command
     public class SignInCommand : ICommand
     {
         /// <summary>
-        /// Identity Token Id (аутентификация через OpenId)
+        /// Identity ReturnUrl (аутентификация через OpenId)
         /// </summary>
-        public string SignInId { get; set; }
+        public string ReturnUrl { get; set; } = "/";
     }
 }

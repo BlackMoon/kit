@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Kit.Kernel;
-using Kit.Kernel.CQRS.Command;
 
 namespace Kit.Dal.CQRS.Command.Login
 {
@@ -13,7 +12,7 @@ namespace Kit.Dal.CQRS.Command.Login
         [Required(ErrorMessage = "Введите пароль")]
         public string Password { get; set; }
 
-        //[Required(ErrorMessage = "Выберите сервер")]
+        [Required(ErrorMessage = "Выберите сервер")]
         public string DataSource { get; set; }
     }
 }
