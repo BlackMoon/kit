@@ -47,7 +47,7 @@ namespace Kit.Kernel.Web.HtmlHelper
         }
 
         /// <summary>
-        /// Конвертирует c# строку в js переменную
+        /// Конвертирует c# строку в js переменную (var {name} = '{value}';)
         /// </summary>
         /// <param name="htmlHelper"></param>
         /// <param name="name">Наименование перменной</param>

@@ -1,8 +1,4 @@
-﻿using System;
-using Kit.Kernel.CQRS.Job;
-using Kit.Kernel.Web.Configuration;
-using Mapster;
-using Microsoft.Owin.Security.Cookies;
+﻿using Kit.Kernel.CQRS.Job;
 
 namespace Kit.Kernel.Web.Job
 {
@@ -10,10 +6,6 @@ namespace Kit.Kernel.Web.Job
     {
         public void Run()
         {
-            TypeAdapterConfig<CookieAuthenticationConfiguration, CookieAuthenticationOptions>
-                .NewConfig()
-                .IgnoreNullValues(true)
-                .Map(dest => dest.ExpireTimeSpan, src => TimeSpan.FromMinutes(src.TimeOut));
         }
     }
 }
