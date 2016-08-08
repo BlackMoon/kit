@@ -1,23 +1,45 @@
 ﻿using System;
+using Kit.Dal.CQRS.Command.ChangePassword;
+using Kit.Dal.CQRS.Command.Login;
 using Kit.Dal.DbManager;
 using Kit.Kernel.CQRS.Command;
 using Oracle.DataAccess.Client;
 
-namespace Kit.Dal.CQRS.Command.Login
+namespace Kit.Dal.CQRS.Command
 {
-    public class LoginCommandHandlerWithResult : ICommandHandlerWithResult<LoginCommand, LoginCommandResult>
+    public class AuthenticateCommandHandler :
+        ICommandHandlerWithResult<ChangePasswordCommand, LoginCommandResult>,
+        ICommandHandlerWithResult<LoginCommand, LoginCommandResult>
     {
         private readonly IDbManager _dbManager;
-        public LoginCommandHandlerWithResult(IDbManager dbManager)
+        public AuthenticateCommandHandler(IDbManager dbManager)
         {
             _dbManager = dbManager;
+        }
+
+        public LoginCommandResult Execute(ChangePasswordCommand command)
+        {
+            LoginStatus status = LoginStatus.Success;
+            string msg = null;
+
+            try
+            {
+                _dbManager.OpenWithNewPassword(command.NewPassword);
+            }
+            catch (Exception ex)
+            {
+                msg = ex.Message;
+                status = LoginStatus.Failure;
+            }
+
+            return new LoginCommandResult() { Message = msg, Status = status };
         }
 
         public LoginCommandResult Execute(LoginCommand command)
         {
             LoginStatus status = LoginStatus.Success;
             string msg = null;
-            
+
             try
             {
                 _dbManager.Open($"Data Source={command.DataSource};User Id={command.UserName};Password={command.Password}");
