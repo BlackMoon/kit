@@ -32,7 +32,7 @@ namespace Kit.Dal.CQRS.Query.TnsNames
                     DataTable dt = dsenum.GetDataSources();
                     DataRow[] rows = dt.Select(null, "InstanceName", DataViewRowState.CurrentRows);
 
-                    tnsNames.AddRange(rows.Select(row => (string) row["InstanceName"]));
+                    //tnsNames.Items = rows.Select(row => (string)row["InstanceName"]);
                 }
             }
 
