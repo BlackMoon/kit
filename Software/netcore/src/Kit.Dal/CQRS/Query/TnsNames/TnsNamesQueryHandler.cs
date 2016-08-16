@@ -23,7 +23,6 @@ namespace Kit.Dal.CQRS.Query.TnsNames
             TnsNamesQueryResult tnsNames = new TnsNamesQueryResult();
            
             DbProviderFactory factory = DbProviderFactories.GetFactory(query.ProviderInvariantName);
-
             if (factory.CanCreateDataSourceEnumerator)
             {
                 DbDataSourceEnumerator dsenum = factory.CreateDataSourceEnumerator();
@@ -32,7 +31,7 @@ namespace Kit.Dal.CQRS.Query.TnsNames
                     DataTable dt = dsenum.GetDataSources();
                     DataRow[] rows = dt.Select(null, "InstanceName", DataViewRowState.CurrentRows);
 
-                    //tnsNames.Items = rows.Select(row => (string)row["InstanceName"]);
+                    tnsNames.Items = rows.Select(row => (string)row["InstanceName"]);
                 }
             }
 
