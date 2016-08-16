@@ -1,4 +1,6 @@
-﻿namespace Kit.Kernel.Configuration
+﻿using System.Collections.Generic;
+
+namespace Kit.Kernel.Configuration
 {
     public class AppSettings
     {
@@ -10,5 +12,7 @@
         public string Theme { get; set; }
 
         public string Title { get; set; }
+
+        public Dictionary<string, string> ErrorMessages { get; set; }
     }
 }
