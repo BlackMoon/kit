@@ -5,23 +5,29 @@ using Kit.Kernel.CQRS.Query;
 
 namespace Kit.Dal.CQRS.Query.TnsNames
 {
-    public class TnsNamesQueryResult : IEnumerable<string>, IQueryResult
+    public class TnsNamesQueryResult : IReadOnlyCollection<string>, IQueryResult
     {
-        private IEnumerable<string> _items = Enumerable.Empty<string>();
+        private string[] _items = new string[0];
+
+        public int Count => _items.Length;
 
         public IEnumerable<string> Items
         {
-            set { _items = value; } 
+            set
+            {
+                if (value != null)
+                    _items = value.ToArray();
+            }
         }
 
         public IEnumerator<string> GetEnumerator()
         {
-            return _items.GetEnumerator();
+            return _items.AsEnumerable().GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return _items.GetEnumerator();
+            return GetEnumerator();
         }
     }
 }
