@@ -1,28 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using Kit.Kernel.CQRS.Query;
 
 namespace Kit.Dal.CQRS.Query.TnsNames
 {
-    public class TnsNamesQueryResult : IReadOnlyCollection<string>, IQueryResult
+    public class TnsNamesQueryResult : IEnumerable<string>, IQueryResult
     {
-        private string[] _items = new string[0];
-
-        public int Count => _items.Length;
+        private IEnumerable<string> _items = new string[0];
 
         public IEnumerable<string> Items
         {
             set
             {
                 if (value != null)
-                    _items = value.ToArray();
+                    _items = value;
             }
         }
 
         public IEnumerator<string> GetEnumerator()
         {
-            return _items.AsEnumerable().GetEnumerator();
+            return _items.GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
