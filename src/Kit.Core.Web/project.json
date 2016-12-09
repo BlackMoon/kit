@@ -6,11 +6,12 @@
 
     "dependencies": {
         "Kit.Core": "1.0.0-*",
-        "Microsoft.AspNetCore.Mvc.TagHelpers": "1.0.0"
+        "Microsoft.AspNetCore.Mvc": "1.1.0",
+        "Microsoft.AspNetCore.Mvc.TagHelpers": "1.1.0"
     },
 
     "frameworks": {
-        "net452": {
+        "net452": {           
         }
     }
 }
