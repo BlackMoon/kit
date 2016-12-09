@@ -1,0 +1,16 @@
+{
+    "title": "Kit.Core.Web",
+    "version": "1.0.0-*",
+    "description": "Kit.Core.Web Class Library",
+    "authors": [ "romanovrv" ],
+
+    "dependencies": {
+        "Kit.Core": "1.0.0-*",
+        "Microsoft.AspNetCore.Mvc.TagHelpers": "1.0.0"
+    },
+
+    "frameworks": {
+        "net452": {
+        }
+    }
+}
