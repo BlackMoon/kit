@@ -1,13 +1,15 @@
-﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
-// Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
-
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace Kit.Core.Web.Mvc.Filters
 {
     public class SecurityHeadersAttribute : ActionFilterAttribute
     {
+        /// <summary>
+        /// Директива CSP
+        /// </summary>
+        public string Directive { get; set; }
+
         public override void OnResultExecuting(ResultExecutingContext context)
         {
             var result = context.Result;
@@ -19,7 +21,7 @@ namespace Kit.Core.Web.Mvc.Filters
                 if (!context.HttpContext.Response.Headers.ContainsKey("X-Frame-Options"))
                     context.HttpContext.Response.Headers.Add("X-Frame-Options", "SAMEORIGIN");
 
-                string csp = "default-src 'self'";
+                string csp = Directive ?? "default-src 'self'";
                 // once for standards compliant browsers
                 if (!context.HttpContext.Response.Headers.ContainsKey("Content-Security-Policy"))
                     context.HttpContext.Response.Headers.Add("Content-Security-Policy", csp);

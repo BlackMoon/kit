@@ -3,9 +3,7 @@
     "dependencies": {
         "Castle.Core": "3.3.3",
         "DryIoc.AspNetCore.DependencyInjection": "1.0.0-rc2",
-        "Mapster": "2.6.1",
-        "Microsoft.AspNetCore.Http.Extensions": "1.1.0",
-        "Microsoft.AspNet.Identity.Owin": "2.2.1",
+        "Mapster": "2.6.1",        
         "Microsoft.Extensions.Options": "1.1.0",
         "ServiceProviderExtensions": "1.0.0"
     },
@@ -14,7 +12,7 @@
     "frameworks": {        
         "net452": {
             "frameworkAssemblies": {
-                "System.ComponentModel.DataAnnotations": "4.0.0.0"
+                "System.ComponentModel.DataAnnotations": "4.0.0.0"                
             }
         }
     },

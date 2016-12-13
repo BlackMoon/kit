@@ -1,5 +1,4 @@
 ﻿using System.Security.Claims;
-using Microsoft.AspNet.Identity;
 
 namespace Kit.Core.Identity
 {
@@ -11,18 +10,18 @@ namespace Kit.Core.Identity
         /// <summary>
         /// Получить строку соедиинения с БД
         /// </summary>
-        /// <param name="claimsPrincipal"></param>
+        /// <param name="principal"></param>
         /// <returns></returns>
-        public static string GetConnectionString(this ClaimsPrincipal claimsPrincipal)
+        public static string GetConnectionString(this ClaimsPrincipal principal)
         {
             string connectionString = null;
-            ClaimsIdentity ci = claimsPrincipal.Identity as ClaimsIdentity;
+            ClaimsIdentity ci = principal.Identity as ClaimsIdentity;
 
             if (ci != null && ci.IsAuthenticated)
             {
-                string passwd = ci.FindFirstValue(ConnectionStringClaimTypes.Password),
-                       datasource = ci.FindFirstValue(ConnectionStringClaimTypes.DataSource),
-                       user = ci.FindFirstValue(ConnectionStringClaimTypes.UserId);
+                string passwd = principal.FindFirst(ConnectionStringClaimTypes.Password)?.Value,
+                       datasource = principal.FindFirst(ConnectionStringClaimTypes.DataSource)?.Value,
+                       user = principal.FindFirst(ConnectionStringClaimTypes.UserId)?.Value;
 
                 connectionString = $"Data Source={datasource};User Id={user};Password={passwd}";
             }
@@ -33,17 +32,11 @@ namespace Kit.Core.Identity
         /// <summary>
         /// Получить hashCode идентификатора (connectionString + lastlogindate)
         /// </summary>
-        /// <param name="claimsPrincipal"></param>
+        /// <param name="principal"></param>
         /// <returns>int</returns>
-        public static string GetSid(this ClaimsPrincipal claimsPrincipal)
+        public static string GetSid(this ClaimsPrincipal principal)
         {
-            string sid = null;
-
-            ClaimsIdentity ci = claimsPrincipal.Identity as ClaimsIdentity;
-            if (ci != null)
-                sid = ci.FindFirstValue(ClaimTypes.Sid);
-
-            return sid;
+            return principal.FindFirst(ClaimTypes.Sid)?.Value;
         }
     }
 }
