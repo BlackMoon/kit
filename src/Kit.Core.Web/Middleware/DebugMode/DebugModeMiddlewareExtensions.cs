@@ -6,7 +6,7 @@ namespace Kit.Core.Web.Middleware.DebugMode
     {
         public static IApplicationBuilder CheckDebugMode(this IApplicationBuilder app)
         {
-            return app.UseMiddleware<Middleware.DebugMode.DebugModeMiddleware>();
+            return app.UseMiddleware<DebugModeMiddleware>();
         }
     }
 }
