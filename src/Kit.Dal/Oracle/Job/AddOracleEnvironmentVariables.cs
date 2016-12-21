@@ -1,5 +1,4 @@
 ﻿using System;
-using Kit.Dal.Configurations;
 using Kit.Core.CQRS.Job;
 using Microsoft.Extensions.Options;
 
@@ -10,9 +9,9 @@ namespace Kit.Dal.Oracle.Job
     /// </summary>
     public class AddOracleEnvironmentVariables : IStartupJob
     {
-        private readonly OracleEnvironmentSettings _options;
+        private readonly OracleEnvironmentConfiguration _options;
         
-        public AddOracleEnvironmentVariables(IOptions<OracleEnvironmentSettings> options)
+        public AddOracleEnvironmentVariables(IOptions<OracleEnvironmentConfiguration> options)
         {
             _options = options.Value;
         }
