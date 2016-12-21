@@ -1,11 +1,11 @@
 ﻿// ReSharper disable InconsistentNaming
 
-namespace Kit.Dal.Configurations
+namespace Kit.Dal.Oracle
 {
     /// <summary>
     /// Oracle. Настройки среды
     /// </summary>
-    public class OracleEnvironmentSettings
+    public class OracleEnvironmentConfiguration
     {
         public string Oracle_Home { get; set; }
 
