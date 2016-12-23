@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Data;
-using System.Data.Entity;
 
 namespace Kit.Dal.DbManager
 {
@@ -15,14 +14,16 @@ namespace Kit.Dal.DbManager
         IDbTransaction Transaction { get; }
         IDataReader DataReader { get; }
         IDbCommand DbCommand { get; }
-        IDbDataParameter[] DataParameters { get; }
+        IDbDataParameter[] DbParameters { get; }
+        void AddParameter(IDbDataParameter dataParameter);
+        IDbDataParameter AddParameter(string name, object value);
+        IDbDataParameter AddParameter(string name, object value, ParameterDirection direction);
+        IDbDataParameter AddParameter(string name, object value, ParameterDirection direction, int size);
         void Open();
         void Open(string connectionString);
         void OpenWithNewPassword(string newPassword);
         void BeginTransaction();
         void CommitTransaction();
-        void CreateParameters(int paramsCount);
-        void AddParameters(int index, string paramName, object objValue);
         IDataReader ExecuteReader(CommandType commandType, string commandText);
         DataSet ExecuteDataSet(CommandType commandType, string commandText);
         object ExecuteScalar(CommandType commandType, string commandText);

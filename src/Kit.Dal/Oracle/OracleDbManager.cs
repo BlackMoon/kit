@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Castle.Core.Internal;
 using Kit.Dal.DbManager;
 using Oracle.DataAccess.Client;
 
@@ -53,7 +56,41 @@ namespace Kit.Dal.Oracle
 
         public IDbCommand DbCommand { get; private set; }
 
-        public IDbDataParameter[] DataParameters { get; }
+        private readonly IList<OracleParameter> _dbParameters = new List<OracleParameter>();
+
+        public IDbDataParameter[] DbParameters => _dbParameters.ToArray();
+        
+
+        public void AddParameter(IDbDataParameter dataParameter)
+        {
+            _dbParameters.Add((OracleParameter) dataParameter);
+        }
+
+        public IDbDataParameter AddParameter(string name, object value)
+        {
+            OracleParameter p = new OracleParameter()
+            {
+                ParameterName = name,
+                Value = value
+            };
+
+            _dbParameters.Add(p);
+            return p;
+        }
+
+        public IDbDataParameter AddParameter(string name, object value, ParameterDirection direction)
+        {
+            OracleParameter p = (OracleParameter) AddParameter(name, value);
+            p.Direction = direction;
+            return p;
+        }
+
+        public IDbDataParameter AddParameter(string name, object value, ParameterDirection direction, int size)
+        {
+            OracleParameter p = (OracleParameter)AddParameter(name, value, direction);
+            p.Size = size;
+            return p;
+        }
 
         public void BeginTransaction()
         {
@@ -108,23 +145,16 @@ namespace Kit.Dal.Oracle
             }
         }
 
-        public void CreateParameters(int paramsCount)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void AddParameters(int index, string paramName, object objValue)
-        {
-            throw new NotImplementedException();
-        }
-
         public IDataReader ExecuteReader(CommandType commandType, string commandText)
         {
             // ReSharper disable once UseObjectOrCollectionInitializer
-            DbCommand = new OracleCommand(commandText);
-            DbCommand.Connection = DbConnection;
+            DbCommand = new OracleCommand();
+            PrepareCommand(DbCommand, DbConnection, Transaction, commandType, commandText);
+            
+            DataReader = DbCommand.ExecuteReader();
+            DbCommand.Parameters.Clear();
 
-            return DataReader = DbCommand.ExecuteReader();
+            return DataReader;
         }
 
         public DataSet ExecuteDataSet(CommandType commandType, string commandText)
@@ -146,7 +176,7 @@ namespace Kit.Dal.Oracle
             Open();
 
             DbCommand = new OracleCommand();
-            PrepareCommand(DbCommand, DbConnection, Transaction, commandType, commandText, null);
+            PrepareCommand(DbCommand, DbConnection, Transaction, commandType, commandText);
 
             object returnValue = DbCommand.ExecuteScalar();
             DbCommand.Parameters.Clear();
@@ -162,7 +192,7 @@ namespace Kit.Dal.Oracle
             Open();
 
             DbCommand = new OracleCommand();
-            PrepareCommand(DbCommand, DbConnection, Transaction, commandType, commandText, null);
+            PrepareCommand(DbCommand, DbConnection, Transaction, commandType, commandText);
             
             int returnValue = DbCommand.ExecuteNonQuery();
             DbCommand.Parameters.Clear();
@@ -187,27 +217,30 @@ namespace Kit.Dal.Oracle
                 DbConnection.Close();
         }
 
-        private void PrepareCommand(IDbCommand command, IDbConnection connection, IDbTransaction transaction, CommandType commandType, string commandText, IDbDataParameter[] commandParameters)
+        private void PrepareCommand(IDbCommand command, IDbConnection connection, IDbTransaction transaction, CommandType commandType, string commandText)
         {
             command.Connection = connection;
             command.CommandText = commandText;
             command.CommandType = commandType;
+            _dbParameters.ForEach(p => command.Parameters.Add(p));
 
             if (transaction != null)
-            {
                 command.Transaction = transaction;
-            }            
         }
 
         public void Dispose()
         {
             GC.SuppressFinalize(this);
+            Close();
 
-            _dbConnection = null;
+            DbCommand = null;
+            DataReader = null;
+
 #if DBCONTEXT
             _dbContext = null;
 #endif
             _transaction = null;
+            _dbConnection = null;
         }
         
     }
