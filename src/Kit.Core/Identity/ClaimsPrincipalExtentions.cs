@@ -28,15 +28,5 @@ namespace Kit.Core.Identity
 
             return connectionString;
         }
-
-        /// <summary>
-        /// Получить hashCode идентификатора (connectionString + lastlogindate)
-        /// </summary>
-        /// <param name="principal"></param>
-        /// <returns>int</returns>
-        public static string GetSid(this ClaimsPrincipal principal)
-        {
-            return principal.FindFirst(ClaimTypes.Sid)?.Value;
-        }
     }
 }
