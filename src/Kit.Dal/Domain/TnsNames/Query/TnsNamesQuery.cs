@@ -1,6 +1,6 @@
 ﻿using Kit.Core.CQRS.Query;
 
-namespace Kit.Dal.CQRS.Query.TnsNames
+namespace Kit.Dal.Domain.TnsNames.Query
 {
     public class TnsNamesQuery : IQuery
     {

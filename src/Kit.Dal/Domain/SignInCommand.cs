@@ -1,6 +1,6 @@
 ﻿using Kit.Core.CQRS.Command;
 
-namespace Kit.Dal.CQRS.Command
+namespace Kit.Dal.Domain
 {
     public class SignInCommand : ICommand
     {

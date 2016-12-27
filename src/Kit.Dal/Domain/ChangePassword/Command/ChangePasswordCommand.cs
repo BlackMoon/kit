@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Kit.Core;
 
-namespace Kit.Dal.CQRS.Command.ChangePassword
+namespace Kit.Dal.Domain.ChangePassword.Command
 {
     public class ChangePasswordCommand : SignInCommand
     {

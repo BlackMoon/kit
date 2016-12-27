@@ -6,7 +6,7 @@ using Kit.Core.Cache;
 using Kit.Core.CQRS.Query;
 using Kit.Core.Interception.Attribute;
 
-namespace Kit.Dal.CQRS.Query.TnsNames
+namespace Kit.Dal.Domain.TnsNames.Query
 {
     /// <summary>
     /// Получает список tnsnames из ORACLE_HOME (файл TNSNAMES.ORA).

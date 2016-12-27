@@ -1,4 +1,4 @@
-﻿namespace Kit.Dal.CQRS.Command.Login
+﻿namespace Kit.Dal.Domain.Login.Command
 {
     public enum LoginStatus
     {

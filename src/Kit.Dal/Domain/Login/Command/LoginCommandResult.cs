@@ -1,6 +1,6 @@
 ﻿using Kit.Core.CQRS.Command;
 
-namespace Kit.Dal.CQRS.Command.Login
+namespace Kit.Dal.Domain.Login.Command
 {
     public class LoginCommandResult : ICommandResult
     {

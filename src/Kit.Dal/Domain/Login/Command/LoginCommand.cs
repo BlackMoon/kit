@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Kit.Core;
 
-namespace Kit.Dal.CQRS.Command.Login
+namespace Kit.Dal.Domain.Login.Command
 {
     public class LoginCommand : SignInCommand
     {
