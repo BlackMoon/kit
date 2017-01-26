@@ -86,16 +86,10 @@ namespace Kit.Dal.Oracle.Udt.TVariantNamedList
             }        
         }
 
-        public bool IsNull 
-        {
-            get { return _isNull; }
-        }
+        public bool IsNull => _isNull;
 
         // TVariantNamed.Null is used to return a NULL TVariantNamed object
-        public static TVariantNamedList Null
-        {
-            get { return new TVariantNamedList { _isNull = true }; }
-        }
+        public static TVariantNamedList Null => new TVariantNamedList { _isNull = true };
 
         public static TVariantNamedList Create(OracleConnection con, TVariantNamed.TVariantNamed[] items)
         {

@@ -27,7 +27,7 @@ namespace Kit.Dal.Oracle
         /// <summary>
         /// DbContext
         /// </summary>
-        private OracleContext _dbContext;
+        private OracleDbContext _dbContext;
 
         public DbContext DbContext
         {
@@ -36,7 +36,7 @@ namespace Kit.Dal.Oracle
                 if (_dbContext == null)
                 {
                     ExecuteNonQuery(CommandType.StoredProcedure, "SYS$INSTANCE.INIT");
-                    _dbContext = new OracleContext(DbConnection, false);
+                    _dbContext = new OracleDbContext(DbConnection, false);
                 }
 
                 return _dbContext;
@@ -58,6 +58,7 @@ namespace Kit.Dal.Oracle
 
         private readonly IList<OracleParameter> _dbParameters = new List<OracleParameter>();
 
+        // ReSharper disable once CoVariantArrayConversion
         public IDbDataParameter[] DbParameters => _dbParameters.ToArray();
         
 
@@ -147,8 +148,7 @@ namespace Kit.Dal.Oracle
 
         public IDataReader ExecuteReader(CommandType commandType, string commandText)
         {
-            // ReSharper disable once UseObjectOrCollectionInitializer
-            DbCommand = new OracleCommand();
+            DbCommand = new OracleCommand() { BindByName = true };
             PrepareCommand(DbCommand, DbConnection, Transaction, commandType, commandText);
             
             DataReader = DbCommand.ExecuteReader();
@@ -159,7 +159,7 @@ namespace Kit.Dal.Oracle
 
         public DataSet ExecuteDataSet(CommandType commandType, string commandText)
         {
-            DbCommand = new OracleCommand(commandText);
+            DbCommand = new OracleCommand(commandText) { BindByName = true };
             
             IDbDataAdapter dataAdapter = new OracleDataAdapter();
             dataAdapter.SelectCommand = DbCommand;
@@ -175,7 +175,7 @@ namespace Kit.Dal.Oracle
         {
             Open();
 
-            DbCommand = new OracleCommand();
+            DbCommand = new OracleCommand() { BindByName = true };
             PrepareCommand(DbCommand, DbConnection, Transaction, commandType, commandText);
 
             object returnValue = DbCommand.ExecuteScalar();
@@ -191,7 +191,7 @@ namespace Kit.Dal.Oracle
         {
             Open();
 
-            DbCommand = new OracleCommand();
+            DbCommand = new OracleCommand() { BindByName = true };
             PrepareCommand(DbCommand, DbConnection, Transaction, commandType, commandText);
             
             int returnValue = DbCommand.ExecuteNonQuery();
@@ -222,7 +222,11 @@ namespace Kit.Dal.Oracle
             command.Connection = connection;
             command.CommandText = commandText;
             command.CommandType = commandType;
-            _dbParameters.ForEach(p => command.Parameters.Add(p));
+            
+            foreach (OracleParameter p in _dbParameters)
+            {
+                command.Parameters.Add(p);
+            }
 
             if (transaction != null)
                 command.Transaction = transaction;
