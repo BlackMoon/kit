@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Kit.Core;
 
-namespace Kit.Dal.Domain.ChangePassword.Command
+namespace Kit.Dal.Oracle.Domain.ChangePassword.Command
 {
     public class ChangePasswordCommand : SignInCommand
     {

@@ -12,10 +12,8 @@
             }
         }
     },
-    "dependencies": {
-        "EntityFramework": "6.1.3",
-        "Kit.Core": "1.0.0-*",               
-        "odac.x64": "12.1.2400"
+    "dependencies": {        
+        "Kit.Core": "1.0.0-*"                       
     }  
 
 }

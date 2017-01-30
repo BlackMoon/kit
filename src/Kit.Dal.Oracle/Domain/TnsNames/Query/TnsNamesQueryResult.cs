@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Kit.Core.CQRS.Query;
 
-namespace Kit.Dal.Domain.TnsNames.Query
+namespace Kit.Dal.Oracle.Domain.TnsNames.Query
 {
     public class TnsNamesQueryResult : IEnumerable<string>, IQueryResult
     {

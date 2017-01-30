@@ -5,7 +5,6 @@ using System.Data.Common;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Castle.Core.Internal;
 using Kit.Dal.DbManager;
 using Oracle.DataAccess.Client;
 
@@ -23,26 +22,6 @@ namespace Kit.Dal.Oracle
 
         public IDbConnection DbConnection => _dbConnection = _dbConnection ?? new OracleConnection();
 
-#if DBCONTEXT
-        /// <summary>
-        /// DbContext
-        /// </summary>
-        private OracleDbContext _dbContext;
-
-        public DbContext DbContext
-        {
-            get
-            {
-                if (_dbContext == null)
-                {
-                    ExecuteNonQuery(CommandType.StoredProcedure, "SYS$INSTANCE.INIT");
-                    _dbContext = new OracleDbContext(DbConnection, false);
-                }
-
-                return _dbContext;
-            }
-        }
-#endif
         /// <summary>
         /// DbTransaction
         /// </summary>

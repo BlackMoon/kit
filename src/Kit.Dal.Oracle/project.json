@@ -1,0 +1,15 @@
+﻿{
+  "version": "1.0.0-*",
+
+  "dependencies": {
+    "Kit.Dal": "1.0.0-*",
+    "odac.x64": "12.1.2400"
+  },
+
+
+  "frameworks": {
+    "net452": {
+      
+    }
+  }
+}

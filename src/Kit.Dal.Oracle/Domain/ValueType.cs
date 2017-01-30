@@ -1,6 +1,6 @@
 ﻿// ReSharper disable InconsistentNaming
 
-namespace Kit.Dal.Domain
+namespace Kit.Dal.Oracle.Domain
 {
     public enum EValueType : long
     {

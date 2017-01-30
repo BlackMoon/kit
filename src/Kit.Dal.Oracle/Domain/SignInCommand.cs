@@ -1,6 +1,6 @@
 ﻿using Kit.Core.CQRS.Command;
 
-namespace Kit.Dal.Domain
+namespace Kit.Dal.Oracle.Domain
 {
     public class SignInCommand : ICommand
     {

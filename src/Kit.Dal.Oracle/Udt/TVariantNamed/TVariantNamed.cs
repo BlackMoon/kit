@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
-using Kit.Dal.Domain;
+using Kit.Dal.Oracle.Domain;
 using Oracle.DataAccess.Client;
 using Oracle.DataAccess.Types;
 

@@ -1,11 +1,11 @@
 ﻿using System;
 using Kit.Core.CQRS.Command;
 using Kit.Dal.DbManager;
-using Kit.Dal.Domain.ChangePassword.Command;
-using Kit.Dal.Domain.Login.Command;
+using Kit.Dal.Oracle.Domain.ChangePassword.Command;
+using Kit.Dal.Oracle.Domain.Login.Command;
 using Oracle.DataAccess.Client;
 
-namespace Kit.Dal.Domain
+namespace Kit.Dal.Oracle.Domain
 {
     public class AuthenticateCommandHandler :
         ICommandHandlerWithResult<ChangePasswordCommand, LoginCommandResult>,

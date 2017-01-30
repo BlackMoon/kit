@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Kit.Core;
 
-namespace Kit.Dal.Domain.Login.Command
+namespace Kit.Dal.Oracle.Domain.Login.Command
 {
     public class LoginCommand : SignInCommand
     {
