@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Data;
-using Castle.Core.Internal;
 
-// ReSharper disable ConvertClosureToMethodGroup
+
 namespace Kit.Dal.DbManager
 {
     public static class DbManagerExtensions
     {
         public static PocoReader<T> ExecutePocoReader<T>(this IDbManager dbManager, string commandText, Func<IDataRecord, T> convertFunc, params IDbDataParameter[] parameters)
         {
-            parameters.ForEach(p => dbManager.AddParameter(p));
+            foreach (IDbDataParameter p in parameters)
+            {
+                dbManager.AddParameter(p);
+            }
+            
             IDataReader reader = dbManager.ExecuteReader(CommandType.Text, commandText);
             return new PocoReader<T>(reader, convertFunc, false);
         }
@@ -37,7 +40,10 @@ namespace Kit.Dal.DbManager
 
         public static void RunProc(this IDbManager dbManager, string name, params IDbDataParameter[] parameters)
         {
-            parameters.ForEach(p => dbManager.AddParameter(p));
+            foreach (IDbDataParameter p in parameters)
+            {
+                dbManager.AddParameter(p);
+            }
             dbManager.ExecuteNonQuery(CommandType.StoredProcedure, name);
         }
     }

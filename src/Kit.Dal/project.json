@@ -1,6 +1,7 @@
 {
   "dependencies": {
-    "Kit.Core": "1.0.0-*"
+    "Kit.Core": "1.0.0-*",
+    "System.Data.Common": "4.1.0"
   },
   "description": "Kit.Dal Class Library",
   "frameworks": {
@@ -10,7 +11,10 @@
         "System.Data": "4.0.0.0",
         "System.Xml": "4.0.0.0"
       }
+    },
+    "netcoreapp1.0": {
     }
+
   },
   "title": "Kit.Dal",
   "version": "1.0.0-*"

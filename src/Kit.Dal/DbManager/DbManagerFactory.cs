@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
-using Castle.Core.Internal;
 
 namespace Kit.Dal.DbManager
 {
@@ -26,18 +24,25 @@ namespace Kit.Dal.DbManager
                 .Where(a => a.Name.StartsWith("Kit.Dal.", StringComparison.OrdinalIgnoreCase));
 
             Managers = new Dictionary<string, Type>();
-            assemblyNames.ForEach(a =>
+
+            foreach (AssemblyName a in assemblyNames)
             {
                 Assembly assembly = Assembly.Load(a);
                 foreach (Type t in assembly.GetTypes().Where(pre))
                 {
                     // Наименование --> из аттрибута
-                    ProviderNameAttribute attr = (ProviderNameAttribute)t.GetCustomAttribute(typeof(ProviderNameAttribute));
+                    ProviderNameAttribute attr = null;
+#if NETCOREAPP1_0
+                    attr = (ProviderNameAttribute)t.GetTypeInfo().GetCustomAttribute(typeof(ProviderNameAttribute));
+#endif
+#if NET452
+                    attr = (ProviderNameAttribute)t.GetCustomAttribute(typeof(ProviderNameAttribute));
+#endif
                     if (attr != null)
                         Managers[attr.ProviderName] = t;
                 }
 
-            });
+            }
         }
 
         public static IDbManager CreateDbManager(string providerName, string connectionString = null)

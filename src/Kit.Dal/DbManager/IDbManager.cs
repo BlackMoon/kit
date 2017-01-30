@@ -8,9 +8,6 @@ namespace Kit.Dal.DbManager
         string ConnectionString { get; set; }
 
         IDbConnection DbConnection { get; }
-#if DBCONTEXT
-        DbContext DbContext { get; }
-#endif        
         IDbTransaction Transaction { get; }
         IDataReader DataReader { get; }
         IDbCommand DbCommand { get; }
@@ -25,7 +22,10 @@ namespace Kit.Dal.DbManager
         void BeginTransaction();
         void CommitTransaction();
         IDataReader ExecuteReader(CommandType commandType, string commandText);
+
+#if NET452
         DataSet ExecuteDataSet(CommandType commandType, string commandText);
+#endif
         object ExecuteScalar(CommandType commandType, string commandText);
         int ExecuteNonQuery(CommandType commandType, string commandText);
         void CloseReader();
