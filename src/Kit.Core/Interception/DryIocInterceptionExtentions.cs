@@ -3,6 +3,10 @@ using System.Linq;
 using Castle.DynamicProxy;
 using DryIoc;
 
+#if NETCOREAPP1_0
+using System.Reflection;
+#endif
+
 namespace Kit.Core.Interception
 {
     public static class DryIocInterceptionExtentions
@@ -14,10 +18,20 @@ namespace Kit.Core.Interception
         public static void Intercept(this IRegistrator registrator, Type serviceType, Type interceptorType, object serviceKey = null)
         {
             Type proxyType;
+
+#if NET452
             if (serviceType.IsInterface)
                 proxyType = ProxyBuilder.CreateInterfaceProxyTypeWithTargetInterface(serviceType, ArrayTools.Empty<Type>(), ProxyGenerationOptions.Default);
             else if (serviceType.IsClass)
                 proxyType = ProxyBuilder.CreateClassProxyType(serviceType, ArrayTools.Empty<Type>(), ProxyGenerationOptions.Default);
+#endif
+#if NETCOREAPP1_0
+            TypeInfo serviceTypeInfo = serviceType.GetTypeInfo();
+            if (serviceTypeInfo.IsInterface)
+                proxyType = ProxyBuilder.CreateInterfaceProxyTypeWithTargetInterface(serviceType, ArrayTools.Empty<Type>(), ProxyGenerationOptions.Default);
+            else if (serviceTypeInfo.IsClass)
+                proxyType = ProxyBuilder.CreateClassProxyType(serviceType, ArrayTools.Empty<Type>(), ProxyGenerationOptions.Default);
+#endif
             else
                 throw new ArgumentException($"Intercepted service type {serviceType} is not a supported: it is nor class nor interface");
 
