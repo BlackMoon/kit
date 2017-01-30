@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
-using Castle.Core.Internal;
 
 namespace Kit.Core.CQRS.Job
 {
@@ -16,7 +16,11 @@ namespace Kit.Core.CQRS.Job
         public void Dispatch<TParameter>() where TParameter : IJob
         {
             IEnumerable<TParameter> jobs = _serviceProvider.GetServices<TParameter>();
-            jobs.ForEach(j => j.Run());
+
+            foreach (TParameter j in jobs)
+            {
+                j.Run();
+            }
         }
     }
 }
