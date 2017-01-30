@@ -219,9 +219,6 @@ namespace Kit.Dal.Oracle
             DbCommand = null;
             DataReader = null;
 
-#if DBCONTEXT
-            _dbContext = null;
-#endif
             _transaction = null;
             _dbConnection = null;
         }
