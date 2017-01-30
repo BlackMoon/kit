@@ -7,8 +7,8 @@
   },
   "description": "Kit.Core.Web Class Library",
   "frameworks": {
-    "net452": {
-    }
+    "net452": {},
+    "netcoreapp1.0": {}
   },
   "title": "Kit.Core.Web",
   "version": "1.0.0-*"

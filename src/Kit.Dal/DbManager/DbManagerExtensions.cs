@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Data;
 
-
 namespace Kit.Dal.DbManager
 {
     public static class DbManagerExtensions

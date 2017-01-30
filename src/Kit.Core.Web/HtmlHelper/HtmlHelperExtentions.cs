@@ -4,7 +4,10 @@ using System.Text;
 using System.Text.Encodings.Web;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
+
+#if NETCOREAPP1_0
+using System.Reflection;
+#endif
 
 namespace Kit.Core.Web.HtmlHelper
 {
@@ -19,9 +22,15 @@ namespace Kit.Core.Web.HtmlHelper
         /// <returns></returns>
         public static HtmlString EnumToJs(this IHtmlHelper htmlHelper, Type t, bool addScriptTags = false)
         {
+
+#if NETCOREAPP1_0
+            if (!t.GetTypeInfo().IsEnum)
+                throw new InvalidOperationException("Type is not Enum");
+#endif
+#if NET452
             if (!t.IsEnum)
                 throw new InvalidOperationException("Type is not Enum");
-
+#endif
             StringBuilder sb = new StringBuilder($"var {t.Name} = ");
             sb.AppendLine("{" + string.Join(", ",
                 Enum.GetValues(t)
