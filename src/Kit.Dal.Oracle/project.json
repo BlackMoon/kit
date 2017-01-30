@@ -1,15 +1,14 @@
 ﻿{
-  "version": "1.0.0-*",
-
   "dependencies": {
     "Kit.Dal": "1.0.0-*",
     "odac.x64": "12.1.2400"
   },
-
-
+  "description": "Kit.Dal.Oracle Class Library",
   "frameworks": {
     "net452": {
-      
+
     }
-  }
+  },
+  "title": "Kit.Dal.Oracle",
+  "version": "1.0.0-*"
 }

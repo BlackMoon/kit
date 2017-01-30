@@ -1,17 +1,15 @@
 {
-    "title": "Kit.Core.Web",
-    "version": "1.0.0-*",
-    "description": "Kit.Core.Web Class Library",
-    "authors": [ "romanovrv" ],
-
-    "dependencies": {
-        "Kit.Core": "1.0.0-*",
-        "Microsoft.AspNetCore.Mvc": "1.1.0",
-        "Microsoft.AspNetCore.Mvc.TagHelpers": "1.1.0"        
-    },
-
-    "frameworks": {
-        "net452": {            
-        }
+  "authors": [ "romanovrv" ],
+  "dependencies": {
+    "Kit.Core": "1.0.0-*",
+    "Microsoft.AspNetCore.Mvc": "1.1.0",
+    "Microsoft.AspNetCore.Mvc.TagHelpers": "1.1.0"
+  },
+  "description": "Kit.Core.Web Class Library",
+  "frameworks": {
+    "net452": {
     }
+  },
+  "title": "Kit.Core.Web",
+  "version": "1.0.0-*"
 }
