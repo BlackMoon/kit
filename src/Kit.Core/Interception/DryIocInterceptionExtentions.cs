@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Castle.DynamicProxy;
 using DryIoc;
 
@@ -6,40 +7,32 @@ namespace Kit.Core.Interception
 {
     public static class DryIocInterceptionExtentions
     {
-        public static void RegisterInterfaceInterceptor(this IRegistrator registrator, Type serviceType, Type interceptorType)
+        private static DefaultProxyBuilder _proxyBuilder;
+
+        private static DefaultProxyBuilder ProxyBuilder => _proxyBuilder ?? (_proxyBuilder = new DefaultProxyBuilder());
+
+        public static void Intercept(this IRegistrator registrator, Type serviceType, Type interceptorType, object serviceKey = null)
         {
-            if (!serviceType.IsInterface)
-                throw new ArgumentException($"Intercepted service type {serviceType} is not an interface");
+            Type proxyType;
+            if (serviceType.IsInterface)
+                proxyType = ProxyBuilder.CreateInterfaceProxyTypeWithTargetInterface(serviceType, ArrayTools.Empty<Type>(), ProxyGenerationOptions.Default);
+            else if (serviceType.IsClass)
+                proxyType = ProxyBuilder.CreateClassProxyType(serviceType, ArrayTools.Empty<Type>(), ProxyGenerationOptions.Default);
+            else
+                throw new ArgumentException($"Intercepted service type {serviceType} is not a supported: it is nor class nor interface");
 
-            // Create proxy type for intercepted interface
-            var proxyType = ProxyBuilder.Value.CreateInterfaceProxyTypeWithTargetInterface(
-                serviceType, new Type[0], ProxyGenerationOptions.Default);
+            Setup decoratorSetup = serviceKey == null
+                ? Setup.DecoratorWith(useDecorateeReuse: true)
+                : Setup.DecoratorWith(r => serviceKey.Equals(r.ServiceKey), useDecorateeReuse: true);
 
-            // Register proxy as decorator
             registrator.Register(serviceType, proxyType,
-                made: Parameters.Of.Type<IInterceptor[]>(interceptorType.MakeArrayType()),
-                setup: Setup.Decorator);
+                made: Made.Of(type => type.GetPublicInstanceConstructors().SingleOrDefault(c => c.GetParameters().Length != 0), Parameters.Of.Type<IInterceptor[]>(interceptorType.MakeArrayType())),
+                setup: decoratorSetup);
         }
 
-        public static void RegisterInterfaceInterceptor<TService, TInterceptor>(this IRegistrator registrator)
-            where TInterceptor : class, IInterceptor
+        public static void Intercept<TService, TInterceptor>(this IRegistrator registrator, object serviceKey = null) where TInterceptor : class, IInterceptor
         {
-            registrator.RegisterInterfaceInterceptor(typeof (TService), typeof (TInterceptor[]));
-
-            var serviceType = typeof(TService);
-            if (!serviceType.IsInterface)
-                throw new ArgumentException($"Intercepted service type {serviceType} is not an interface");
-
-            // Create proxy type for intercepted interface
-            var proxyType = ProxyBuilder.Value.CreateInterfaceProxyTypeWithTargetInterface(
-                serviceType, new Type[0], ProxyGenerationOptions.Default);
-
-            // Register proxy as decorator
-            registrator.Register(serviceType, proxyType,
-                made: Parameters.Of.Type<IInterceptor[]>(typeof(TInterceptor[])),
-                setup: Setup.Decorator);
+            registrator.Intercept(typeof(TService), typeof(TInterceptor[]), serviceKey);
         }
-
-        private static readonly Lazy<DefaultProxyBuilder> ProxyBuilder = new Lazy<DefaultProxyBuilder>(() => new DefaultProxyBuilder());
     }
 }
