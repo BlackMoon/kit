@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
+using Castle.Core.Internal;
 
 namespace Kit.Dal.DbManager
 {
@@ -20,15 +21,23 @@ namespace Kit.Dal.DbManager
         {
             Func<Type, bool> pre = t => t.GetInterfaces().Contains(typeof(IDbManager));
 
-            Assembly assembly = Assembly.GetExecutingAssembly();
+            IEnumerable<AssemblyName> assemblyNames = Assembly.GetEntryAssembly()
+                .GetReferencedAssemblies()
+                .Where(a => a.Name.StartsWith("Kit.Dal.", StringComparison.OrdinalIgnoreCase));
+
             Managers = new Dictionary<string, Type>();
-            foreach (Type t in assembly.GetTypes().Where(pre))
+            assemblyNames.ForEach(a =>
             {
-                // Наименование --> из аттрибута
-                ProviderNameAttribute attr = (ProviderNameAttribute)t.GetCustomAttribute(typeof(ProviderNameAttribute));
-                if (attr != null)
-                    Managers[attr.ProviderName] = t;
-            }
+                Assembly assembly = Assembly.Load(a);
+                foreach (Type t in assembly.GetTypes().Where(pre))
+                {
+                    // Наименование --> из аттрибута
+                    ProviderNameAttribute attr = (ProviderNameAttribute)t.GetCustomAttribute(typeof(ProviderNameAttribute));
+                    if (attr != null)
+                        Managers[attr.ProviderName] = t;
+                }
+
+            });
         }
 
         public static IDbManager CreateDbManager(string providerName, string connectionString = null)
