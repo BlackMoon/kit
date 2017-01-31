@@ -11,6 +11,7 @@
   "frameworks": {
     "net452": {
       "dependencies": {
+        "Microsoft.AspNet.Hosting.Abstractions": "1.0.0-rc1-final",
         "ServiceProviderExtensions": "1.0.0"
       },      
       "frameworkAssemblies": {
@@ -20,7 +21,8 @@
     "netcoreapp1.0": {
       "dependencies": {
         "System.ComponentModel.Annotations": "4.3.0",
-        "System.Security.Claims": "4.3.0"
+        "System.Security.Claims": "4.3.0",
+        "System.Runtime.Loader": "4.3.0"
       }
     }
   },

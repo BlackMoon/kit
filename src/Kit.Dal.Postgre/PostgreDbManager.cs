@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using System.Threading;
 using System.Threading.Tasks;
 using Kit.Dal.DbManager;
 using Npgsql;
+using System.Linq;
 
 namespace Kit.Dal.PostgreSQL
 {
@@ -31,27 +33,45 @@ namespace Kit.Dal.PostgreSQL
         public IDbConnection DbConnection => _dbConnection = _dbConnection ?? new NpgsqlConnection();
         
         public IDbTransaction Transaction { get; }
-        public IDataReader DataReader { get; }
-        public IDbCommand DbCommand { get; }
-        public IDbDataParameter[] DbParameters { get; }
+
+        public IDataReader DataReader { get; private set; }
+
+        public IDbCommand DbCommand { get; private set; }
+
+        private readonly IList<NpgsqlParameter> _dbParameters = new List<NpgsqlParameter>();
+
+        // ReSharper disable once CoVariantArrayConversion
+        public IDbDataParameter[] DbParameters => _dbParameters.ToArray();
+
         public void AddParameter(IDbDataParameter dataParameter)
         {
-            throw new NotImplementedException();
+            _dbParameters.Add((NpgsqlParameter)dataParameter);
         }
 
         public IDbDataParameter AddParameter(string name, object value)
         {
-            throw new NotImplementedException();
+            NpgsqlParameter p = new NpgsqlParameter()
+            {
+                ParameterName = name,
+                Value = value
+            };
+
+            _dbParameters.Add(p);
+            return p;
         }
 
         public IDbDataParameter AddParameter(string name, object value, ParameterDirection direction)
         {
-            throw new NotImplementedException();
+            NpgsqlParameter p = (NpgsqlParameter)AddParameter(name, value);
+            p.Direction = direction;
+            return p;
         }
 
         public IDbDataParameter AddParameter(string name, object value, ParameterDirection direction, int size)
         {
-            throw new NotImplementedException();
+            NpgsqlParameter p = (NpgsqlParameter)AddParameter(name, value, direction);
+            p.Size = size;
+            return p;
         }
 
         /// <summary>
@@ -103,22 +123,65 @@ namespace Kit.Dal.PostgreSQL
 
         public IDataReader ExecuteReader(CommandType commandType, string commandText)
         {
-            throw new NotImplementedException();
+            DbCommand = new NpgsqlCommand();
+            PrepareCommand(DbCommand, DbConnection, Transaction, commandType, commandText);
+
+            DataReader = DbCommand.ExecuteReader();
+            DbCommand.Parameters.Clear();
+
+            return DataReader;
         }
 
         public object ExecuteScalar(CommandType commandType, string commandText)
         {
-            throw new NotImplementedException();
+            Open();
+
+            DbCommand = new NpgsqlCommand() {};
+            PrepareCommand(DbCommand, DbConnection, Transaction, commandType, commandText);
+
+            object returnValue = DbCommand.ExecuteScalar();
+            DbCommand.Parameters.Clear();
+
+            if (_wasClosed)
+                DbConnection.Close();
+
+            return returnValue;
         }
 
         public int ExecuteNonQuery(CommandType commandType, string commandText)
         {
-            throw new NotImplementedException();
+            Open();
+
+            DbCommand = new NpgsqlCommand();
+            PrepareCommand(DbCommand, DbConnection, Transaction, commandType, commandText);
+
+            int returnValue = DbCommand.ExecuteNonQuery();
+            DbCommand.Parameters.Clear();
+
+            if (_wasClosed)
+                DbConnection.Close();
+
+            return returnValue;
+        }
+
+        private void PrepareCommand(IDbCommand command, IDbConnection connection, IDbTransaction transaction, CommandType commandType, string commandText)
+        {
+            command.Connection = connection;
+            command.CommandText = commandText;
+            command.CommandType = commandType;
+
+            foreach (NpgsqlParameter p in _dbParameters)
+            {
+                command.Parameters.Add(p);
+            }
+
+            if (transaction != null)
+                command.Transaction = transaction;
         }
 
         public void CloseReader()
         {
-            throw new NotImplementedException();
+            DataReader?.Close();
         }
 
         /// <summary>

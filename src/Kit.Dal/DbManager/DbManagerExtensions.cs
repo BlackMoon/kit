@@ -15,7 +15,17 @@ namespace Kit.Dal.DbManager
             IDataReader reader = dbManager.ExecuteReader(CommandType.Text, commandText);
             return new PocoReader<T>(reader, convertFunc, false);
         }
-        
+
+        public static T ExecuteScalar<T>(this IDbManager dbManager, CommandType commandType, string commandText)
+        {
+            T result = default(T);
+            object value = dbManager.ExecuteScalar(commandType, commandText);
+            if (value != null)
+                result = (T)Convert.ChangeType(value, typeof(T));
+
+            return result;
+        }
+
         public static object RunFunc(this IDbManager dbManager, string name, params IDbDataParameter[] parameters)
         {
             const string resultName = "result";

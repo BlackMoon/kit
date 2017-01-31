@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 
@@ -17,17 +18,25 @@ namespace Kit.Dal.DbManager
 
         static DbManagerFactory()
         {
+            // Register assemblies
+            string contentRootPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+
+            string[] assemblies = (contentRootPath != null) ? 
+                Directory.GetFiles(contentRootPath, "Kit.Dal.*.dll", SearchOption.TopDirectoryOnly) : 
+                new string[]{};
+
             Func<Type, bool> pre = t => t.GetInterfaces().Contains(typeof(IDbManager));
-
-            IEnumerable<AssemblyName> assemblyNames = Assembly.GetEntryAssembly()
-                .GetReferencedAssemblies()
-                .Where(a => a.Name.StartsWith("Kit.Dal.", StringComparison.OrdinalIgnoreCase));
-
             Managers = new Dictionary<string, Type>();
 
-            foreach (AssemblyName a in assemblyNames)
+            foreach (string a in assemblies)
             {
-                Assembly assembly = Assembly.Load(a);
+
+#if NETCOREAPP1_0
+                Assembly assembly = System.Runtime.Loader.AssemblyLoadContext.Default.LoadFromAssemblyPath(a);
+#endif
+#if NET452
+                Assembly assembly = Assembly.LoadFrom(a);
+#endif
                 foreach (Type t in assembly.GetTypes().Where(pre))
                 {
                     // Наименование --> из аттрибута
@@ -41,13 +50,12 @@ namespace Kit.Dal.DbManager
                     if (attr != null)
                         Managers[attr.ProviderName] = t;
                 }
-
             }
         }
 
         public static IDbManager CreateDbManager(string providerName, string connectionString = null)
         {
-            IDbManager dbManager = null;
+            IDbManager dbManager;
 
             Type t = null;
 
@@ -59,6 +67,8 @@ namespace Kit.Dal.DbManager
                 dbManager = (IDbManager) Activator.CreateInstance(t);
                 dbManager.ConnectionString = connectionString;
             }
+            else
+                throw new TypeLoadException($"Provider {providerName} not found.");
 
             return dbManager;
         }

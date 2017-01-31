@@ -39,7 +39,6 @@ namespace Kit.Dal.Oracle
 
         // ReSharper disable once CoVariantArrayConversion
         public IDbDataParameter[] DbParameters => _dbParameters.ToArray();
-        
 
         public void AddParameter(IDbDataParameter dataParameter)
         {
