@@ -7,5 +7,6 @@
   "frameworks": {
     "netcoreapp1.0": {
     }
-  }
+  },
+  "title": "Kit.Dal.Postgre"
 }

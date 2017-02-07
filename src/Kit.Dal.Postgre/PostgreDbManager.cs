@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Kit.Dal.DbManager;
 using Npgsql;
 using System.Linq;
+using NpgsqlTypes;
 
 namespace Kit.Dal.PostgreSQL
 {
@@ -82,6 +83,8 @@ namespace Kit.Dal.PostgreSQL
             _wasClosed = (DbConnection.State == ConnectionState.Closed);
             if (_wasClosed)
             {
+                NpgsqlConnection.MapCompositeGlobally<Group>("adk_group_objects.groups");
+                
                 DbConnection.ConnectionString = ConnectionString;
                 DbConnection.Open();
             }
@@ -123,6 +126,8 @@ namespace Kit.Dal.PostgreSQL
 
         public IDataReader ExecuteReader(CommandType commandType, string commandText)
         {
+            Open();
+
             DbCommand = new NpgsqlCommand();
             PrepareCommand(DbCommand, DbConnection, Transaction, commandType, commandText);
 
@@ -192,5 +197,15 @@ namespace Kit.Dal.PostgreSQL
             if (DbConnection.State != ConnectionState.Closed)
                 DbConnection.Close();
         }
+    }
+
+    
+    public class Group
+    {
+        public int Id { get; set; }
+
+        public string Name { get; set; }
+
+        public string Description { get; set; }
     }
 }

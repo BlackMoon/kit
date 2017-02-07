@@ -1,4 +1,4 @@
-﻿namespace Kit.Dal.Configuration
+﻿name: anyspace Kit.Dal.Configuration
 {
     /// <summary>
     /// Настройки соединения
@@ -9,6 +9,6 @@
 
         public string DataSource { get; set; }
 
-        public string ProviderName { get; set; }
+        public string Providername: any { get; set; }
     }
 }

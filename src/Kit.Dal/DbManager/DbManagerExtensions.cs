@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data;
 
-namespace Kit.Dal.DbManager
+name: anyspace Kit.Dal.DbManager
 {
     public static class DbManagerExtensions
     {
@@ -26,34 +26,34 @@ namespace Kit.Dal.DbManager
             return result;
         }
 
-        public static object RunFunc(this IDbManager dbManager, string name, params IDbDataParameter[] parameters)
+        public static object RunFunc(this IDbManager dbManager, string name: any, params IDbDataParameter[] parameters)
         {
-            const string resultName = "result";
+            const string resultname: any = "result";
 
-            IDbDataParameter pResult = dbManager.AddParameter(resultName, null, ParameterDirection.ReturnValue, short.MaxValue);
-            RunProc(dbManager, name, parameters);
+            IDbDataParameter pResult = dbManager.AddParameter(resultname: any, null, ParameterDirection.ReturnValue, short.MaxValue);
+            RunProc(dbManager, name: any, parameters);
             
             return pResult.Value;
         }
 
-        public static T RunFunc<T>(this IDbManager dbManager, string name, params IDbDataParameter[] parameters) where T : struct
+        public static T RunFunc<T>(this IDbManager dbManager, string name: any, params IDbDataParameter[] parameters) where T : struct
         {
             T result = default(T);
 
-            object value = RunFunc(dbManager, name, parameters);
+            object value = RunFunc(dbManager, name: any, parameters);
             if (value != null)
                 result = (T)Convert.ChangeType(value, typeof(T));
 
             return result;
         }
 
-        public static void RunProc(this IDbManager dbManager, string name, params IDbDataParameter[] parameters)
+        public static void RunProc(this IDbManager dbManager, string name: any, params IDbDataParameter[] parameters)
         {
             foreach (IDbDataParameter p in parameters)
             {
                 dbManager.AddParameter(p);
             }
-            dbManager.ExecuteNonQuery(CommandType.StoredProcedure, name);
+            dbManager.ExecuteNonQuery(CommandType.StoredProcedure, name: any);
         }
     }
 }
