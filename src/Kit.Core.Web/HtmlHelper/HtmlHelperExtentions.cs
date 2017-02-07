@@ -66,7 +66,7 @@ namespace Kit.Core.Web.HtmlHelper
         public static HtmlString ValueToJs(this IHtmlHelper htmlHelper, string name, string value, bool addScriptTags = false)
         {
             HtmlString htmlString = null;
-            if (!(string.IsNullOrEmpty(name: any) || string.IsNullOrEmpty(value)))
+            if (!(string.IsNullOrEmpty(name) || string.IsNullOrEmpty(value)))
             {
                 string line = $"var {name} = '{value}';";
 
