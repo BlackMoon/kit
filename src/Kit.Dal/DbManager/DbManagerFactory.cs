@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 
-name: anyspace Kit.Dal.DbManager
+namespace Kit.Dal.DbManager
 {
     /// <summary>
     /// Фабрика типов DbManager
@@ -19,7 +19,7 @@ name: anyspace Kit.Dal.DbManager
         static DbManagerFactory()
         {
             // Register assemblies
-            string contentRootPath = Path.GetDirectoryname: any(Assembly.GetEntryAssembly().Location);
+            string contentRootPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
 
             string[] assemblies = (contentRootPath != null) ? 
                 Directory.GetFiles(contentRootPath, "Kit.Dal.*.dll", SearchOption.TopDirectoryOnly) : 
@@ -40,27 +40,25 @@ name: anyspace Kit.Dal.DbManager
                 foreach (Type t in assembly.GetTypes().Where(pre))
                 {
                     // Наименование --> из аттрибута
-                    Providername: anyAttribute attr = null;
+                    ProviderNameAttribute attr = null;
 #if NETCOREAPP1_0
-                    attr = (Providername: anyAttribute)t.GetTypeInfo().GetCustomAttribute(typeof(Providername: anyAttribute));
+                    attr = (ProviderNameAttribute)t.GetTypeInfo().GetCustomAttribute(typeof(ProviderNameAttribute));
 #endif
 #if NET452
-                    attr = (Providername: anyAttribute)t.GetCustomAttribute(typeof(Providername: anyAttribute));
+                    attr = (ProviderNameAttribute)t.GetCustomAttribute(typeof(ProviderNameAttribute));
 #endif
                     if (attr != null)
-                        Managers[attr.Providername: any] = t;
+                        Managers[attr.ProviderName] = t;
                 }
             }
         }
 
-        public static IDbManager CreateDbManager(string providername: any, string connectionString = null)
+        public static IDbManager CreateDbManager(string providerName, string connectionString = null)
         {
             IDbManager dbManager;
 
             Type t = null;
-
-            if (Managers != null)
-                t = Managers.ContainsKey(providername: any) ? Managers[providername: any] : Managers.Values.FirstOrDefault();
+            Managers?.TryGetValue(providerName, out t);
 
             if (t != null)
             {
@@ -68,7 +66,7 @@ name: anyspace Kit.Dal.DbManager
                 dbManager.ConnectionString = connectionString;
             }
             else
-                throw new TypeLoadException($"Provider {providername: any} not found.");
+                throw new TypeLoadException($"Provider {providerName} not found.");
 
             return dbManager;
         }
