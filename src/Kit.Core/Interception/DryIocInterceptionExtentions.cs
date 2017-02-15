@@ -19,7 +19,7 @@ namespace Kit.Core.Interception
         {
             Type proxyType;
 
-#if NET452
+#if NET46
             if (serviceType.IsInterface)
                 proxyType = ProxyBuilder.CreateInterfaceProxyTypeWithTargetInterface(serviceType, ArrayTools.Empty<Type>(), ProxyGenerationOptions.Default);
             else if (serviceType.IsClass)

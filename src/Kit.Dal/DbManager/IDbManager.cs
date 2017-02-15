@@ -23,7 +23,7 @@ namespace Kit.Dal.DbManager
         void CommitTransaction();
         IDataReader ExecuteReader(CommandType commandType, string commandText);
 
-#if NET452
+#if NET46
         DataSet ExecuteDataSet(CommandType commandType, string commandText);
 #endif
         object ExecuteScalar(CommandType commandType, string commandText);

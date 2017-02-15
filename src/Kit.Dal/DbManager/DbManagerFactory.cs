@@ -34,7 +34,7 @@ namespace Kit.Dal.DbManager
 #if NETCOREAPP1_0
                 Assembly assembly = System.Runtime.Loader.AssemblyLoadContext.Default.LoadFromAssemblyPath(a);
 #endif
-#if NET452
+#if NET46
                 Assembly assembly = Assembly.LoadFrom(a);
 #endif
                 foreach (Type t in assembly.GetTypes().Where(pre))
@@ -44,7 +44,7 @@ namespace Kit.Dal.DbManager
 #if NETCOREAPP1_0
                     attr = (ProviderNameAttribute)t.GetTypeInfo().GetCustomAttribute(typeof(ProviderNameAttribute));
 #endif
-#if NET452
+#if NET46
                     attr = (ProviderNameAttribute)t.GetCustomAttribute(typeof(ProviderNameAttribute));
 #endif
                     if (attr != null)

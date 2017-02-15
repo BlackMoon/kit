@@ -27,7 +27,7 @@ namespace Kit.Core.Web.HtmlHelper
             if (!t.GetTypeInfo().IsEnum)
                 throw new InvalidOperationException("Type is not Enum");
 #endif
-#if NET452
+#if NET46
             if (!t.IsEnum)
                 throw new InvalidOperationException("Type is not Enum");
 #endif

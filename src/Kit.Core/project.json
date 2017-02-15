@@ -10,7 +10,7 @@
   "description": "Kit.Core Class Library",
 
   "frameworks": {
-    "net452": {
+    "net46": {
       "dependencies": {
         "Microsoft.AspNet.Hosting.Abstractions": "1.0.0-rc1-final",
         "ServiceProviderExtensions": "1.0.0"
