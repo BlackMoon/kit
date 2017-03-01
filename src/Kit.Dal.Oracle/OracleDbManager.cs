@@ -40,6 +40,8 @@ namespace Kit.Dal.Oracle
         // ReSharper disable once CoVariantArrayConversion
         public IDbDataParameter[] DbParameters => _dbParameters.ToArray();
 
+        public Action<object, EventArgs> Notification { get; set; }
+
         public void AddParameter(IDbDataParameter dataParameter)
         {
             _dbParameters.Add((OracleParameter) dataParameter);
@@ -92,6 +94,9 @@ namespace Kit.Dal.Oracle
             {
                 DbConnection.ConnectionString = ConnectionString;
                 DbConnection.Open();
+
+                if (Notification != null)
+                    _dbConnection.InfoMessage += new OracleInfoMessageEventHandler(Notification);
             }
         }
 

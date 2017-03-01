@@ -12,6 +12,12 @@ namespace Kit.Dal.DbManager
         IDataReader DataReader { get; }
         IDbCommand DbCommand { get; }
         IDbDataParameter[] DbParameters { get; }
+
+        /// <summary>
+        /// Occurs on NotificationResponses from the backend.
+        /// </summary>
+        Action<object, EventArgs> Notification { get; set; }
+
         void AddParameter(IDbDataParameter dataParameter);
         IDbDataParameter AddParameter(string name, object value);
         IDbDataParameter AddParameter(string name, object value, ParameterDirection direction);

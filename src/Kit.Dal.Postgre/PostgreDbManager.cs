@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using Kit.Dal.DbManager;
 using Npgsql;
 using System.Linq;
-using NpgsqlTypes;
 
 namespace Kit.Dal.PostgreSQL
 {
@@ -43,6 +42,7 @@ namespace Kit.Dal.PostgreSQL
 
         // ReSharper disable once CoVariantArrayConversion
         public IDbDataParameter[] DbParameters => _dbParameters.ToArray();
+        public Action<object, EventArgs> Notification { get; set; }
 
         public void AddParameter(IDbDataParameter dataParameter)
         {
@@ -82,11 +82,12 @@ namespace Kit.Dal.PostgreSQL
         {
             _wasClosed = (DbConnection.State == ConnectionState.Closed);
             if (_wasClosed)
-            {
-                NpgsqlConnection.MapCompositeGlobally<Group>("adk_group_objects.groups");
-                
+            {   
                 DbConnection.ConnectionString = ConnectionString;
                 DbConnection.Open();
+
+                if (Notification != null)
+                    _dbConnection.Notification += new NotificationEventHandler(Notification);
             }
         }
 
