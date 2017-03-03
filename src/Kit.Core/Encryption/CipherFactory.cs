@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Security.Cryptography;
+using Kit.Core.Encryption.Symmetric;
 // ReSharper disable InconsistentNaming
 
 namespace Kit.Core.Encryption
@@ -10,34 +11,33 @@ namespace Kit.Core.Encryption
     public enum AlgorithmKind { AES, TripleDES }
 
     /// <summary>
-    /// Фабрика алгоритмов
+    /// Фабрика шифров
     /// </summary>
-    public class AlgorithmFactory
+    public class CipherFactory
     {
-        /// <summary>
-        /// Получить симметричный алгоритм шифрования
-        /// </summary>
-        /// <param name="type"></param>
-        /// <returns></returns>
-        public static SymmetricAlgorithm GetSymmetricAlgorithm(AlgorithmKind type)
+        public static ICipher GetCipher(AlgorithmKind kind)
         {
-            SymmetricAlgorithm sa;
+            return GetCipher(kind, new CipherOptions());
+        }
 
-            switch (type)
+        public static ICipher GetCipher(AlgorithmKind kind, CipherOptions options)
+        {
+            ICipher cipher;
+            switch (kind)
             {
                 case AlgorithmKind.AES:
-                    sa = Aes.Create();
+                    cipher = new Cipher(Aes.Create()) { Options = options };
                     break;
 
                 case AlgorithmKind.TripleDES:
-                    sa = TripleDES.Create();
+                    cipher = new Cipher(TripleDES.Create()) { Options = options };
                     break;
 
                 default:
                     throw new NotSupportedException("Unknown algorithm");
             }
 
-            return sa;
+            return cipher;
         }
     }
 }
