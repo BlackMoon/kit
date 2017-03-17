@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Threading.Tasks;
 
 namespace Kit.Core.CQRS.Command
 {
@@ -14,8 +15,12 @@ namespace Kit.Core.CQRS.Command
         /// <typeparam name="TParameter">Command Type</typeparam>
         /// <param name="command">The command to be passed to the handler</param>
         void Dispatch<TParameter>(TParameter command) where TParameter : ICommand;
-        // todo dispatch async
-        TResult Dispatch<TParameter, TResult>(TParameter command) where TParameter : ICommand where TResult : ICommandResult;
+
+        Task DispatchAsync<TParameter>(TParameter command) where TParameter : ICommand;
+
+        TResult Dispatch<TParameter, TResult>(TParameter command) where TParameter : ICommand;
+
+        Task<TResult> DispatchAsync<TParameter, TResult>(TParameter command) where TParameter : ICommand;
 
         IEnumerable<ValidationResult> Validate<TCommand>(TCommand command) where TCommand : ICommand;
     }

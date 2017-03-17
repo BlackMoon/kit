@@ -1,4 +1,6 @@
-﻿namespace Kit.Core.CQRS.Query
+﻿using System.Threading.Tasks;
+
+namespace Kit.Core.CQRS.Query
 {
     /// <summary>
     /// Passed around to all allow dispatching a query and to be mocked by unit tests
@@ -13,7 +15,9 @@
         /// <param name="query">Query to execute</param>
         /// <returns>Query Result to get back</returns>
         TResult Dispatch<TParameter, TResult>(TParameter query)
-            where TParameter : IQuery
-            where TResult : IQueryResult;
+            where TParameter : IQuery;
+
+        Task<TResult> DispatchAsync<TParameter, TResult>(TParameter query)
+            where TParameter : IQuery;
     }
 }

@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Threading.Tasks;
 using Kit.Core.CQRS.Validation;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Kit.Core.CQRS.Command
 {
-    public class CommandDispatcher : ICommandDispatcher
+    public class CommandDispatcher : ICommandDispatcher, ICommandDispatcherWithResult
     {
         private readonly IServiceProvider _serviceProvider;
 
@@ -24,13 +25,31 @@ namespace Kit.Core.CQRS.Command
             handler.Execute(command);
         }
 
-        public TResult Dispatch<TParameter, TResult>(TParameter command) where TParameter : ICommand where TResult : ICommandResult
+        public async Task DispatchAsync<TParameter>(TParameter command) where TParameter : ICommand
+        {
+            if (command == null)
+                throw new ArgumentNullException(nameof(command));
+
+            var handler = _serviceProvider.GetRequiredService<ICommandHandler<TParameter>>();
+            await handler.ExecuteAsync(command).ConfigureAwait(false);
+        }
+
+        public TResult Dispatch<TParameter, TResult>(TParameter command) where TParameter : ICommand
         {
             if (command == null)
                 throw new ArgumentNullException(nameof(command));
 
             var handler = _serviceProvider.GetRequiredService<ICommandHandlerWithResult<TParameter, TResult>>();
             return handler.Execute(command);
+        }
+
+        public async Task<TResult> DispatchAsync<TParameter, TResult>(TParameter command) where TParameter : ICommand
+        {
+            if (command == null)
+                throw new ArgumentNullException(nameof(command));
+
+            var handler = _serviceProvider.GetRequiredService<ICommandHandlerWithResult<TParameter, TResult>>();
+            return await handler.ExecuteAsync(command).ConfigureAwait(false);
         }
 
         /// <summary>

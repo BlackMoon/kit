@@ -1,4 +1,6 @@
-﻿namespace Kit.Core.CQRS.Job
+﻿using System.Threading.Tasks;
+
+namespace Kit.Core.CQRS.Job
 {
     /// <summary>
     /// Интерфейс задачи
@@ -6,5 +8,7 @@
     public interface IJob
     {
         void Run();
+
+        Task RunAsync();
     }
 }

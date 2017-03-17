@@ -50,6 +50,11 @@ namespace Kit.Core.Encryption.Symmetric
                     }
                 }
             }
+            
+            // for PaddingMode.Zeros
+            if (_algorithm.Padding == PaddingMode.Zeros)
+                decrypted = decrypted.TrimEnd('\0');
+
             return decrypted;
         }
 
