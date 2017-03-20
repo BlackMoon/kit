@@ -6,5 +6,7 @@ namespace Kit.Dal.DbManager
     public interface IDbManagerAsync
     {
         Task OpenAsync(CancellationToken cancellationToken = default(CancellationToken));
+
+        Task<int> ExecuteNonQueryAsync(CommandType commandType, string commandText);
     }
 }
