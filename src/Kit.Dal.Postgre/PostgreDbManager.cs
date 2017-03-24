@@ -108,7 +108,7 @@ namespace Kit.Dal.PostgreSQL
                 return ((DbConnection)DbConnection).OpenAsync(cancellationToken);
             }
             return Task.FromResult(0);
-        }
+        }        
 
         public void OpenWithNewPassword(string newPassword)
         {
@@ -170,6 +170,22 @@ namespace Kit.Dal.PostgreSQL
             return returnValue;
         }
 
+        public async Task<int> ExecuteNonQueryAsync(CommandType commandType, string commandText)
+        {
+            await OpenAsync();
+
+            DbCommand = new NpgsqlCommand();
+            PrepareCommand(DbCommand, DbConnection, Transaction, commandType, commandText);
+
+            int returnValue = await ((NpgsqlCommand)DbCommand).ExecuteNonQueryAsync();
+            DbCommand.Parameters.Clear();
+
+            if (_wasClosed)
+                DbConnection.Close();
+
+            return await Task.FromResult(returnValue);            
+        }
+
         private void PrepareCommand(IDbCommand command, IDbConnection connection, IDbTransaction transaction, CommandType commandType, string commandText)
         {
             command.Connection = connection;
@@ -197,16 +213,6 @@ namespace Kit.Dal.PostgreSQL
         {
             if (DbConnection.State != ConnectionState.Closed)
                 DbConnection.Close();
-        }
-    }
-
-    
-    public class Group
-    {
-        public int Id { get; set; }
-
-        public string Name { get; set; }
-
-        public string Description { get; set; }
-    }
+        }       
+    }  
 }
