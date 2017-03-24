@@ -7,7 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Kit.Core.CQRS.Command
 {
-    public class CommandDispatcher : ICommandDispatcher, ICommandDispatcherWithResult
+    public class CommandDispatcher : ICommandDispatcher
     {
         private readonly IServiceProvider _serviceProvider;
 

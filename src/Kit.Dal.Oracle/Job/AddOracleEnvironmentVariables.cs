@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Kit.Core.CQRS.Job;
 using Microsoft.Extensions.Options;
 
@@ -29,6 +30,11 @@ namespace Kit.Dal.Oracle.Job
 
             if (!string.IsNullOrEmpty(_options.Tns_Admin))
                 Environment.SetEnvironmentVariable("TNS_ADMIN", _options.Tns_Admin);
+        }
+
+        public Task RunAsync()
+        {
+            throw new NotImplementedException();
         }
     }
 }

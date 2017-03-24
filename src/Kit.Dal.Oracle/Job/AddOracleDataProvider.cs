@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using System.Threading.Tasks;
 using Kit.Core.CQRS.Job;
 
 namespace Kit.Dal.Oracle.Job
@@ -29,6 +30,11 @@ namespace Kit.Dal.Oracle.Job
                 dt.Rows.Add("Oracle Data Provider", "Oracle Data Provider for .NET", "Oracle.DataAccess.Client",
                     typeof(global::Oracle.DataAccess.Client.OracleClientFactory).AssemblyQualifiedName);
             }
+        }
+
+        public Task RunAsync()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
