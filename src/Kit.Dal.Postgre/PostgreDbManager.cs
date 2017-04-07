@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Kit.Dal.DbManager;
 using Npgsql;
-using System.Linq;
 
-namespace Kit.Dal.PostgreSQL
+namespace Kit.Dal.Postgre
 {
     [ProviderName("Npgsql")]
     public class PostgreDbManager : IDbManager, IDbManagerAsync
@@ -42,6 +42,9 @@ namespace Kit.Dal.PostgreSQL
 
         // ReSharper disable once CoVariantArrayConversion
         public IDbDataParameter[] DbParameters => _dbParameters.ToArray();
+
+        public  Action<string> Log { get; set; }
+
         public Action<object, EventArgs> Notification { get; set; }
 
         public void AddParameter(IDbDataParameter dataParameter)

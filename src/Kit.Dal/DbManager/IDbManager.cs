@@ -14,6 +14,11 @@ namespace Kit.Dal.DbManager
         IDbDataParameter[] DbParameters { get; }
 
         /// <summary>
+        /// Set this property to log the SQL
+        /// </summary>
+        Action<string> Log { get; set; }
+
+        /// <summary>
         /// Occurs on NotificationResponses from the backend.
         /// </summary>
         Action<object, EventArgs> Notification { get; set; }
