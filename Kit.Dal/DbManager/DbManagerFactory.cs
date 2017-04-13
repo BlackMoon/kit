@@ -52,12 +52,11 @@ namespace Kit.Dal.DbManager
                 foreach (Type t in assembly.GetTypes().Where(pre))
                 {
                     // Наименование --> из аттрибута
-                    ProviderNameAttribute attr = null;
 #if NETCOREAPP1_1
-                    attr = (ProviderNameAttribute)t.GetTypeInfo().GetCustomAttribute(typeof(ProviderNameAttribute));
+                    var attr = (ProviderNameAttribute)t.GetTypeInfo().GetCustomAttribute(typeof(ProviderNameAttribute));
 #endif
 #if NET46
-                    attr = (ProviderNameAttribute)t.GetCustomAttribute(typeof(ProviderNameAttribute));
+                    var attr = (ProviderNameAttribute)t.GetCustomAttribute(typeof(ProviderNameAttribute));
 #endif
                     if (attr != null)
                         Managers[attr.ProviderName] = t;
