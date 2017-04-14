@@ -26,15 +26,18 @@ namespace Kit.Dal.DbManager
             // Register assemblies
             string contentRootPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
 
-            string[] assemblies = (contentRootPath != null) ? 
-                Directory.GetFiles(contentRootPath, "Kit.Dal.*.dll", SearchOption.TopDirectoryOnly) : 
-                new string[]{};
+            string[] assemblies = (contentRootPath != null) ?
+                Directory
+                    .GetFiles(contentRootPath, "Kit.Dal.*.dll", SearchOption.TopDirectoryOnly)
+                    .Select(Path.GetFileNameWithoutExtension)
+                    .ToArray() : new string[]{};
 
             Func<Type, bool> pre = t => t.GetInterfaces().Contains(typeof(IDbManager));
-            Managers = new Dictionary<string, Type>();
+            Managers = new Dictionary<string, Type>(assemblies.Length);
 
             foreach (string a in assemblies)
             {
+                string assemblyFile = $"{contentRootPath}\\{a}.dll";
 
 #if NETCOREAPP1_1
                 RuntimeLibrary lib = DependencyContext
