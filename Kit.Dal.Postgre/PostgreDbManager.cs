@@ -11,7 +11,7 @@ using Npgsql;
 namespace Kit.Dal.Postgre
 {
     [ProviderName("Npgsql")]
-    public class PostgreDbManager : IDbManager, IDbManagerAsync
+    public class PostgreDbManager : IDbManager
     {
         private bool _wasClosed;
 

@@ -3,7 +3,7 @@ using System.Data;
 
 namespace Kit.Dal.DbManager
 {
-    public interface IDbManager : IDisposable
+    public partial interface IDbManager : IDisposable
     {
         string ConnectionString { get; set; }
 
