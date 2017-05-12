@@ -27,7 +27,12 @@ namespace Kit.Core.Interception
             if (!shouldIntercept)
             {
                 // поиск метода у объекта!
-                MethodInfo mi = type.GetMethod(methodInfo.Name);
+                Type[] types = methodInfo
+                    .GetParameters()
+                    .Select(p => p.ParameterType)
+                    .ToArray();
+
+                MethodInfo mi = type.GetMethod(methodInfo.Name, types);
                 shouldIntercept = mi.GetCustomAttributes(typeof(InterceptedMethodAttribute)).Any();
             }
 
