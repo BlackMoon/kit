@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace Kit.Core.Web.Binders
@@ -13,18 +12,16 @@ namespace Kit.Core.Web.Binders
         {
             if (context == null)
                 throw new ArgumentNullException(nameof(context));
-
-            Type [] floatingPointTypes =
-            {
-                typeof(decimal),
-                typeof(decimal?),
-                typeof(double),
-                typeof(double?),
-                typeof(float),
-                typeof(float?),
-            };
             
-            if (!context.Metadata.IsComplexType && floatingPointTypes.Contains(context.Metadata.ModelType))
+            if (!context.Metadata.IsComplexType && 
+                    (context.Metadata.ModelType == typeof(decimal) || 
+                    context.Metadata.ModelType == typeof(decimal?) || 
+                    context.Metadata.ModelType == typeof(double) || 
+                    context.Metadata.ModelType == typeof(double?) ||
+                    context.Metadata.ModelType == typeof(float) || 
+                    context.Metadata.ModelType == typeof(float?))
+                )
+
                 return new InvariantDecimalModelBinder(context.Metadata.ModelType);
 
             return null;
