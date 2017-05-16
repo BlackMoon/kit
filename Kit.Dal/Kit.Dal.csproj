@@ -14,10 +14,6 @@
     <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net46|AnyCPU'">
-    <DefineConstants>TRACE;DEBUG;NET46;ASYNC;</DefineConstants>
-  </PropertyGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\Kit.Core\Kit.Core.csproj" />
   </ItemGroup>
@@ -32,6 +28,9 @@
     <Reference Include="System.Xml" />
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp1.1' ">
   </ItemGroup>
 
 </Project>
