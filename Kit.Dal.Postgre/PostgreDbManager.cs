@@ -52,15 +52,21 @@ namespace Kit.Dal.Postgre
             _dbParameters.Add((NpgsqlParameter)dataParameter);
         }
 
-        public IDbDataParameter AddParameter(string name, object value)
+        public IDbDataParameter AddParameter(string name)
         {
             NpgsqlParameter p = new NpgsqlParameter()
             {
-                ParameterName = name,
-                Value = value
+                ParameterName = name                
             };
 
             _dbParameters.Add(p);
+            return p;
+        }
+
+        public IDbDataParameter AddParameter(string name, object value)
+        {
+            NpgsqlParameter p = (NpgsqlParameter)AddParameter(name);
+            p.Value = value;            
             return p;
         }
 
