@@ -56,10 +56,10 @@ namespace Kit.Dal.Postgre
         {
             NpgsqlParameter p = new NpgsqlParameter()
             {
-                ParameterName = name
+                ParameterName = name                
             };
-            _dbParameters.Add(p);
 
+            _dbParameters.Add(p);
             return p;
         }
 
@@ -67,7 +67,6 @@ namespace Kit.Dal.Postgre
         {
             NpgsqlParameter p = (NpgsqlParameter)AddParameter(name);
             p.Value = value;            
-            
             return p;
         }
 
