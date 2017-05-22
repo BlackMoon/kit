@@ -24,6 +24,7 @@ namespace Kit.Dal.DbManager
         Action<object, EventArgs> Notification { get; set; }
 
         void AddParameter(IDbDataParameter dataParameter);
+        IDbDataParameter AddParameter(string name);
         IDbDataParameter AddParameter(string name, object value);
         IDbDataParameter AddParameter(string name, object value, ParameterDirection direction);
         IDbDataParameter AddParameter(string name, object value, ParameterDirection direction, int size);
