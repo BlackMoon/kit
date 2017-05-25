@@ -63,10 +63,31 @@ namespace Kit.Dal.Postgre
             return p;
         }
 
+        public IDbDataParameter AddParameter(string name, DbType dbType)
+        {
+            NpgsqlParameter p = (NpgsqlParameter)AddParameter(name);
+            p.DbType = dbType;
+            return p;
+        }
+
         public IDbDataParameter AddParameter(string name, object value)
         {
             NpgsqlParameter p = (NpgsqlParameter)AddParameter(name);
-            p.Value = value;            
+            p.Value = value;
+            return p;
+        }
+
+        public IDbDataParameter AddParameter(string name, DbType dbType, object value)
+        {
+            NpgsqlParameter p = (NpgsqlParameter)AddParameter(name, dbType);
+            p.Value = value;
+            return p;
+        }
+
+        public IDbDataParameter AddParameter(string name, DbType dbType, ParameterDirection direction)
+        {
+            NpgsqlParameter p = (NpgsqlParameter)AddParameter(name, dbType);
+            p.Direction = direction;
             return p;
         }
 
@@ -222,6 +243,6 @@ namespace Kit.Dal.Postgre
         {
             if (DbConnection.State != ConnectionState.Closed)
                 DbConnection.Close();
-        }       
+        }
     }  
 }

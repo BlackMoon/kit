@@ -26,6 +26,9 @@ namespace Kit.Dal.DbManager
         void AddParameter(IDbDataParameter dataParameter);
         IDbDataParameter AddParameter(string name);
         IDbDataParameter AddParameter(string name, object value);
+        IDbDataParameter AddParameter(string name, DbType dbType);
+        IDbDataParameter AddParameter(string name, DbType dbType, object value);
+        IDbDataParameter AddParameter(string name, DbType dbType, ParameterDirection direction);
         IDbDataParameter AddParameter(string name, object value, ParameterDirection direction);
         IDbDataParameter AddParameter(string name, DbType dbType, object value, ParameterDirection direction);
         void Open();
