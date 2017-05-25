@@ -77,10 +77,10 @@ namespace Kit.Dal.Postgre
             return p;
         }
 
-        public IDbDataParameter AddParameter(string name, object value, ParameterDirection direction, int size)
+        public IDbDataParameter AddParameter(string name, DbType dbType, object value, ParameterDirection direction)
         {
             NpgsqlParameter p = (NpgsqlParameter)AddParameter(name, value, direction);
-            p.Size = size;
+            p.DbType = dbType;
             return p;
         }
 

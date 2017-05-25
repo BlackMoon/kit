@@ -30,7 +30,8 @@ namespace Kit.Dal.DbManager
         {
             const string resultName = "result";
 
-            IDbDataParameter pResult = dbManager.AddParameter(resultName, null, ParameterDirection.ReturnValue, short.MaxValue);
+            IDbDataParameter pResult = dbManager.AddParameter(resultName, DbType.Int32, null, ParameterDirection.ReturnValue);
+            pResult.Size = short.MaxValue;
             RunProc(dbManager, name, parameters);
             
             return pResult.Value;
