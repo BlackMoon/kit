@@ -35,7 +35,7 @@ namespace Kit.Dal.Postgre
         public IDbTransaction Transaction { get; }
 
         public IDataReader DataReader { get; private set; }
-
+        
         public IDbCommand DbCommand { get; private set; }
 
         private readonly IList<NpgsqlParameter> _dbParameters = new List<NpgsqlParameter>();

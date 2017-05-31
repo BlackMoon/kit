@@ -61,14 +61,7 @@ namespace Kit.Core
                 IgnoreRegistrationAttribute ignoreAttr = (IgnoreRegistrationAttribute)ti.GetCustomAttribute(typeof(IgnoreRegistrationAttribute));
                 if (ignoreAttr == null)
                 {
-                    // all dispatchers --> Reuse.InCurrentScope
-                    IReuse reuse = type.IsAssignableTo(typeof (ICommandDispatcher)) ||
-                                   type.IsAssignableTo(typeof (IJobDispatcher)) ||
-                                   type.IsAssignableTo(typeof (IQueryDispatcher))
-                        ? Reuse.InCurrentScope
-                        : Reuse.Transient;
-
-                    registrator.RegisterMany(types, type, reuse);
+                    registrator.RegisterMany(types, type, Reuse.Transient);
 
                     // interceptors
                     if (ti.IsClass)
