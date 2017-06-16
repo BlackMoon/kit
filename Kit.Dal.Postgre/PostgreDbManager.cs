@@ -31,8 +31,8 @@ namespace Kit.Dal.Postgre
         private NpgsqlConnection _dbConnection;
 
         public IDbConnection DbConnection => _dbConnection = _dbConnection ?? new NpgsqlConnection();
-        
-        public IDbTransaction Transaction { get; }
+
+        public IDbTransaction Transaction { get; private set; }
 
         public IDataReader DataReader { get; private set; }
         
@@ -105,6 +105,8 @@ namespace Kit.Dal.Postgre
             return p;
         }
 
+        public void ClearParameters() => _dbParameters.Clear();
+
         /// <summary>
         /// Открыть соединение
         /// </summary>
@@ -147,12 +149,12 @@ namespace Kit.Dal.Postgre
 
         public void BeginTransaction()
         {
-            throw new NotImplementedException();
+            Transaction = _dbConnection.BeginTransaction();
         }
 
         public void CommitTransaction()
         {
-            throw new NotImplementedException();
+            Transaction.Commit();
         }
 
         public IDataReader ExecuteReader(CommandType commandType, string commandText)

@@ -31,6 +31,12 @@ namespace Kit.Dal.DbManager
         IDbDataParameter AddParameter(string name, DbType dbType, ParameterDirection direction);
         IDbDataParameter AddParameter(string name, object value, ParameterDirection direction);
         IDbDataParameter AddParameter(string name, DbType dbType, object value, ParameterDirection direction);
+        
+        /// <summary>
+        /// Clear dbParameters
+        /// </summary>
+        void ClearParameters();
+
         void Open();
         void Open(string connectionString);
         void OpenWithNewPassword(string newPassword);
