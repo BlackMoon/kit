@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Threading.Tasks;
 
 namespace Kit.Dal.DbManager
 {
@@ -20,6 +21,16 @@ namespace Kit.Dal.DbManager
         {
             T result = default(T);
             object value = dbManager.ExecuteScalar(commandType, commandText);
+            if (value != null)
+                result = (T)Convert.ChangeType(value, typeof(T));
+
+            return result;
+        }
+
+        public static async Task<T> ExecuteScalarAsync<T>(this IDbManager dbManager, CommandType commandType, string commandText)
+        {
+            T result = default(T);
+            object value = await dbManager.ExecuteScalarAsync(commandType, commandText);
             if (value != null)
                 result = (T)Convert.ChangeType(value, typeof(T));
 

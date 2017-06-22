@@ -9,5 +9,7 @@ namespace Kit.Dal.DbManager
         Task OpenAsync(CancellationToken cancellationToken = default(CancellationToken));
 
         Task<int> ExecuteNonQueryAsync(CommandType commandType, string commandText);
+
+        Task<object> ExecuteScalarAsync(CommandType commandType, string commandText);
     }
 }

@@ -174,15 +174,33 @@ namespace Kit.Dal.Postgre
         {
             Open();
 
-            DbCommand = new NpgsqlCommand() {};
+            DbCommand = new NpgsqlCommand();
             PrepareCommand(DbCommand, DbConnection, Transaction, commandType, commandText);
-
+            
             object returnValue = DbCommand.ExecuteScalar();
+
             DbCommand.Parameters.Clear();
 
             if (_wasClosed)
                 DbConnection.Close();
 
+            return returnValue;
+        }
+
+        public async Task<object> ExecuteScalarAsync(CommandType commandType, string commandText)
+        {
+            Open();
+
+            DbCommand = new NpgsqlCommand();
+            PrepareCommand(DbCommand, DbConnection, Transaction, commandType, commandText);
+           
+            object returnValue = await ((NpgsqlCommand) DbCommand).ExecuteScalarAsync();
+
+            DbCommand.Parameters.Clear();
+
+            if (_wasClosed)
+                DbConnection.Close();
+            
             return returnValue;
         }
 
